@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B9597AD4-B13A-4935-97B2-7F22AA487C0E}</ProjectGuid>
+    <ProjectGuid>{8E84C762-5754-0F97-F0EB-0CCB3A94703C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
@@ -90,40 +90,40 @@
     <Compile Include="Assets\Plugins\UHUDText\Example\Script\bl_TestMouseEvent.cs" />
     <None Include="Assets\Plugins\PathologicalGames\readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -303,52 +303,52 @@
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="DemiLib">
-      <HintPath>E:/Projects/MMORPG/Assets/Demigiant/DemiLib/DemiLib.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Demigiant/DemiLib/DemiLib.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>E:/Projects/MMORPG/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="DOTween43">
-      <HintPath>E:/Projects/MMORPG/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
     </Reference>
     <Reference Include="DOTween46">
-      <HintPath>E:/Projects/MMORPG/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
     </Reference>
     <Reference Include="DOTween50">
-      <HintPath>E:/Projects/MMORPG/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenPro">
-      <HintPath>E:/Projects/MMORPG/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="zlib.net">
-      <HintPath>E:/Projects/MMORPG/Assets/Plugins/zlib.net.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Plugins/zlib.net.dll</HintPath>
     </Reference>
     <Reference Include="LiteDB">
-      <HintPath>E:/Projects/MMORPG/Assets/RPGGame/Plugins/LiteDB.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/RPGGame/Plugins/LiteDB.dll</HintPath>
     </Reference>
     <Reference Include="LitJson">
-      <HintPath>E:/Projects/MMORPG/Assets/RPGGame/Plugins/LitJson.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/RPGGame/Plugins/LitJson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
-      <HintPath>E:/Projects/MMORPG/Assets/RPGGame/Plugins/MongoDB.Bson.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/RPGGame/Plugins/MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>E:/Projects/MMORPG/Assets/RPGGame/Plugins/MongoDB.Driver.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/RPGGame/Plugins/MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
-      <HintPath>E:/Projects/MMORPG/Assets/RPGGame/Plugins/SQLite/Common/Mono.Data.Sqlite.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/RPGGame/Plugins/SQLite/Common/Mono.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>E:/Projects/MMORPG/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>E:/Projects/MMORPG/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
-      <HintPath>E:/Projects/MMORPG/Library/PackageCache/com.unity.purchasing@2.0.6/UnityEngine.Purchasing.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/PackageCache/com.unity.purchasing@2.0.6/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

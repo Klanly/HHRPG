@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B8072D92-3F1F-4F1B-AC63-D1F6B738AED0}</ProjectGuid>
+    <ProjectGuid>{15D159A0-80CA-EE23-314A-8585E1575183}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -303,6 +303,8 @@
     <Compile Include="Assets\YouYou_Framework\Component\UIScroller.cs" />
     <Compile Include="Assets\YouYou_Framework\Component\UIScrollIndex.cs" />
     <Compile Include="Assets\YouYou_Framework\Component\UISelectRoleDragView.cs" />
+    <Compile Include="Assets\YouYou_Framework\Component\YouYouImage.cs" />
+    <Compile Include="Assets\YouYou_Framework\Component\YouYouText.cs" />
     <Compile Include="Assets\YouYou_Framework\Components\DataComponent.cs" />
     <Compile Include="Assets\YouYou_Framework\Components\DataTableComponent.cs" />
     <Compile Include="Assets\YouYou_Framework\Components\DownloadComponent.cs" />
@@ -311,6 +313,7 @@
     <Compile Include="Assets\YouYou_Framework\Components\GameObjComponent.cs" />
     <Compile Include="Assets\YouYou_Framework\Components\HttpComponent.cs" />
     <Compile Include="Assets\YouYou_Framework\Components\LocalizationComponent.cs" />
+    <Compile Include="Assets\YouYou_Framework\Components\LuaComponent.cs" />
     <Compile Include="Assets\YouYou_Framework\Components\PoolComponent.cs" />
     <Compile Include="Assets\YouYou_Framework\Components\ProcedureComponent.cs" />
     <Compile Include="Assets\YouYou_Framework\Components\ResourceComponent.cs" />
@@ -321,6 +324,7 @@
     <Compile Include="Assets\YouYou_Framework\Components\UIComponent.cs" />
     <Compile Include="Assets\YouYou_Framework\Core\IUpdateComponent.cs" />
     <Compile Include="Assets\YouYou_Framework\Core\MMO_MemoryStream.cs" />
+    <Compile Include="Assets\YouYou_Framework\Core\Variable\SafeInteger.cs" />
     <Compile Include="Assets\YouYou_Framework\Core\Variable\VarBool.cs" />
     <Compile Include="Assets\YouYou_Framework\Core\Variable\VarByte.cs" />
     <Compile Include="Assets\YouYou_Framework\Core\Variable\VarBytes.cs" />
@@ -338,10 +342,6 @@
     <Compile Include="Assets\YouYou_Framework\Core\YouYouBaseComponent.cs" />
     <Compile Include="Assets\YouYou_Framework\Core\YouYouComponent.cs" />
     <Compile Include="Assets\YouYou_Framework\GameEntry.cs" />
-    <Compile Include="Assets\YouYou_Framework\Managers\Data\CacheData.cs" />
-    <Compile Include="Assets\YouYou_Framework\Managers\Data\PVEMapData.cs" />
-    <Compile Include="Assets\YouYou_Framework\Managers\Data\SysData.cs" />
-    <Compile Include="Assets\YouYou_Framework\Managers\Data\UserData.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\DataTable\DataTableDBModelBase.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\DataTable\DataTableEntityBase.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\DataTable\DataTableManager.cs" />
@@ -359,8 +359,10 @@
     <Compile Include="Assets\YouYou_Framework\Managers\Http\HttpCallBackArgs.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\Http\HttpManager.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\Http\HttpRoutine.cs" />
+    <Compile Include="Assets\YouYou_Framework\Managers\Localization\LocalizationBModel.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\Localization\LocalizationManager.cs" />
-    <Compile Include="Assets\YouYou_Framework\Managers\Localization\Sys_LocalizationBModel.cs" />
+    <Compile Include="Assets\YouYou_Framework\Managers\Lua\LuaForm.cs" />
+    <Compile Include="Assets\YouYou_Framework\Managers\Lua\LuaManager.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\ManagerBase.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\Pool\ClassObjectPool.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\Pool\GameObjectPool.cs" />
@@ -377,7 +379,6 @@
     <Compile Include="Assets\YouYou_Framework\Managers\Procedure\ProcedureState\ProcedurePreload.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\Procedure\ProcedureState\ProcedureSelectRole.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\Procedure\ProcedureState\ProcedureWorldMap.cs" />
-    <Compile Include="Assets\YouYou_Framework\Managers\Resource\ResourceManager.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\Scene\SceneManager.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\Setting\SettingManager.cs" />
     <Compile Include="Assets\YouYou_Framework\Managers\Socket\IProto.cs" />
@@ -454,7 +455,58 @@
     <Compile Include="Assets\YouYouScript\Data\DataTable\Create\TaskEntity.cs" />
     <Compile Include="Assets\YouYouScript\Data\DataTable\Create\WorldMapDBModel.cs" />
     <Compile Include="Assets\YouYouScript\Data\DataTable\Create\WorldMapEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Backpack_GoodsChangeReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Backpack_SearchProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Backpack_SearchReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_EquipPutProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_EquipPutReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_SearchEquipDetailProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_SearchEquipDetailReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_SellToSysProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_SellToSysReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_UseItemProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_UseItemReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\ProtoCodeDef.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_CreateRoleProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_CreateRoleReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_DeleteRoleProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_DeleteRoleReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_EnterGameProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_EnterGameReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_LogOnGameServerProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_LogOnGameServerReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_SelectRoleInfoProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_SelectRoleInfoReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Shop_BuyProductProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Shop_BuyProductReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\System_GameServerConfigReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\System_HeartbeatProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\System_HeartbeatReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Task_SearchTaskProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Task_SearchTaskReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Backpack_GoodsChangeReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Backpack_SearchReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Goods_EquipPutReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Goods_SearchEquipDetailReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Goods_SellToSysReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Goods_UseItemReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\RoleOperation_CreateRoleReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\RoleOperation_DeleteRoleReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\RoleOperation_EnterGameReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\RoleOperation_LogOnGameServerReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\RoleOperation_SelectRoleInfoReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Shop_BuyProductReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\SocketProtoListener.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\System_GameServerConfigReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\System_HeartbeatReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Task_SearchTaskReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\DataManager\CacheDataManager.cs" />
+    <Compile Include="Assets\YouYouScript\DataManager\DataEntity\ServerTaskEntity.cs" />
+    <Compile Include="Assets\YouYouScript\DataManager\PVEMapDataManager.cs" />
+    <Compile Include="Assets\YouYouScript\DataManager\SysDataManager.cs" />
+    <Compile Include="Assets\YouYouScript\DataManager\UserDataManager.cs" />
     <Compile Include="Assets\YouYouScript\UI\UIForm\UITaskForm.cs" />
+    <Compile Include="Assets\YouYouScript\UI\UIForm\UITaskFormItemView.cs" />
     <Compile Include="Assets\YouYouScript\UI\UIFormId.cs" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
@@ -467,11 +519,15 @@
     <None Include="Assets\Demigiant\DOTween\DOTween50.xml" />
     <None Include="Assets\Model\RoleModel\Player\cike\动画帧数刺客.txt" />
     <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\async_test.lua.txt" />
+    <None Include="Assets\Download\CusShaders\GlowAdditiveSimple.shader" />
     <None Include="Assets\XLua\Tutorial\LoadLuaScript\ByFile\Resources\byfile.lua.txt" />
+    <None Include="Assets\Download\CusShaders\MADFINGER-Unlit-Scroll2Layers-Sine-AlphaBlend.shader" />
     <None Include="Assets\XLua\Examples\06_Coroutine\Resources\coruntine_test.lua.txt" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\CharaMain.cginc" />
+    <None Include="Assets\Download\CusShaders\Unlit-SimpleWaterCrystal.shader" />
     <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_fuku_ds.shader" />
+    <None Include="Assets\Download\CusShaders\MADFINGER-3Layers-AlphaBlend.shader" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\CharaSkin.cginc" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />
     <None Include="Assets\XLua\Resources\xlua\util.lua.txt" />
@@ -480,7 +536,10 @@
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_akarami_blend.shader" />
     <None Include="Assets\Model\SceneModel\ShanGu\Shader\MogoSkybox.shader" />
     <None Include="Assets\XLua\Examples\03_UIEvent\ButtonInteraction.lua.txt" />
+    <None Include="Assets\Download\CusShaders\Water_Texture.shader" />
+    <None Include="Assets\Download\CusShaders\MyAlphaBlend.shader" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
+    <None Include="Assets\Download\CusShaders\DefaultInReplace\Mobile-Particle-Alpha_Replace.shader" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
     <None Include="Assets\Demigiant\DOTween\readme.txt" />
     <None Include="Assets\Model\SceneModel\ShanGu\Shader\MogoTransparentDiffuse.shader" />
@@ -491,46 +550,48 @@
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
     <None Include="Assets\Model\RoleModel\Boss\dazhuang\帧数参数.txt" />
+    <None Include="Assets\Download\CusShaders\CloudAlphaBlend_Android.shader" />
     <None Include="Assets\XLua\Resources\perf\memory.lua.txt" />
     <None Include="Assets\Model\RoleModel\Monster\qinbing\怪物-亲兵的动画帧数.txt" />
+    <None Include="Assets\Download\CusShaders\DefaultInReplace\Mobile-Diffuse_Replace.shader" />
     <None Include="Assets\XLua\CHANGELOG.txt" />
     <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
     <None Include="Assets\XLua\Resources\tdr\tdr.lua.txt" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>E:/Projects/MMORPG/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -710,52 +771,52 @@
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="DemiLib">
-      <HintPath>E:/Projects/MMORPG/Assets/Demigiant/DemiLib/DemiLib.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Demigiant/DemiLib/DemiLib.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>E:/Projects/MMORPG/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="DOTween43">
-      <HintPath>E:/Projects/MMORPG/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
     </Reference>
     <Reference Include="DOTween46">
-      <HintPath>E:/Projects/MMORPG/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
     </Reference>
     <Reference Include="DOTween50">
-      <HintPath>E:/Projects/MMORPG/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenPro">
-      <HintPath>E:/Projects/MMORPG/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="zlib.net">
-      <HintPath>E:/Projects/MMORPG/Assets/Plugins/zlib.net.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/Plugins/zlib.net.dll</HintPath>
     </Reference>
     <Reference Include="LiteDB">
-      <HintPath>E:/Projects/MMORPG/Assets/RPGGame/Plugins/LiteDB.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/RPGGame/Plugins/LiteDB.dll</HintPath>
     </Reference>
     <Reference Include="LitJson">
-      <HintPath>E:/Projects/MMORPG/Assets/RPGGame/Plugins/LitJson.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/RPGGame/Plugins/LitJson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
-      <HintPath>E:/Projects/MMORPG/Assets/RPGGame/Plugins/MongoDB.Bson.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/RPGGame/Plugins/MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>E:/Projects/MMORPG/Assets/RPGGame/Plugins/MongoDB.Driver.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/RPGGame/Plugins/MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
-      <HintPath>E:/Projects/MMORPG/Assets/RPGGame/Plugins/SQLite/Common/Mono.Data.Sqlite.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Assets/RPGGame/Plugins/SQLite/Common/Mono.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>E:/Projects/MMORPG/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>E:/Projects/MMORPG/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>E:/Projects/MMORPG/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
-      <HintPath>E:/Projects/MMORPG/Library/PackageCache/com.unity.purchasing@2.0.6/UnityEngine.Purchasing.dll</HintPath>
+      <HintPath>E:/Projects/HHRPG/Library/PackageCache/com.unity.purchasing@2.0.6/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -1114,7 +1175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{B9597AD4-B13A-4935-97B2-7F22AA487C0E}</Project>
+      <Project>{8E84C762-5754-0F97-F0EB-0CCB3A94703C}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
