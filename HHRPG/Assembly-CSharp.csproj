@@ -254,6 +254,8 @@
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
     <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />
+    <None Include="Assets\Models\RoleModel\Monster\nvbing\怪物-近战女兵.txt" />
+    <None Include="Assets\Models\RoleModel\NPC\xianzi\动作参数.txt" />
     <None Include="Assets\Demigiant\DOTween\DOTween50.xml" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\CharaMain.cginc" />
     <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
@@ -271,6 +273,8 @@
     <None Include="Assets\RPGGame\UnityChanShader\Shader\readme.txt" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
+    <None Include="Assets\Models\RoleModel\Boss\dazhuang\帧数参数.txt" />
+    <None Include="Assets\Models\RoleModel\Monster\qinbing\怪物-亲兵的动画帧数.txt" />
     <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
@@ -298,6 +302,9 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

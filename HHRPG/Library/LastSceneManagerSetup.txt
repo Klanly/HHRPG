@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/RPGGame/Demo/Scenes/LoginSceneSQLite.unity
+- path: Assets/RPGGame/Demo/Scenes/BattleScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -85,7 +86,7 @@ MonoBehaviour:
   skills:
   - {fileID: 11400000, guid: 6dc643d77adcc9341aea1a96164f1f15, type: 2}
   - {fileID: 11400000, guid: 4bfa3c6f192d2324c845ce9171d88802, type: 2}
-  model: {fileID: 114540471009207542, guid: 42e46758f342d504daa223bf66f4b2d3, type: 2}
+  model: {fileID: 777598755311872140, guid: 2d63de936eca0e741a8baaf79b454483, type: 3}
   evolveInfo:
     requiredMaterials:
     - item: {fileID: 11400000, guid: 322e6b0cb5e77b341a2e3ccaa9909b1c, type: 2}
