@@ -13,7 +13,9 @@ public class GamePlayFormation : BaseGamePlayFormation
     private void Start()
     {
         if (isPlayerFormation)
+        {
             SetFormationCharacters();
+        }                  
     }
 
     public override BaseCharacterEntity SetCharacter(int position, PlayerItem item)
