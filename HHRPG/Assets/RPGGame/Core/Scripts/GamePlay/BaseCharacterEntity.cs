@@ -31,7 +31,7 @@ public abstract class BaseCharacterEntity : MonoBehaviour
             if (cacheAnimator == null)
             {
                 cacheAnimator = GetComponent<Animator>();
-                cacheAnimator.runtimeAnimatorController = CacheAnimatorController;
+                cacheAnimator.runtimeAnimatorController = animatorController;
             }
             return cacheAnimator;
         }

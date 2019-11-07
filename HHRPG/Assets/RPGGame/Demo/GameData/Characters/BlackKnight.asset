@@ -86,7 +86,7 @@ MonoBehaviour:
   skills:
   - {fileID: 11400000, guid: 6dc643d77adcc9341aea1a96164f1f15, type: 2}
   - {fileID: 11400000, guid: 4bfa3c6f192d2324c845ce9171d88802, type: 2}
-  model: {fileID: 777598755311872140, guid: 2d63de936eca0e741a8baaf79b454483, type: 3}
+  model: {fileID: 6472890511748304407, guid: 6aeac339e83c27d4c96365a7baea847d, type: 3}
   evolveInfo:
     requiredMaterials:
     - item: {fileID: 11400000, guid: 322e6b0cb5e77b341a2e3ccaa9909b1c, type: 2}
