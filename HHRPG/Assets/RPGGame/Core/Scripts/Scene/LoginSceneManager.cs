@@ -8,6 +8,7 @@ public class LoginSceneManager : MonoBehaviour
     public UIAuthentication loginDialog;
     public UIAuthentication registerDialog;
     public GameObject clickStartObject;
+
     private void Awake()
     {
         if (Singleton != null)
