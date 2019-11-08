@@ -185,6 +185,7 @@ public abstract class BaseGamePlayManager : MonoBehaviour
         {
             GameInstance.Singleton.OnGameServiceStartStageResult(result);
             BattleSession = result.session;
+            Debug.Log(BattleSession);
             GameInstance.Singleton.LoadBattleScene();
         }, (error) =>
         {

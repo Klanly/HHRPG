@@ -273,6 +273,12 @@ public class CharacterEntity : BaseCharacterEntity
         }
     }
 
+    /// <summary>
+    /// 移动
+    /// </summary>
+    /// <param name="character">目标角色</param>
+    /// <param name="speed">速度</param>
+    /// <returns></returns>
     public Coroutine MoveTo(CharacterEntity character, float speed)
     {
         targetCharacter = character;
@@ -397,6 +403,10 @@ public class CharacterEntity : BaseCharacterEntity
         }
     }
 
+    /// <summary>
+    /// 物理攻击
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DoAttackActionRoutine()
     {
         IsDoingAction = true;
@@ -406,10 +416,10 @@ public class CharacterEntity : BaseCharacterEntity
             attackAnimation = AttackAnimations[Random.Range(0, AttackAnimations.Count - 1)] as AttackAnimationData;
         if (!attackAnimation.GetIsRangeAttack())
         {
-            // Move to target character
+            // 移动到目标角色
             yield return MoveTo(ActionTarget, Manager.doActionMoveSpeed);
         }
-        // Play attack animation
+        // 播放攻击动画
         if (attackAnimation != null)
         {
             switch (attackAnimation.type)
