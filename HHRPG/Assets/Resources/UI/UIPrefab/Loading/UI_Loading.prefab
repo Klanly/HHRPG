@@ -388,9 +388,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224895590960629200}
-  - component: {fileID: 114458262281510510}
   - component: {fileID: 223887179264670012}
   - component: {fileID: 114064796442120344}
+  - component: {fileID: 6062418155306609855}
   m_Layer: 5
   m_Name: UI_Loading
   m_TagString: Untagged
@@ -420,21 +420,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &114458262281510510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988337133857764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43cb37428e732be4ba958bf0b3683634, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Scrollbar: {fileID: 114015048614398324}
-  txtTip: {fileID: 466046203283166150}
-  imgBG: {fileID: 114395368611912052}
 --- !u!223 &223887179264670012
 Canvas:
   m_ObjectHideFlags: 0
@@ -454,7 +439,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &114064796442120344
 MonoBehaviour:
@@ -473,3 +458,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6062418155306609855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988337133857764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64924b26175a8f645a61765acf7af185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgressSliderObj: {fileID: 0}
+  ProgressTextObj: {fileID: 0}
+  DetailTextObj: {fileID: 0}
+  BackgroundObj: {fileID: 0}
+  SuggestTipObj: {fileID: 0}
+  JumpButtonObj: {fileID: 0}

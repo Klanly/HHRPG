@@ -249,6 +249,7 @@
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityLayer.cs" />
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityScene.cs" />
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityTag.cs" />
+    <Compile Include="Assets\Scripts\LoadingUI.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\RuntimeData.cs" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
