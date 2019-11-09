@@ -104,8 +104,24 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void OnNewGame()
     {
+        var gameService = GameInstance.GameService;
+        gameService.Register(1.ToString(), 1.ToString(), OnRegisterSuccess, OnError);
+
         RuntimeData.Instance.Init();
-        LoadingUI.Load("RollRole");
+        //LoadingUI.Load("RollRole");
+    }
+
+    private void OnRegisterSuccess(PlayerResult result)
+    {
+        //var gameInstance = GameInstance.Singleton;
+        //eventRegister.Invoke();
+    }
+
+    private void OnError(string error)
+    {
+        //var gameInstance = GameInstance.Singleton;
+        //gameInstance.OnGameServiceError(error);
+        //eventError.Invoke();
     }
 
     /// <summary>
