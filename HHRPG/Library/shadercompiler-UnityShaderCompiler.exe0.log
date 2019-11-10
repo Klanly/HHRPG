@@ -1,25 +1,4 @@
 Base path: 'D:/Program Files (x86)/2019.2.5f1/Editor/Data', plugins path 'D:/Program Files (x86)/2019.2.5f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: preprocess
-  insize=1279 outsize=1037 ok=1
-Cmd: preprocess
-  insize=830 outsize=711 ok=1
-Cmd: preprocess
-  insize=1291 outsize=1049 ok=1
-Cmd: preprocess
-  insize=818 outsize=698 ok=1
-Cmd: preprocess
-  insize=820 outsize=700 ok=1
-Cmd: preprocess
-  insize=1297 outsize=1055 ok=1
-Cmd: preprocess
-  insize=723 outsize=604 ok=1
-Cmd: preprocess
-  insize=1023 outsize=806 ok=1
-Cmd: preprocess
-  insize=832 outsize=712 ok=1
-Cmd: preprocess
-  insize=1277 outsize=1035 ok=1
-Unhandled exception: Protocol error - unexpected end of data (did the Editor crash?)
 
 Quitting shader compiler process

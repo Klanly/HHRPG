@@ -252,6 +252,14 @@
     <Compile Include="Assets\Scripts\LoadingUI.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\RuntimeData.cs" />
+    <Compile Include="Assets\Scripts\Save\DES.cs" />
+    <Compile Include="Assets\Scripts\Save\DynamicData.cs" />
+    <Compile Include="Assets\Scripts\Save\SaveData.cs" />
+    <Compile Include="Assets\Scripts\Save\SaveDataBase.cs" />
+    <Compile Include="Assets\Scripts\Save\SaveInfo.cs" />
+    <Compile Include="Assets\Scripts\Save\SaveLoadManager.cs" />
+    <Compile Include="Assets\Scripts\Save\SDManager.cs" />
+    <Compile Include="Assets\Scripts\Save\SystemTag.cs" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
     <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />
