@@ -119,14 +119,14 @@ public class UIItemEvolve : UIItemWithMaterials
     public void OnClickEvolve()
     {
         var gameInstance = GameInstance.Singleton;
-        var gameService = GameInstance.GameService;
+        //var gameService = GameInstance.GameService;
         if (!PlayerCurrency.HaveEnoughSoftCurrency(Item.EvolvePrice))
         {
             gameInstance.WarnNotEnoughSoftCurrency();
             return;
         }
         var idAmountPair = GetSelectedItemIdAmountPair();
-        gameService.EvolveItem(Item.Id, idAmountPair, OnEvolveSuccess, OnEvolveFail);
+        //gameService.EvolveItem(Item.Id, idAmountPair, OnEvolveSuccess, OnEvolveFail);
     }
 
     private void OnEvolveSuccess(ItemResult result)

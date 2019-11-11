@@ -100,9 +100,9 @@ public class UIItemSell : UIItemSelection
     public void OnClickSell()
     {
         var gameInstance = GameInstance.Singleton;
-        var gameService = GameInstance.GameService;
+        //var gameService = GameInstance.GameService;
         var idAmountPair = GetSelectedItemIdAmountPair();
-        gameService.SellItems(idAmountPair, OnSellSuccess, OnSellFail);
+        //gameService.SellItems(idAmountPair, OnSellSuccess, OnSellFail);
     }
 
     private void OnSellSuccess(ItemResult result)

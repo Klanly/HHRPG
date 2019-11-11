@@ -6,6 +6,10 @@ public class Player : BasePlayerData, ILevel, IPlayer
 {
     public static string CurrentPlayerId { get; private set; }
     public static readonly Dictionary<string, Player> DataMap = new Dictionary<string, Player>();
+    
+    /// <summary>
+    /// 当前玩家
+    /// </summary>
     public static Player CurrentPlayer
     {
         get

@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 1811640355}
   - component: {fileID: 1811640354}
   - component: {fileID: 1811640353}
+  - component: {fileID: 1811640356}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -360,6 +361,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1811640356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811640352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37656b127a3e95a45874c3ddefdfd241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDatabase: {fileID: 11400000, guid: 2cf9d335c23bd024193097ba5acbf2e2, type: 2}
+  messageDialog: {fileID: 0}
+  rewardItemsDialog: {fileID: 0}
+  loadingObject: {fileID: 2051596749}
+  loginScene: Mainmenu
+  manageScene: 
+  battleScene: 
+--- !u!1 &2051596749 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1988337133857764, guid: c6cf4b603a1dbb241a6bb53ade1cbd44,
+    type: 3}
+  m_PrefabInstance: {fileID: 321160306919201605}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &321160306919201605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -373,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1988337133857764, guid: c6cf4b603a1dbb241a6bb53ade1cbd44, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224895590960629200, guid: c6cf4b603a1dbb241a6bb53ade1cbd44,
         type: 3}
@@ -483,7 +509,7 @@ PrefabInstance:
     - target: {fileID: 224492360831760898, guid: c6cf4b603a1dbb241a6bb53ade1cbd44,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6cf4b603a1dbb241a6bb53ade1cbd44, type: 3}
@@ -498,6 +524,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI_Mainmenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3388046298552231643, guid: 0b165d76c6c0af14f99879174cf1438f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3388046298552231638, guid: 0b165d76c6c0af14f99879174cf1438f,
         type: 3}
@@ -602,6 +633,11 @@ PrefabInstance:
     - target: {fileID: 3388046298552231638, guid: 0b165d76c6c0af14f99879174cf1438f,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3656236386707199430, guid: 0b165d76c6c0af14f99879174cf1438f,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

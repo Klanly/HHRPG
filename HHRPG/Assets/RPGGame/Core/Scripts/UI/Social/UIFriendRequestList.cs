@@ -10,7 +10,7 @@ public class UIFriendRequestList : UIPlayerList
 
     public void RefreshList()
     {
-        GameInstance.GameService.GetFriendRequestList(OnRefreshListSuccess, OnRefreshListFail);
+        //GameInstance.GameService.GetFriendRequestList(OnRefreshListSuccess, OnRefreshListFail);
     }
 
     private void OnRefreshListSuccess(FriendListResult result)

@@ -111,33 +111,33 @@ public abstract class BaseGamePlayManager : MonoBehaviour
     protected virtual void WinGame()
     {
         var deadCharacters = CountDeadCharacters();
-        GameInstance.GameService.FinishStage(BattleSession, BaseGameService.BATTLE_RESULT_WIN, deadCharacters, (result) =>
-        {
-            isEnding = true;
-            Time.timeScale = 1;
-            GameInstance.Singleton.OnGameServiceFinishStageResult(result);
-            uiWin.SetData(result);
-            if (uiFriendRequest != null && Helper != null && !Helper.isFriend)
-            {
-                uiFriendRequest.SetData(Helper);
-                uiFriendRequest.eventFriendRequestSuccess.AddListener(() =>
-                {
-                    uiFriendRequest.Hide();
-                });
-                uiFriendRequest.eventHide.AddListener(() =>
-                {
-                    uiWin.Show();
-                });
-                uiFriendRequest.Show();
-            }
-            else
-            {
-                uiWin.Show();
-            }
-        }, (error) =>
-        {
-            GameInstance.Singleton.OnGameServiceError(error, WinGame);
-        });
+        //GameInstance.GameService.FinishStage(BattleSession, BaseGameService.BATTLE_RESULT_WIN, deadCharacters, (result) =>
+        //{
+        //    isEnding = true;
+        //    Time.timeScale = 1;
+        //    GameInstance.Singleton.OnGameServiceFinishStageResult(result);
+        //    uiWin.SetData(result);
+        //    if (uiFriendRequest != null && Helper != null && !Helper.isFriend)
+        //    {
+        //        uiFriendRequest.SetData(Helper);
+        //        uiFriendRequest.eventFriendRequestSuccess.AddListener(() =>
+        //        {
+        //            uiFriendRequest.Hide();
+        //        });
+        //        uiFriendRequest.eventHide.AddListener(() =>
+        //        {
+        //            uiWin.Show();
+        //        });
+        //        uiFriendRequest.Show();
+        //    }
+        //    else
+        //    {
+        //        uiWin.Show();
+        //    }
+        //}, (error) =>
+        //{
+        //    GameInstance.Singleton.OnGameServiceError(error, WinGame);
+        //});
     }
 
     protected IEnumerator LoseGameRoutine()
@@ -149,27 +149,27 @@ public abstract class BaseGamePlayManager : MonoBehaviour
 
     public virtual void Revive(UnityAction onError)
     {
-        GameInstance.GameService.ReviveCharacters((result) =>
-        {
-            OnRevive();
-        }, (error) =>
-        {
-            GameInstance.Singleton.OnGameServiceError(error, onError);
-        });
+        //GameInstance.GameService.ReviveCharacters((result) =>
+        //{
+        //    OnRevive();
+        //}, (error) =>
+        //{
+        //    GameInstance.Singleton.OnGameServiceError(error, onError);
+        //});
     }
 
     public void Giveup(UnityAction onError)
     {
         var deadCharacters = CountDeadCharacters();
-        GameInstance.GameService.FinishStage(BattleSession, BaseGameService.BATTLE_RESULT_LOSE, deadCharacters, (result) =>
-        {
-            isEnding = true;
-            Time.timeScale = 1;
-            GameInstance.Singleton.GetAllPlayerData(GameInstance.LoadAllPlayerDataState.GoToManageScene);
-        }, (error) =>
-        {
-            GameInstance.Singleton.OnGameServiceError(error, onError);
-        });
+        //GameInstance.GameService.FinishStage(BattleSession, BaseGameService.BATTLE_RESULT_LOSE, deadCharacters, (result) =>
+        //{
+        //    isEnding = true;
+        //    Time.timeScale = 1;
+        //    GameInstance.Singleton.GetAllPlayerData(GameInstance.LoadAllPlayerDataState.GoToManageScene);
+        //}, (error) =>
+        //{
+        //    GameInstance.Singleton.OnGameServiceError(error, onError);
+        //});
     }
 
     public void Restart()
@@ -181,16 +181,16 @@ public abstract class BaseGamePlayManager : MonoBehaviour
     {
         PlayingStage = data;
         Helper = helper;
-        GameInstance.GameService.StartStage(data.Id, (result) =>
-        {
-            GameInstance.Singleton.OnGameServiceStartStageResult(result);
-            BattleSession = result.session;
-            Debug.Log(BattleSession);
-            GameInstance.Singleton.LoadBattleScene();
-        }, (error) =>
-        {
-            GameInstance.Singleton.OnGameServiceError(error);
-        });
+        //GameInstance.GameService.StartStage(data.Id, (result) =>
+        //{
+        //    GameInstance.Singleton.OnGameServiceStartStageResult(result);
+        //    BattleSession = result.session;
+        //    Debug.Log(BattleSession);
+        //    GameInstance.Singleton.LoadBattleScene();
+        //}, (error) =>
+        //{
+        //    GameInstance.Singleton.OnGameServiceError(error);
+        //});
     }
 
     public virtual void OnRevive()

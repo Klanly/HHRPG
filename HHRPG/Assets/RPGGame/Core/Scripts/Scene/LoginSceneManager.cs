@@ -24,8 +24,8 @@ public class LoginSceneManager : MonoBehaviour
     public void OnClickStart()
     {
         var gameInstance = GameInstance.Singleton;
-        var gameService = GameInstance.GameService;
-        gameService.ValidateLoginToken(true, OnValidateLoginTokenSuccess, OnValidateLoginTokenError);
+        //var gameService = GameInstance.GameService;
+        //gameService.ValidateLoginToken(true, OnValidateLoginTokenSuccess, OnValidateLoginTokenError);
         HideClickStart();
     }
 

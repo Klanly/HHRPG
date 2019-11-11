@@ -42,6 +42,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        //执行预加载数据
         //if (CommonSettings.MOD_EDITOR_MODE)
         //{
         //    if (!MainMenu._mod_editor_checked)
@@ -104,11 +105,12 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void OnNewGame()
     {
-        var gameService = GameInstance.GameService;
-        gameService.Register(1.ToString(), 1.ToString(), OnRegisterSuccess, OnError);
-
-        RuntimeData.Instance.Init();
+        //新建角色  读取陪住初始数据
+        //RuntimeData.Instance.Init();
         //LoadingUI.Load("RollRole");
+        Player player = new Player();
+
+        Player.CurrentPlayer = player;
     }
 
     private void OnRegisterSuccess(PlayerResult result)
@@ -190,7 +192,7 @@ public class MainMenu : MonoBehaviour
         //AudioManager.Instance.Play("音乐.武侠回忆");
     }
 
-    //private void Update()
-    //{
-    //}
+    private void Update()
+    {
+    }
 }

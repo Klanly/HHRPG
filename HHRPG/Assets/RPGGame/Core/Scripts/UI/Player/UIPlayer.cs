@@ -99,7 +99,7 @@ public class UIPlayer : UIDataItem<Player>
 
     public void OnClickFriendRequest()
     {
-        GameInstance.GameService.FriendRequest(data.Id, OnFriendRequestSuccess, OnFriendRequestFail);
+        //GameInstance.GameService.FriendRequest(data.Id, OnFriendRequestSuccess, OnFriendRequestFail);
     }
 
     private void OnFriendRequestSuccess(GameServiceResult result)
@@ -117,7 +117,7 @@ public class UIPlayer : UIDataItem<Player>
 
     public void OnClickFriendAccept()
     {
-        GameInstance.GameService.FriendAccept(data.Id, OnFriendAcceptSuccess, OnFriendAcceptFail);
+        //GameInstance.GameService.FriendAccept(data.Id, OnFriendAcceptSuccess, OnFriendAcceptFail);
     }
 
     private void OnFriendAcceptSuccess(GameServiceResult result)
@@ -137,7 +137,7 @@ public class UIPlayer : UIDataItem<Player>
 
     public void OnClickFriendDecline()
     {
-        GameInstance.GameService.FriendDecline(data.Id, OnFriendDeclineSuccess, OnFriendDeclineFail);
+        //GameInstance.GameService.FriendDecline(data.Id, OnFriendDeclineSuccess, OnFriendDeclineFail);
     }
 
     private void OnFriendDeclineSuccess(GameServiceResult result)
@@ -157,7 +157,7 @@ public class UIPlayer : UIDataItem<Player>
 
     public void OnClickFriendDelete()
     {
-        GameInstance.GameService.FriendDelete(data.Id, OnFriendDeleteSuccess, OnFriendDeleteFail);
+        //GameInstance.GameService.FriendDelete(data.Id, OnFriendDeleteSuccess, OnFriendDeleteFail);
     }
 
     private void OnFriendDeleteSuccess(GameServiceResult result)

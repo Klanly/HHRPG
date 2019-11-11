@@ -49,8 +49,8 @@ public class UIStamina : UIDataItem<PlayerStamina>
                 tempMaxStamina = staminaTable.maxAmountTable.Calculate(Player.CurrentPlayer.Level, gameDatabase.playerMaxLevel);
                 if (data.Amount < tempMaxStamina)
                 {
-                    var currentTimeInMillisecond = (System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond) + GameInstance.GameService.ServiceTimeOffset;
-                    var diffTimeInMillisecond = currentTimeInMillisecond - data.RecoveredTime;
+                    //var currentTimeInMillisecond = (System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond) + GameInstance.GameService.ServiceTimeOffset;
+                    //var diffTimeInMillisecond = currentTimeInMillisecond - data.RecoveredTime;
 
                     var devideAmount = 1;
                     switch (staminaTable.recoverUnit)
@@ -68,23 +68,23 @@ public class UIStamina : UIDataItem<PlayerStamina>
                             devideAmount = 1000;
                             break;
                     }
-                    var countDownInMillisecond = (staminaTable.recoverDuration * devideAmount) - diffTimeInMillisecond;
-                    var recoveryAmount = (int)(diffTimeInMillisecond / devideAmount) / staminaTable.recoverDuration;
-                    if (recoveryAmount > 0)
-                    {
-                        data.Amount += recoveryAmount;
-                        if (data.Amount > tempMaxStamina)
-                            data.Amount = tempMaxStamina;
-                        data.RecoveredTime = currentTimeInMillisecond;
+                    //var countDownInMillisecond = (staminaTable.recoverDuration * devideAmount) - diffTimeInMillisecond;
+                    //var recoveryAmount = (int)(diffTimeInMillisecond / devideAmount) / staminaTable.recoverDuration;
+                    //if (recoveryAmount > 0)
+                    //{
+                    //    data.Amount += recoveryAmount;
+                    //    if (data.Amount > tempMaxStamina)
+                    //        data.Amount = tempMaxStamina;
+                    //    data.RecoveredTime = currentTimeInMillisecond;
 
-                        if (textAmount != null)
-                            textAmount.text = data.Amount.ToString("N0");
-                    }
+                    //    if (textAmount != null)
+                    //        textAmount.text = data.Amount.ToString("N0");
+                    //}
 
                     if (recoveryingTime != null)
                     {
-                        System.TimeSpan time = System.TimeSpan.FromSeconds(countDownInMillisecond * System.TimeSpan.TicksPerMillisecond / System.TimeSpan.TicksPerSecond);
-                        recoveryingTime.text = string.Format("{0:D2}:{1:D2}", time.Minutes, time.Seconds);
+                        //System.TimeSpan time = System.TimeSpan.FromSeconds(countDownInMillisecond * System.TimeSpan.TicksPerMillisecond / System.TimeSpan.TicksPerSecond);
+                        //recoveryingTime.text = string.Format("{0:D2}:{1:D2}", time.Minutes, time.Seconds);
                     }
                     else
                     {

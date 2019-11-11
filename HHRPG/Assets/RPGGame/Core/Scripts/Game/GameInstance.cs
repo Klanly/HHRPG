@@ -20,7 +20,6 @@ public partial class GameInstance : MonoBehaviour
     }
     public GameDatabase gameDatabase;
     public UIMessageDialog messageDialog;
-    public UIInputDialog inputDialog;
     public UIItemList rewardItemsDialog;
     public GameObject loadingObject;
     public string loginScene;
@@ -29,7 +28,6 @@ public partial class GameInstance : MonoBehaviour
 
     public static GameInstance Singleton { get; private set; }
     public static GameDatabase GameDatabase { get; private set; }
-    public static BaseGameService GameService { get; private set; }
     public static readonly List<string> AvailableLootBoxes = new List<string>();
     public static readonly List<string> AvailableIapPackages = new List<string>();
 
@@ -62,16 +60,7 @@ public partial class GameInstance : MonoBehaviour
         else
             GameDatabase.Setup();
 
-        GameService = GetComponent<BaseGameService>();
-        if (GameService == null)
-            Debug.LogError("`Game Service` component has not been attacted");
-        GameService.onServiceStart.RemoveListener(OnGameServiceStart);
-        GameService.onServiceStart.AddListener(OnGameServiceStart);
-        GameService.onServiceFinish.RemoveListener(OnGameServiceFinish);
-        GameService.onServiceFinish.AddListener(OnGameServiceFinish);
-
         HideMessageDialog();
-        HideInputDialog();
         HideRewardItemsDialog();
         HideLoading();
         LoadLoginScene();
@@ -107,12 +96,8 @@ public partial class GameInstance : MonoBehaviour
 
         var player = result.player;
         Player.CurrentPlayer = player;
-        GameService.SetPrefsLogin(player.Id, player.LoginToken);
-
-        if (string.IsNullOrEmpty(player.ProfileName) || string.IsNullOrEmpty(player.ProfileName.Trim()))
-            SetProfileName();
-        else
-            GetAllPlayerData(LoadAllPlayerDataState.GoToManageScene);
+        //GameService.SetPrefsLogin(player.Id, player.LoginToken);//记住账号密码
+        GetAllPlayerData(LoadAllPlayerDataState.GoToManageScene);
     }
 
     public void OnGameServiceLogout()
@@ -245,14 +230,6 @@ public partial class GameInstance : MonoBehaviour
     }
 
     #region Current Player Data Validation
-    /// <summary>
-    /// Set profile name first time, when it's not already set.
-    /// </summary>
-    private void SetProfileName()
-    {
-        ShowProfileNameInputDialog(OnSetProfileNameSuccess, (error) => OnGameServiceError(error, SetProfileName));
-    }
-
     private void OnSetProfileNameSuccess(PlayerResult result)
     {
         OnGameServiceSetProfileNameResult(result);
@@ -282,7 +259,7 @@ public partial class GameInstance : MonoBehaviour
     private void GetAuthList()
     {
         isPlayerAuthListLoaded = false;
-        GameService.GetAuthList(OnGetAuthListSuccess, (error) => OnGameServiceError(error, GetAuthList));
+        //GameService.GetAuthList(OnGetAuthListSuccess, (error) => OnGameServiceError(error, GetAuthList));
     }
 
     private void OnGetAuthListSuccess(AuthListResult result)
@@ -298,7 +275,7 @@ public partial class GameInstance : MonoBehaviour
     private void GetCurrencyList()
     {
         isPlayerCurrencyListLoaded = false;
-        GameService.GetCurrencyList(OnGetCurrencyListSuccess, (error) => OnGameServiceError(error, GetCurrencyList));
+        //GameService.GetCurrencyList(OnGetCurrencyListSuccess, (error) => OnGameServiceError(error, GetCurrencyList));
     }
 
     private void OnGetCurrencyListSuccess(CurrencyListResult result)
@@ -314,7 +291,7 @@ public partial class GameInstance : MonoBehaviour
     private void GetFormationList()
     {
         isPlayerFormationListLoaded = false;
-        GameService.GetFormationList(OnGetFormationListSuccess, (error) => OnGameServiceError(error, GetFormationList));
+        //GameService.GetFormationList(OnGetFormationListSuccess, (error) => OnGameServiceError(error, GetFormationList));
     }
 
     private void OnGetFormationListSuccess(FormationListResult result)
@@ -330,7 +307,7 @@ public partial class GameInstance : MonoBehaviour
     private void GetItemList()
     {
         isPlayerItemListLoaded = false;
-        GameService.GetItemList(OnGetItemListSuccess, (error) => OnGameServiceError(error, GetItemList));
+        //GameService.GetItemList(OnGetItemListSuccess, (error) => OnGameServiceError(error, GetItemList));
     }
 
     private void OnGetItemListSuccess(ItemListResult result)
@@ -346,7 +323,7 @@ public partial class GameInstance : MonoBehaviour
     private void GetStaminaList()
     {
         isPlayerStaminaListLoaded = false;
-        GameService.GetStaminaList(OnGetStaminaListSuccess, (error) => OnGameServiceError(error, GetStaminaList));
+        //GameService.GetStaminaList(OnGetStaminaListSuccess, (error) => OnGameServiceError(error, GetStaminaList));
     }
 
     private void OnGetStaminaListSuccess(StaminaListResult result)
@@ -362,7 +339,7 @@ public partial class GameInstance : MonoBehaviour
     private void GetUnlockItemList()
     {
         isPlayerUnlockItemListLoaded = false;
-        GameService.GetUnlockItemList(OnGetUnlockItemListSuccess, (error) => OnGameServiceError(error, GetUnlockItemList));
+        //GameService.GetUnlockItemList(OnGetUnlockItemListSuccess, (error) => OnGameServiceError(error, GetUnlockItemList));
     }
 
     private void OnGetUnlockItemListSuccess(UnlockItemListResult result)
@@ -378,7 +355,7 @@ public partial class GameInstance : MonoBehaviour
     private void GetClearStageList()
     {
         isPlayerClearStageListLoaded = false;
-        GameService.GetClearStageList(OnGetClearStageListSuccess, (error) => OnGameServiceError(error, GetClearStageList));
+        //GameService.GetClearStageList(OnGetClearStageListSuccess, (error) => OnGameServiceError(error, GetClearStageList));
     }
 
     private void OnGetClearStageListSuccess(ClearStageListResult result)
@@ -394,7 +371,7 @@ public partial class GameInstance : MonoBehaviour
     private void GetAvailableLootBoxList()
     {
         isAvailableLootBoxListLoaded = false;
-        GameService.GetAvailableLootBoxList(OnGetAvailableLootBoxListSuccess, (error) => OnGameServiceError(error, GetClearStageList));
+        //GameService.GetAvailableLootBoxList(OnGetAvailableLootBoxListSuccess, (error) => OnGameServiceError(error, GetClearStageList));
     }
 
     private void OnGetAvailableLootBoxListSuccess(AvailableLootBoxListResult result)
@@ -410,7 +387,7 @@ public partial class GameInstance : MonoBehaviour
     private void GetAvailableIAPPackageList()
     {
         isAvailableIapPackageListLoaded = false;
-        GameService.GetAvailableIapPackageList(OnGetAvailableIAPPackageListSuccess, (error) => OnGameServiceError(error, GetClearStageList));
+        //GameService.GetAvailableIapPackageList(OnGetAvailableIAPPackageListSuccess, (error) => OnGameServiceError(error, GetClearStageList));
     }
 
     private void OnGetAvailableIAPPackageListSuccess(AvailableIapPackageListResult result)
@@ -495,56 +472,6 @@ public partial class GameInstance : MonoBehaviour
             return;
         }
         messageDialog.Hide();
-    }
-
-    private void ShowProfileNameInputDialog(UnityAction<PlayerResult> onSuccess, UnityAction<string> onError)
-    {
-        if (inputDialog == null)
-        {
-            Debug.LogWarning("`Input Dialog` has not been set");
-            return;
-        }
-        ShowInputDialog(LanguageManager.Texts[GameText.TITLE_PROFILE_NAME_DIALOG],
-            LanguageManager.Texts[GameText.CONTENT_PROFILE_NAME_DIALOG],
-            () =>
-            {
-                var input = inputDialog.InputContent;
-                GameService.SetProfileName(input, onSuccess, onError);
-            });
-        inputDialog.InputPlaceHolder = LanguageManager.Texts[GameText.PLACE_HOLDER_PROFILE_NAME];
-    }
-
-    public void ShowInputDialog(string title,
-        string content,
-        UnityAction actionYes = null,
-        UnityAction actionNo = null,
-        UnityAction actionCancel = null)
-    {
-        if (inputDialog == null)
-        {
-            Debug.LogWarning("`Input Dialog` has not been set");
-            return;
-        }
-        inputDialog.SetInputPropertiesToDefault();
-        if (!inputDialog.IsVisible())
-        {
-            inputDialog.Title = title;
-            inputDialog.Content = content;
-            inputDialog.actionYes = actionYes;
-            inputDialog.actionNo = actionNo;
-            inputDialog.actionCancel = actionCancel;
-            inputDialog.Show();
-        }
-    }
-
-    public void HideInputDialog()
-    {
-        if (inputDialog == null)
-        {
-            Debug.LogWarning("`Input Dialog` has not been set");
-            return;
-        }
-        inputDialog.Hide();
     }
 
     public void ShowRewardItemsDialog(List<PlayerItem> items)

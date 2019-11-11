@@ -33,25 +33,25 @@ public class LoadingUI : MonoBehaviour
     private void Start()
     {
         //this.ShowTipsAndBg();
-        if (LoadingUI.LoadingLevel == "Battle")
-        {
-            //Battle battleSelectRole_GeneratedBattle = RuntimeData.Instance.gameEngine.BattleSelectRole_GeneratedBattle;
-            //base.StartCoroutine(ResourcePool.Load(battleSelectRole_GeneratedBattle, delegate
-            //{
-            //	base.StartCoroutine(this.LoadScene());
-            //}));
-        }
-        else if (LoadingUI.LoadingLevel == "MainMenu")
-        {
-            //base.StartCoroutine(ResourceManager.Init2(delegate
-            //{
-            //    base.StartCoroutine(this.LoadScene());
-            //}));
-        }
-        else
-        {
-            base.StartCoroutine(this.LoadSceneWithProgress());
-        }
+        //if (LoadingUI.LoadingLevel == "Battle")
+        //{
+        //    //Battle battleSelectRole_GeneratedBattle = RuntimeData.Instance.gameEngine.BattleSelectRole_GeneratedBattle;
+        //    //base.StartCoroutine(ResourcePool.Load(battleSelectRole_GeneratedBattle, delegate
+        //    //{
+        //    //	base.StartCoroutine(this.LoadScene());
+        //    //}));
+        //}
+        //else if (LoadingUI.LoadingLevel == "MainMenu")
+        //{
+        //    //base.StartCoroutine(ResourceManager.Init2(delegate
+        //    //{
+        //    //    base.StartCoroutine(this.LoadScene());
+        //    //}));
+        //}
+        //else
+        //{
+        //    base.StartCoroutine(this.LoadSceneWithProgress());
+        //}
     }
 
     public static void Load(string sceneName)
