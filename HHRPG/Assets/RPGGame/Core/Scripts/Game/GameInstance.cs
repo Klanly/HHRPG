@@ -66,16 +66,6 @@ public partial class GameInstance : MonoBehaviour
         LoadLoginScene();
     }
 
-    private void OnGameServiceStart()
-    {
-        ShowLoading();
-    }
-
-    private void OnGameServiceFinish()
-    {
-        HideLoading();
-    }
-
     public void OnGameServiceError(string error, UnityAction errorAction)
     {
         Debug.LogError("OnGameServiceError: " + error);

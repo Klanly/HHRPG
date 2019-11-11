@@ -249,6 +249,12 @@
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityLayer.cs" />
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityScene.cs" />
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityTag.cs" />
+    <Compile Include="Assets\Scripts\JyGame\AssetBundleManager.cs" />
+    <Compile Include="Assets\Scripts\JyGame\BasePojo.cs" />
+    <Compile Include="Assets\Scripts\JyGame\CommonSettings.cs" />
+    <Compile Include="Assets\Scripts\JyGame\ModEditorResourceManager.cs" />
+    <Compile Include="Assets\Scripts\JyGame\Resource.cs" />
+    <Compile Include="Assets\Scripts\JyGame\ResourceManager.cs" />
     <Compile Include="Assets\Scripts\LoadingUI.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\RuntimeData.cs" />
