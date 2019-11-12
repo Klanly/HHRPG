@@ -95,9 +95,9 @@ namespace JyGame
 
         public const float DIALOG_SPACE_KEY_SWITCH_DELTATIME = 0.3f;
 
-        public static bool MOD_EDITOR_MODE = true;
+        public static bool MOD_EDITOR_MODE = false;
 
-        public static bool SECURE_XML = false;
+        public static bool SECURE_XML = true;
 
         public static bool DEBUG_FORCE_MOBILE_MODE = false;
 

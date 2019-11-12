@@ -1,9 +1,11 @@
 ﻿using JyGame;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 //using cn.sharesdk.unity3d;
 //using Umeng;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -45,12 +47,8 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void OnNewGame()
     {
-        //新建角色  读取陪住初始数据
-        //RuntimeData.Instance.Init();
-        //LoadingUI.Load("RollRole");
-        Player player = new Player();
-
-        Player.CurrentPlayer = player;
+        RuntimeData.Instance.Init();
+        Reset();
     }
 
     public void OnLoad()
@@ -70,7 +68,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnGameFinButton()
     {
-        Application.LoadLevel("MainMenu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void OnDebugClearAll()
@@ -101,101 +99,23 @@ public class MainMenu : MonoBehaviour
         this._clearAllCount = 0;
     }
 
-    public void OnIOSPinglunClicked()
-    {
-        //Tools.openURL("itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1021093037");
-    }
-
     private void Start()
     {
-        if (CommonSettings.MOD_EDITOR_MODE)
-        {
-            if (!MainMenu._mod_editor_checked)
-            {
-               // ResourceChecker.CheckAll(new FileLogger());
-                MainMenu._mod_editor_checked = true;
-            }
-            //this.copyRightTextObj.GetComponent<Text>().text = "版权声明：金庸群侠传X（MOD编辑版）所有非官方发布的MOD，MOD作者负有全部责任。涉及的游戏内容、素材、发布行为，均与汉家松鼠工作室无关。";
-        }
-        GameObject.Find("ButtonIOSPinglun").SetActive(false);
-        if (Application.isMobilePlatform)
-        {
-            //this.shareTextObj.GetComponent<Text>().text = "分享给朋友";
-        }
-        else
-        {
-           // this.shareTextObj.GetComponent<Text>().text = "分享/下载手机版";
-        }
-        if (!MainMenu.startFlag)
-        {
-            if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                //Analytics.StartWithAppKeyAndChannelId("5598d48c67e58e429f0015f4", "IPhone");
-            }
-            else if (Application.platform == RuntimePlatform.Android)
-            {
-                //Analytics.StartWithAppKeyAndChannelId("5593b1ab67e58e880a000d12", "Android");
-            }
-            //ShareSDK.setCallbackObjectName("MainMenu");
-            if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                //ShareSDK.open("88ec7d211838");
-            }
-            else if (Application.platform == RuntimePlatform.Android)
-            {
-            }
-            MainMenu.startFlag = true;
-        }
-        this.uiCanvas.gameObject.SetActive(false);
-        this.versionCheckCanvas.gameObject.SetActive(true);
-        this.confirmButtonObj.gameObject.SetActive(false);
-        this.versionTextObj.GetComponent<Text>().text = string.Format("V{0}", "1.0.0.5");
-        if (CommonSettings.MOD_EDITOR_MODE)
-        {
-            Text component = this.versionTextObj.GetComponent<Text>();
-            component.text += " MOD开发版";
-        }
-        //if (GlobalData.ShareTag == 0 && Application.isMobilePlatform)
+        //if (!MainMenu.startFlag)
         //{
-        //    this.dotImageObj.SetActive(true);
+        //    MainMenu.startFlag = true;
         //}
-        //else
-        //{
-        //    this.dotImageObj.SetActive(false);
-        //}
-        this.ShowMainMenu();
+        //this.uiCanvas.gameObject.SetActive(false);
+       // this.versionCheckCanvas.gameObject.SetActive(true);
+       // this.confirmButtonObj.gameObject.SetActive(false);
+       // this.versionTextObj.GetComponent<Text>().text = string.Format("V{0}", "1.0.0.5");
+
+        //this.ShowMainMenu();
     }
 
-    //private void ShareResultHandler(ResponseState state, PlatformType type, Hashtable shareInfo, Hashtable error, bool end)
-    //{
-    //    if (state == ResponseState.Success)
-    //    {
-    //        if (GlobalData.ShareTag == 0)
-    //        {
-    //            this.messageBoxObj.GetComponent<MessageBoxUI>().Show("分享成功", "获得20元宝", Color.yellow, null, "确认");
-    //            GlobalData.Yuanbao += 20;
-    //            GlobalData.ShareTag++;
-    //        }
-    //        else
-    //        {
-    //            this.messageBoxObj.GetComponent<MessageBoxUI>().Show("分享成功", "感谢您对于游戏的支持！", Color.yellow, null, "确认");
-    //            GlobalData.ShareTag++;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        this.messageBoxObj.GetComponent<MessageBoxUI>().Show("分享失败", "请重试", Color.red, null, "确认");
-    //    }
-    //    if (GlobalData.ShareTag == 0 && Application.isMobilePlatform)
-    //    {
-    //        this.dotImageObj.SetActive(true);
-    //    }
-    //    else
-    //    {
-    //        this.dotImageObj.SetActive(false);
-    //    }
-    //}
-
+    /// <summary>
+    /// 显示主选单
+    /// </summary>
     private void ShowMainMenu()
     {
         this.uiCanvas.gameObject.SetActive(true);
@@ -207,101 +127,528 @@ public class MainMenu : MonoBehaviour
         //AudioManager.Instance.Play("音乐.武侠回忆");
     }
 
-    private void JudgeVersion(string versionInfo)
-    {
-        if (versionInfo.Contains("1.0.0.5"))
-        {
-            this.ShowMainMenu();
-        }
-        else
-        {
-            this.infoTextObj.GetComponent<Text>().text = "当前版本已过期，请更新版本。\n安卓设备需要重新下载并安装APK，网页版需要刷新页面。（存档不会删除）\n详情请访问游戏官网 <color='red'>http://www.jy-x.com</color>";
-        }
-    }
-
-    private IEnumerator TouchServer(CommonSettings.StringCallBack callback)
-    {
-        string uuid = string.Concat(new string[]
-        {
-            SystemInfo.operatingSystem,
-            "_",
-            SystemInfo.deviceUniqueIdentifier,
-            "_",
-            SystemInfo.deviceName,
-            "_1.0.0.5"
-        });
-        uuid = uuid.Replace(" ", string.Empty);
-        string url = "http://www.jy-x.com/jygame/touchserver/touch.php?id=" + WWW.EscapeURL(uuid);
-        Debug.Log(url);
-        WWW www = new WWW(url);
-        MainMenu.Touched = true;
-        yield return www;
-        if (string.IsNullOrEmpty(www.error))
-        {
-            callback(www.text);
-            www.Dispose();
-        }
-        else
-        {
-            this.infoTextObj.GetComponent<Text>().text = "网络连接出错，点击重试";
-            this.confirmButtonObj.gameObject.SetActive(true);
-            base.StartCoroutine(this.TouchServer(new CommonSettings.StringCallBack(this.JudgeVersion)));
-        }
-        yield break;
-    }
-
-    public void ErrorConfirmButtonClicked()
-    {
-        this.confirmButtonObj.gameObject.SetActive(false);
-        this.infoTextObj.GetComponent<Text>().text = "正在校验版本，请稍后....";
-    }
-
-    public void OnFourmClicked()
-    {
-        //Tools.openURL("http://tieba.baidu.com/f?ie=utf-8&kw=%E6%B1%89%E5%AE%B6%E6%9D%BE%E9%BC%A0");
-    }
-
-    public void OnHomepageClicked()
-    {
-        //Tools.openURL("http://www.jy-x.com");
-    }
-
     private void Update()
     {
     }
 
-    public void Share()
+    private void Reset()
     {
-        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        this.MakeBeginningCondition();
+        //this.MakeRandomCondition();
+        //this.ShowBeginningCondition();
+    }
+
+    /// <summary>
+    /// 显示角色信息
+    /// </summary>
+    private void ShowBeginningCondition()
+    {
+        //this.rolePanel.Show(this.makeRole, null, true);
+    }
+
+    // Token: 0x06000572 RID: 1394 RVA: 0x00030620 File Offset: 0x0002E820
+    private void MakeRandomCondition()
+    {
+        string[] array = new string[]
         {
-            if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                Hashtable hashtable = new Hashtable();
-                hashtable.Add("app_id", "1104678535");
-                hashtable.Add("app_key", "ypJWDImxjGsRUkLy");
-                //ShareSDK.setPlatformConfig(PlatformType.QZone, hashtable);
-                //ShareSDK.setPlatformConfig(PlatformType.QQ, hashtable);
-                Hashtable hashtable2 = new Hashtable();
-                hashtable2.Add("app_id", "wx97e4029b896a420f");
-                hashtable2.Add("app_key", "9963a345d03f80c4f499df3eb799977a");
-                //ShareSDK.setPlatformConfig(PlatformType.WeChatFav, hashtable2);
-                //ShareSDK.setPlatformConfig(PlatformType.WeChatSession, hashtable2);
-                //ShareSDK.setPlatformConfig(PlatformType.WeChatTimeline, hashtable2);
-            }
-            Hashtable hashtable3 = new Hashtable();
-            hashtable3["title"] = "《金庸群侠传X》—高自由度独立游戏，可玩一百遍！";
-            hashtable3["content"] = "高自由度！开放地图，随意探索；高养成性！50+可加入队友，共闯江湖；高策略性！经典战棋，特色天赋组合；高代入感！原创剧情，金庸江湖。";
-            hashtable3["description"] = "高自由度！开放地图，随意探索；高养成性！50+可加入队友，共闯江湖；高策略性！经典战棋，特色天赋组合；高代入感！原创剧情，金庸江湖。";
-            hashtable3["image"] = "http://www.jy-x.com/jygame/share.png";
-            hashtable3["url"] = "http://www.jy-x.com/jygame/share.html";
-            hashtable3["type"] = Convert.ToString(2);
-            hashtable3["site"] = "金庸群侠传X";
-            //ShareResultEvent resultHandler = new ShareResultEvent(this.ShareResultHandler);
-            //ShareSDK.showShareMenu(null, hashtable3, 100, 100, MenuArrowDirection.Up, resultHandler);
+                "gengu",
+                "bili",
+                "fuyuan",
+                "shenfa",
+                "dingli",
+                "wuxing",
+                "quanzhang",
+                "jianfa",
+                "daofa",
+                "qimen"
+        };
+        for (int i = 0; i < 3; i++)
+        {
+            //int randomInt = Tools.GetRandomInt(0, array.Length - 1);
+            //string type = array[randomInt];
+            //CommonSettings.adjustAttr(this.makeRole, type, 10);
+        }
+        for (int j = 0; j < 10; j++)
+        {
+            //int randomInt2 = Tools.GetRandomInt(0, array.Length - 1);
+            //string type2 = array[randomInt2];
+           // CommonSettings.adjustAttr(this.makeRole, type2, 1);
+        }
+    }
+
+    /// <summary>
+    /// 创建角色
+    /// </summary>
+    private void MakeBeginningCondition()
+    {      
+        this.makeRole = ResourceManager.Get<Role>("主角").Clone();
+        this.makeMoney = 100;
+        this.makeItems = new List<Item>();
+        //this.makeItems.Add(Item.GetItem("小还丹"));
+        // this.makeItems.Add(Item.GetItem("小还丹"));
+        // this.makeItems.Add(Item.GetItem("小还丹"));
+        //switch (this.results[0])
+        //{
+        //    case 0:
+        //        this.makeMoney += 5000;
+        //       // CommonSettings.adjustAttr(this.makeRole, "bili", -5);
+        //        //this.makeItems.Add(Item.GetItem("黑玉断续膏"));
+        //        //this.makeItems.Add(Item.GetItem("九转熊蛇丸"));
+        //        //this.makeItems.Add(Item.GetItem("金丝道袍"));
+        //        //this.makeItems.Add(Item.GetItem("金头箍"));
+        //        //this.makeRole.Animation = "zydx";
+        //        break;
+        //    case 1:
+        //        {
+        //            //CommonSettings.adjustAttr(this.makeRole, "shenfa", 15);
+        //            //CommonSettings.adjustAttr(this.makeRole, "dingli", -2);
+        //            //CommonSettings.adjustAttr(this.makeRole, "quanzhang", 15);
+        //            Role role = this.makeRole;
+        //           // role.TalentValue += "#猎人";
+        //           // this.makeRole.Animation = "caoyuan";
+        //            break;
+        //        }
+        //    case 2:
+        //        //CommonSettings.adjustAttr(this.makeRole, "fuyuan", 3);
+        //        //CommonSettings.adjustAttr(this.makeRole, "bili", -3);
+        //        //CommonSettings.adjustAttr(this.makeRole, "dingli", 2);
+        //        //CommonSettings.adjustAttr(this.makeRole, "wuxing", 20);
+        //        //CommonSettings.adjustAttr(this.makeRole, "jianfa", 2);
+        //        //CommonSettings.adjustAttr(this.makeRole, "gengu", 2);
+        //      //  this.makeItems.Add(Item.GetItem("银手镯"));
+        //        this.makeMoney += 100;
+        //       // this.makeRole.Animation = "huodu";
+        //        break;
+        //    case 3:
+        //        //CommonSettings.adjustAttr(this.makeRole, "fuyuan", -5);
+        //        //CommonSettings.adjustAttr(this.makeRole, "bili", 12);
+        //        //CommonSettings.adjustAttr(this.makeRole, "daofa", 15);
+        //        //CommonSettings.adjustAttr(this.makeRole, "qimen", 12);
+        //        //this.makeItems.Add(Item.GetItem("草帽"));
+        //       // this.makeRole.Animation = "shijing";
+        //        this.makeMoney = 0;
+        //        break;
+        //    case 4:
+        //        {
+        //            //CommonSettings.adjustAttr(this.makeRole, "wuxing", 35);
+        //            //CommonSettings.adjustAttr(this.makeRole, "dingli", 10);
+        //            //CommonSettings.adjustAttr(this.makeRole, "gengu", 10);
+        //            Role role2 = this.makeRole;
+        //          //  role2.TalentValue += "#神经病";
+        //           // this.makeRole.Animation = "fengzi";
+        //            break;
+        //        }
+        //    case 5:
+        //        //CommonSettings.adjustAttr(this.makeRole, "wuxing", 20);
+        //        //CommonSettings.adjustAttr(this.makeRole, "bili", 1);
+        //        //CommonSettings.adjustAttr(this.makeRole, "shenfa", -10);
+        //        //CommonSettings.adjustAttr(this.makeRole, "gengu", -5);
+        //        //this.makeRole.Animation = "xiake";
+        //        break;
+        //}
+        //switch (this.results[1])
+        //{
+        //    case 0:
+        //        this.makeMoney += 1000;
+        //        break;
+        //    case 1:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "fuyuan", 15);
+        //        break;
+        //    case 2:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "dingli", 15);
+        //        break;
+        //    case 3:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "shenfa", 15);
+        //        break;
+        //    case 4:
+        //        {
+        //            Role role3 = this.makeRole;
+        //            //role3.TalentValue += "#自我主义";
+        //            break;
+        //        }
+        //}
+        //switch (this.results[2])
+        //{
+        //    case 0:
+        //       // CommonSettings.adjustAttr(this.makeRole, "dingli", 9);
+        //        break;
+        //    case 1:
+        //       // CommonSettings.adjustAttr(this.makeRole, "gengu", 6);
+        //       // CommonSettings.adjustAttr(this.makeRole, "bili", 6);
+        //        break;
+        //    case 2:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "wuxing", 10);
+        //        break;
+        //    case 3:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "gengu", 10);
+        //        break;
+        //    case 4:
+        //        {
+        //            Role role4 = this.makeRole;
+        //         //   role4.TalentValue += "#好色";
+        //            break;
+        //        }
+        //}
+        //switch (this.results[3])
+        //{
+        //    case 0:
+        //        //CommonSettings.adjustAttr(this.makeRole, "quanzhang", 10);
+        //        break;
+        //    case 1:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "jianfa", 10);
+        //        break;
+        //    case 2:
+        //       // CommonSettings.adjustAttr(this.makeRole, "daofa", 20);
+        //        break;
+        //    case 3:
+        //       // CommonSettings.adjustAttr(this.makeRole, "qimen", 20);
+        //        break;
+        //}
+        //switch (this.results[4])
+        //{
+        //    case 0:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "wuxing", 5);
+        //        break;
+        //    case 1:
+        //       // CommonSettings.adjustAttr(this.makeRole, "dingli", 5);
+        //        break;
+        //    case 2:
+        //       // CommonSettings.adjustAttr(this.makeRole, "fuyuan", 5);
+        //       // CommonSettings.adjustAttr(this.makeRole, "gengu", 5);
+        //        break;
+        //    case 3:
+        //       // CommonSettings.adjustAttr(this.makeRole, "quanzhang", 6);
+        //       // CommonSettings.adjustAttr(this.makeRole, "bili", 6);
+        //        break;
+        //    case 4:
+        //       // CommonSettings.adjustAttr(this.makeRole, "dingli", 10);
+        //        break;
+        //}
+        //switch (this.results[5])
+        //{
+        //    case 0:
+        //       // CommonSettings.adjustAttr(this.makeRole, "wuxing", 5);
+        //       // CommonSettings.adjustAttr(this.makeRole, "gengu", 10);
+        //        break;
+        //    case 1:
+        //       // CommonSettings.adjustAttr(this.makeRole, "wuxing", -10);
+        //       // CommonSettings.adjustAttr(this.makeRole, "fuyuan", 15);
+        //       // CommonSettings.adjustAttr(this.makeRole, "bili", 5);
+        //        break;
+        //    case 2:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "wuxing", 5);
+        //      //  CommonSettings.adjustAttr(this.makeRole, "dingli", 5);
+        //        break;
+        //    case 3:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "wuxing", 10);
+        //        break;
+        //    case 4:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "jianfa", 10);
+        //      //  CommonSettings.adjustAttr(this.makeRole, "dingli", 10);
+        //        break;
+        //}
+        //switch (this.results[6])
+        //{
+        //    case 0:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "bili", 10);
+        //      //  CommonSettings.adjustAttr(this.makeRole, "quanzhang", 9);
+        //        break;
+        //    case 1:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "fuyuan", 30);
+        //        break;
+        //    case 2:
+        //      //  CommonSettings.adjustAttr(this.makeRole, "wuxing", 13);
+        //      //  CommonSettings.adjustAttr(this.makeRole, "jianfa", 5);
+        //      //  CommonSettings.adjustAttr(this.makeRole, "daofa", 5);
+        //      //  CommonSettings.adjustAttr(this.makeRole, "quanzhang", 5);
+        //       // CommonSettings.adjustAttr(this.makeRole, "qimen", 5);
+        //        break;
+        //    case 3:
+        //       // CommonSettings.adjustAttr(this.makeRole, "gengu", 20);
+        //        break;
+        //    case 4:
+        //      //  this.makeRole.InternalSkills[0].level = 20;
+        //      //  CommonSettings.adjustAttr(this.makeRole, "gengu", 10);
+        //     //   this.makeItems.Add(Item.GetItem("松果"));
+        //     //   this.makeItems.Add(Item.GetItem("松果"));
+        //     //   this.makeItems.Add(Item.GetItem("松果"));
+        //        break;
+        //    case 5:
+        //        //this.makeItems.Add(Item.GetItem("天王保命丹"));
+        //        //this.makeItems.Add(Item.GetItem("天王保命丹"));
+        //        //this.makeItems.Add(Item.GetItem("天王保命丹"));
+        //        //this.makeItems.Add(Item.GetItem("天王保命丹"));
+        //        //this.makeItems.Add(Item.GetItem("天王保命丹"));
+        //        //this.makeItems.Add(Item.GetItem("天王保命丹"));
+        //        break;
+        //}
+        //if (RuntimeData.Instance.Round == 1)
+        //{
+        //    switch (this.results[7])
+        //    {
+        //        case 0:
+        //            RuntimeData.Instance.GameMode = "normal";
+        //            RuntimeData.Instance.FriendlyFire = false;
+        //            break;
+        //        case 1:
+        //            RuntimeData.Instance.GameMode = "hard";
+        //            RuntimeData.Instance.FriendlyFire = true;
+        //            break;
+        //        case 2:
+        //            RuntimeData.Instance.GameMode = "crazy";
+        //            RuntimeData.Instance.FriendlyFire = true;
+        //            break;
+        //    }
+        //}
+        //else
+        //{
+        //    int num = this.results[7];
+        //    if (num != 0)
+        //    {
+        //        if (num == 1)
+        //        {
+        //            RuntimeData.Instance.GameMode = "crazy";
+        //            RuntimeData.Instance.FriendlyFire = true;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        RuntimeData.Instance.GameMode = "hard";
+        //        RuntimeData.Instance.FriendlyFire = true;
+        //    }
+        //}
+        //List<string> list = new List<string>();
+        //List<string> list2 = new List<string>();
+        //list.Clear();
+        //list2.Clear();
+        //switch (RuntimeData.Instance.Round)
+        //{
+        //    case 1:
+        //        //if (RuntimeData.Instance.GameMode == "normal")
+        //        //{
+        //        //    //this.makeItems.Add(Item.GetItem("新手礼包-大蟠桃"));
+        //        //    //this.makeItems.Add(Item.GetItem("新手礼包-大蟠桃"));
+        //        //    //this.makeItems.Add(Item.GetItem("新手礼包-大蟠桃"));
+        //        //    //this.makeItems.Add(Item.GetItem("新手礼包-大蟠桃"));
+        //        //    //this.makeItems.Add(Item.GetItem("新手礼包-大蟠桃"));
+        //        //}
+        //        break;
+        //    case 2:
+        //        list.Add("佛光普照");
+        //        list.Add("百变千幻云雾十三式秘籍");
+        //        list.Add("反两仪刀法");
+        //        list.Add("伏魔杖法");
+        //        list2.Add("灭仙爪");
+        //        list2.Add("倚天剑");
+        //        list2.Add("屠龙刀");
+        //        list2.Add("打狗棒");
+        //        //this.makeItems.Add(Item.GetItem(list[Tools.GetRandomInt(0, list.Count) % list.Count]));
+        //        //this.makeItems.Add(Item.GetItem(list2[Tools.GetRandomInt(0, list2.Count) % list2.Count]));
+        //        break;
+        //    case 3:
+        //        list.Add("隔空取物");
+        //        list.Add("妙手仁心");
+        //        list.Add("飞向天际");
+        //        list.Add("血刀");
+        //        list2.Add("仙丽雅的项链");
+        //        list2.Add("李延宗的项链");
+        //        list2.Add("王语嫣的武学概要");
+        //        list2.Add("神木王鼎");
+        //        //this.makeItems.Add(Item.GetItem(list[Tools.GetRandomInt(0, list.Count) % list.Count]));
+        //        //this.makeItems.Add(Item.GetItem(list2[Tools.GetRandomInt(0, list2.Count) % list2.Count]));
+        //        break;
+        //    default:
+        //        list.Add("碎裂的怒吼");
+        //        list.Add("沾衣十八跌");
+        //        list.Add("灵心慧质");
+        //        list.Add("不老长春功法");
+        //        list2.Add("仙丽雅的项链");
+        //        list2.Add("李延宗的项链");
+        //        list2.Add("王语嫣的武学概要");
+        //        list2.Add("神木王鼎");
+        //        //this.makeItems.Add(Item.GetItem(list[Tools.GetRandomInt(0, list.Count) % list.Count]));
+        //        //this.makeItems.Add(Item.GetItem(list2[Tools.GetRandomInt(0, list2.Count) % list2.Count]));
+        //        break;
+        //}
+        //string[] array = RuntimeData.Instance.TrialRoles.Split(new char[]
+        //{
+        //        '#'
+        //});
+        //int num2 = array.Length;
+        List<string> list3 = new List<string>();
+        //if (num2 >= 3)
+        //{
+        //    if (num2 >= 3 && num2 < 6)
+        //    {
+        //        //this.makeItems.Add(Item.GetItem("王母蟠桃"));
+        //        //this.makeItems.Add(Item.GetItem("道家仙丹"));
+        //    }
+        //    else if (num2 >= 6 && num2 < 9)
+        //    {
+        //        //this.makeItems.Add(Item.GetItem("灵心慧质"));
+        //        //this.makeItems.Add(Item.GetItem("妙手仁心"));
+        //    }
+        //    else if (num2 >= 9 && num2 < 12)
+        //    {
+        //        //this.makeItems.Add(Item.GetItem("素心神剑心得"));
+        //        //this.makeItems.Add(Item.GetItem("太极心得手抄本"));
+        //        //this.makeItems.Add(Item.GetItem("乾坤大挪移心法"));
+        //    }
+        //    else if (num2 >= 12 && num2 < 15)
+        //    {
+        //        //this.makeItems.Add(Item.GetItem("沾衣十八跌"));
+        //        //this.makeItems.Add(Item.GetItem("易筋经"));
+        //        //this.makeItems.Add(Item.GetItem("厚黑学"));
+        //    }
+        //    else if (num2 >= 15 && num2 < 20)
+        //    {
+        //       // this.makeItems.Add(Item.GetItem("武穆遗书"));
+        //       // this.makeItems.Add(Item.GetItem("笑傲江湖曲"));
+        //    }
+        //    else if (num2 >= 20)
+        //    {
+        //       // this.makeItems.Add(Item.GetItem("真葵花宝典"));
+        //    }
+        //}
+    }
+
+    private void JumpSelectCallback(int rst)
+    {
+        RuntimeData.Instance.Money = this.makeMoney;
+        RuntimeData.Instance.Team.Clear();
+        RuntimeData.Instance.Follow.Clear();
+        RuntimeData.Instance.Team.Add(this.makeRole);
+        //RuntimeData.Instance.Items.Clear();
+        foreach (Item item in this.makeItems)
+        {
+            Item item2 = item;
+           // RuntimeData.Instance.addItem(item2, 1);
+        }
+        List<string> list = new List<string>();
+        list.Clear();
+        //switch (RuntimeData.Instance.Round)
+        //{
+        //    case 1:
+        //        break;
+        //    case 2:
+        //        list.Add("鲁连荣");
+        //        list.Add("冲虚道长");
+        //        list.Add("方证大师");
+        //        list.Add("灭绝师太");
+        //        list.Add("张翠山");
+        //        list.Add("宋远桥");
+        //        list.Add("韦一笑");
+        //        list.Add("仪清");
+        //        list.Add("何太冲");
+        //        list.Add("哑仆");
+        //        list.Add("温方达");
+        //        list.Add("温方义");
+        //        list.Add("温方山");
+        //        list.Add("温方施");
+        //        list.Add("温方悟");
+        //        list.Add("安小慧");
+        //        list.Add("阿九");
+        //        break;
+        //    case 3:
+        //        list.Add("紫衫龙王");
+        //        list.Add("白眉鹰王");
+        //        list.Add("商剑鸣");
+        //        list.Add("杨逍");
+        //        list.Add("范遥");
+        //        list.Add("霍都");
+        //        list.Add("孙不二");
+        //        list.Add("龙岛主");
+        //        list.Add("木岛主");
+        //        list.Add("善勇");
+        //        break;
+        //    case 4:
+        //        list.Add("白自在");
+        //        list.Add("向问天");
+        //        list.Add("丁春秋");
+        //        list.Add("成昆");
+        //        list.Add("段延庆");
+        //        list.Add("丘处机");
+        //        list.Add("欧阳锋");
+        //        break;
+        //    default:
+        //        list.Add("任我行");
+        //        list.Add("王重阳");
+        //        list.Add("林朝英");
+        //        list.Add("归辛树");
+        //        list.Add("玉真子");
+        //        list.Add("慕容博");
+        //        list.Add("卓一航");
+        //        list.Add("谢逊");
+        //        list.Add("虚竹");
+        //        break;
+        //}
+        if (list.Count > 0)
+        {
+            //RuntimeData.Instance.Team.Add(ResourceManager.Get<Role>(list[Tools.GetRandomInt(0, list.Count) % list.Count]).Clone());
+        }
+        if (rst == 0)
+        {
+            //RuntimeData.Instance.gameEngine.NewGame();
         }
         else
         {
-           // this.sharePanelObj.SetActive(true);
+           // RuntimeData.Instance.gameEngine.NewGameJump();
         }
+        base.gameObject.SetActive(false);
     }
+
+    // Token: 0x06000575 RID: 1397 RVA: 0x00031904 File Offset: 0x0002FB04
+    public void okButton_Click()
+    {
+        this.JumpSelectCallback(1);
+    }
+
+    // Token: 0x06000576 RID: 1398 RVA: 0x00031910 File Offset: 0x0002FB10
+    public void resetButton_Click()
+    {
+        //AudioManager.Instance.PlayEffect("音效.装备");
+        this.Reset();
+    }
+
+    public GameObject MultiSelectItemObj;
+
+    private List<string> heads = new List<string>
+        {
+            "头像.主角",
+            "头像.主角3",
+            "头像.主角4",
+            "头像.魔君",
+            "头像.全冠清",
+            "头像.李白",
+            "头像.林平之瞎",
+            "头像.侠客2",
+            "头像.归辛树",
+            "头像.狄云",
+            "头像.独孤求败",
+            "头像.陈近南",
+            "头像.石中玉",
+            "头像.商宝震",
+            "头像.尹志平",
+            "头像.流浪汉",
+            "头像.梁发",
+            "头像.卓一航",
+            "头像.烟霞神龙",
+            "头像.双手开碑",
+            "头像.流星赶月",
+            "头像.盖七省",
+            "头像.公子1",
+            "头像.主角2"
+        };
+
+    // Token: 0x040003F2 RID: 1010
+    private List<int> results = new List<int>();
+
+    // Token: 0x040003F3 RID: 1011
+    private Role makeRole;
+
+    // Token: 0x040003F4 RID: 1012
+    private int makeMoney;
+
+    // Token: 0x040003F5 RID: 1013
+    private List<Item> makeItems;
 }

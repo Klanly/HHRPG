@@ -13,13 +13,13 @@ namespace JyGame
         [XmlAttribute("key")]
         public string Key;
 
-        //        [XmlAttribute("value")]
-        //        public string Value;
+        [XmlAttribute("value")]
+        public string Value;
 
-        //        [XmlAttribute("icon")]
-        //        public string Icon;
+        [XmlAttribute("icon")]
+        public string Icon;
 
-        //        private static List<string> suggestTips = new List<string>();
+        private static List<string> suggestTips = new List<string>();
 
 
         private static bool suggestTipInited = false;
@@ -31,7 +31,6 @@ namespace JyGame
             }
         }
 
-        //		// Token: 0x0600021E RID: 542 RVA: 0x00018378 File Offset: 0x00016578
         //		public static Sprite GetZhujueHead()
         //		{
         //			return Resource.GetImage(RuntimeData.Instance.Team[0].Head, false);

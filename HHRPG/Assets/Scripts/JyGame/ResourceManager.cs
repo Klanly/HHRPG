@@ -25,36 +25,36 @@ namespace JyGame
             ResourceManager._inited = false;
         }
 
-        //		public static void Init()
-        //		{
-        //			if (ResourceManager._inited)
-        //			{
-        //				return;
-        //			}
-        //			ResourceManager.Clear();
-        //			ResourceManager.LoadResource<Resource>("resource.xml", "root/resource");
-        //			ResourceManager.LoadResource<Battle>("battles.xml", "root/battle");
-        //			ResourceManager.LoadResource<Skill>("skills.xml", "root/skill");
-        //			ResourceManager.LoadResource<InternalSkill>("internal_skills.xml", "root/internal_skill");
-        //			ResourceManager.LoadResource<SpecialSkill>("special_skills.xml", "root/special_skill");
-        //			ResourceManager.LoadResource<Role>("roles.xml", "root/role");
-        //			ResourceManager.LoadResource<Aoyi>("aoyis.xml", "root/aoyi");
-        //			ResourceManager.LoadResource<Story>("storys.xml", "root/story");
-        //			ResourceManager.LoadResource<Story>("storysPY.xml", "root/story");
-        //			ResourceManager.LoadResource<Story>("storysCG.xml", "root/story");
-        //			ResourceManager.LoadResource<Map>("maps.xml", "root/map");
-        //			ResourceManager.LoadResource<Item>("items.xml", "root/item");
-        //			ResourceManager.LoadResource<ItemTrigger>("item_triggers.xml", "root/item_trigger");
-        //			ResourceManager.LoadResource<GlobalTrigger>("globaltrigger.xml", "root/trigger");
-        //			ResourceManager.LoadResource<Tower>("towers.xml", "root/tower");
-        //			ResourceManager.LoadResource<RoleGrowTemplate>("grow_templates.xml", "root/grow_template");
-        //			ResourceManager.LoadResource<AnimationNode>("animations.xml", "root/animation");
-        //			ResourceManager.LoadResource<Shop>("shops.xml", "root/shop");
-        //			ResourceManager.LoadResource<Menpai>("menpai.xml", "root/menpai");
-        //			ResourceManager.LoadResource<Task>("newbie.xml", "root/task");
-        //			ResourceManager.LoadResource<JYTouch>("touch.xml", "root/touch");
-        //			ResourceManager._inited = true;
-        //		}
+        public static void Init()
+        {
+            if (ResourceManager._inited)
+            {
+                return;
+            }
+            ResourceManager.Clear();//读表
+            //ResourceManager.LoadResource<Resource>("resource.xml", "root/resource");
+            //ResourceManager.LoadResource<Battle>("battles.xml", "root/battle");
+            //ResourceManager.LoadResource<Skill>("skills.xml", "root/skill");
+            //ResourceManager.LoadResource<InternalSkill>("internal_skills.xml", "root/internal_skill");
+            //ResourceManager.LoadResource<SpecialSkill>("special_skills.xml", "root/special_skill");
+            ResourceManager.LoadResource<Role>("roles.xml", "root/role");
+            //ResourceManager.LoadResource<Aoyi>("aoyis.xml", "root/aoyi");
+            //ResourceManager.LoadResource<Story>("storys.xml", "root/story");
+            //ResourceManager.LoadResource<Story>("storysPY.xml", "root/story");
+            //ResourceManager.LoadResource<Story>("storysCG.xml", "root/story");
+            //ResourceManager.LoadResource<Map>("maps.xml", "root/map");
+            //ResourceManager.LoadResource<Item>("items.xml", "root/item");
+            //ResourceManager.LoadResource<ItemTrigger>("item_triggers.xml", "root/item_trigger");
+            //ResourceManager.LoadResource<GlobalTrigger>("globaltrigger.xml", "root/trigger");
+            //ResourceManager.LoadResource<Tower>("towers.xml", "root/tower");
+            //ResourceManager.LoadResource<RoleGrowTemplate>("grow_templates.xml", "root/grow_template");
+            //ResourceManager.LoadResource<AnimationNode>("animations.xml", "root/animation");
+            //ResourceManager.LoadResource<Shop>("shops.xml", "root/shop");
+            //ResourceManager.LoadResource<Menpai>("menpai.xml", "root/menpai");
+            //ResourceManager.LoadResource<Task>("newbie.xml", "root/task");
+            //ResourceManager.LoadResource<JYTouch>("touch.xml", "root/touch");
+            ResourceManager._inited = true;
+        }
 
         //		public static IEnumerator Init2(CommonSettings.VoidCallBack callback)
         //		{
@@ -165,18 +165,17 @@ namespace JyGame
             }
         }
 
-        //		// Token: 0x06000097 RID: 151 RVA: 0x00005EE0 File Offset: 0x000040E0
-        //		public static T Get<T>(string key)
-        //		{
-        //			foreach (Type type in ResourceManager._values.Keys)
-        //			{
-        //				if (typeof(T) == type && ResourceManager._values[type].ContainsKey(key))
-        //				{
-        //					return (T)((object)ResourceManager._values[type][key]);
-        //				}
-        //			}
-        //			return default(T);
-        //		}
+        public static T Get<T>(string key)
+        {
+            foreach (Type type in ResourceManager._values.Keys)
+            {
+                if (typeof(T) == type && ResourceManager._values[type].ContainsKey(key))
+                {
+                    return (T)((object)ResourceManager._values[type][key]);
+                }
+            }
+            return default(T);
+        }
 
         //		// Token: 0x06000098 RID: 152 RVA: 0x00005F90 File Offset: 0x00004190
         //		public static IEnumerable<T> GetAll<T>()
@@ -230,32 +229,9 @@ namespace JyGame
                     {
                                 '.'
                     })[0];
+                   
                     string input = Resources.Load(path).ToString();
-                    //string xml = SaveManager.crcm(input);
-                    //xmlDocument.LoadXml(xml);
-                }
-                else if (CommonSettings.MOD_EDITOR_MODE)
-                {
-                    string path2 = "Mod/Scripts/" + uri;
-                    using (StreamReader streamReader = new StreamReader(path2))
-                    {
-                        xmlDocument.LoadXml(streamReader.ReadToEnd());
-                    }
-                }
-                else if (Application.platform == RuntimePlatform.WindowsEditor)
-                {
-                    string path3 = Application.dataPath + "/AssetBundleSource/Editor/Scripts/" + uri;
-                    using (StreamReader streamReader2 = new StreamReader(path3))
-                    {
-                        xmlDocument.LoadXml(streamReader2.ReadToEnd());
-                    }
-                }
-                else
-                {
-                    //xmlDocument.LoadXml(AssetBundleManager.GetXml(uri.Split(new char[]
-                    //{
-                    //            '.'
-                    //})[0]));
+                    xmlDocument.LoadXml(input);
                 }
                 Dictionary<string, object> dictionary = null;
                 if (ResourceManager._values.ContainsKey(typeof(T)))
@@ -269,15 +245,15 @@ namespace JyGame
                 foreach (object obj in xmlDocument.SelectNodes(nodepath))
                 {
                     XmlNode xmlNode = (XmlNode)obj;
-                   // T t = BasePojo.Create<T>(xmlNode.OuterXml);
-                    //if (dictionary.ContainsKey(t.PK))
-                    //{
-                    //   // Debug.LogError("重复key:" + t.PK + ",xml=" + uri);
-                    //}
-                    //else
-                    //{
-                    //    //dictionary.Add(t.PK, t);
-                    //}
+                    T t = BasePojo.Create<T>(xmlNode.OuterXml);
+                    if (dictionary.ContainsKey(t.PK))
+                    {
+                        Debug.LogError("重复key:" + t.PK + ",xml=" + uri);
+                    }
+                    else
+                    {
+                        dictionary.Add(t.PK, t);
+                    }
                 }
                 if (!ResourceManager._values.ContainsKey(typeof(T)))
                 {
@@ -291,13 +267,12 @@ namespace JyGame
             }
         }
 
-        //		private static void Clear()
-        //		{
-        //			ResourceManager._values.Clear();
-        //			ResourceManager.visitedUri.Clear();
-        //		}
+        private static void Clear()
+        {
+            ResourceManager._values.Clear();
+            ResourceManager.visitedUri.Clear();
+        }
 
-        //		// Token: 0x0600009D RID: 157 RVA: 0x0000635C File Offset: 0x0000455C
         //		public static void Add<T>(string pk, object obj)
         //		{
         //			Dictionary<string, object> dictionary;

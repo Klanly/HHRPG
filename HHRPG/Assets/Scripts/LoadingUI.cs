@@ -89,7 +89,7 @@ public class LoadingUI : MonoBehaviour
     public static void Load(string sceneName)
 	{
 		LoadingUI.LoadingLevel = sceneName;
-		Application.LoadLevel("Loading");
+        SceneManager.LoadScene("Loading");
 	}
 
 	public Slider ProgressSlider
