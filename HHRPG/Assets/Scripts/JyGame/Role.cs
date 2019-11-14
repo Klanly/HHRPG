@@ -347,52 +347,53 @@ namespace JyGame
             return BasePojo.Create<Role>(this.Xml);
         }
 
-        //		// Token: 0x0600023D RID: 573 RVA: 0x00018CA0 File Offset: 0x00016EA0
-        //		public void Reset(bool recover = true)
-        //		{
-        //			if (recover)
-        //			{
-        //				this.hp = this.Attributes["maxhp"];
-        //				this.mp = this.Attributes["maxmp"];
-        //			}
-        //			else
-        //			{
-        //				if (this.Attributes["hp"] <= 0)
-        //				{
-        //					this.hp = 1;
-        //				}
-        //				if (this.Attributes["mp"] <= 0)
-        //				{
-        //					this.mp = 0;
-        //				}
-        //			}
-        //			this.balls = 0;
-        //			this.SkillCdRecover();
-        //		}
+        public void Reset(bool recover = true)
+        {
+            if (recover)
+            {
+                this.hp = this.Attributes["maxhp"];
+                this.mp = this.Attributes["maxmp"];
+            }
+            else
+            {
+                if (this.Attributes["hp"] <= 0)
+                {
+                    this.hp = 1;
+                }
+                if (this.Attributes["mp"] <= 0)
+                {
+                    this.mp = 0;
+                }
+            }
+            this.balls = 0;
+            this.SkillCdRecover();
+        }
 
-        //		// Token: 0x0600023E RID: 574 RVA: 0x00018D2C File Offset: 0x00016F2C
-        //		public void SkillCdRecover()
-        //		{
-        //			foreach (SkillInstance skillInstance in this.Skills)
-        //			{
-        //				skillInstance.CurrentCd = 0;
-        //				foreach (UniqueSkillInstance uniqueSkillInstance in skillInstance.UniqueSkills)
-        //				{
-        //					uniqueSkillInstance.CurrentCd = 0;
-        //				}
-        //			}
-        //			foreach (InternalSkillInstance internalSkillInstance in this.InternalSkills)
-        //			{
-        //				foreach (UniqueSkillInstance uniqueSkillInstance2 in internalSkillInstance.UniqueSkills)
-        //				{
-        //					uniqueSkillInstance2.CurrentCd = 0;
-        //				}
-        //			}
-        //			foreach (SpecialSkillInstance specialSkillInstance in this.SpecialSkills)
-        //			{
-        //				specialSkillInstance.CurrentCd = 0;
-        //			}
-        //		}
+        /// <summary>
+        /// 技能CD恢复
+        /// </summary>
+        public void SkillCdRecover()
+        {
+            //foreach (SkillInstance skillInstance in this.Skills)
+            //{
+            //    skillInstance.CurrentCd = 0;
+            //    foreach (UniqueSkillInstance uniqueSkillInstance in skillInstance.UniqueSkills)
+            //    {
+            //        uniqueSkillInstance.CurrentCd = 0;
+            //    }
+            //}
+            //foreach (InternalSkillInstance internalSkillInstance in this.InternalSkills)
+            //{
+            //    foreach (UniqueSkillInstance uniqueSkillInstance2 in internalSkillInstance.UniqueSkills)
+            //    {
+            //        uniqueSkillInstance2.CurrentCd = 0;
+            //    }
+            //}
+            //foreach (SpecialSkillInstance specialSkillInstance in this.SpecialSkills)
+            //{
+            //    specialSkillInstance.CurrentCd = 0;
+            //}
+        }
 
         //		// Token: 0x17000099 RID: 153
         //		// (get) Token: 0x0600023F RID: 575 RVA: 0x00018EEC File Offset: 0x000170EC

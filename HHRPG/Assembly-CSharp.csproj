@@ -155,7 +155,6 @@
     <Compile Include="Assets\RPGGame\Core\Scripts\PlayerData\PlayerPair.cs" />
     <Compile Include="Assets\RPGGame\Core\Scripts\PlayerData\PlayerStamina.cs" />
     <Compile Include="Assets\RPGGame\Core\Scripts\PlayerData\PlayerUnlockItem.cs" />
-    <Compile Include="Assets\RPGGame\Core\Scripts\Scene\LoginSceneManager.cs" />
     <Compile Include="Assets\RPGGame\Core\Scripts\Text\Language.cs" />
     <Compile Include="Assets\RPGGame\Core\Scripts\Text\LanguageManager.cs" />
     <Compile Include="Assets\RPGGame\Core\Scripts\UI\FormationManager\UIFormation.cs" />

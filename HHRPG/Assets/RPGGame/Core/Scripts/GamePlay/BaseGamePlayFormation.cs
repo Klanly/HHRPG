@@ -10,30 +10,30 @@ public class BaseGamePlayFormation : MonoBehaviour
 
     public virtual void SetFormationCharacters()
     {
-        var formationName = Player.CurrentPlayer.SelectedFormation;
-        ClearCharacters();
-        for (var i = 0; i < containers.Length; ++i)
-        {
-            PlayerFormation playerFormation = null;
-            if (PlayerFormation.TryGetData(formationName, i, out playerFormation))
-            {
-                var itemId = playerFormation.ItemId;
-                PlayerItem item = null;
-                if (!string.IsNullOrEmpty(itemId) && PlayerItem.DataMap.TryGetValue(itemId, out item))
-                    SetCharacter(i, item);
-            }
-        }
-        if (BaseGamePlayManager.Helper != null &&
-            !string.IsNullOrEmpty(BaseGamePlayManager.Helper.MainCharacter) &&
-            GameInstance.GameDatabase.Items.ContainsKey(BaseGamePlayManager.Helper.MainCharacter) &&
-            helperContainer != null)
-        {
-            var item = new PlayerItem();
-            item.Id = "_Helper";
-            item.DataId = BaseGamePlayManager.Helper.MainCharacter;
-            item.Exp = BaseGamePlayManager.Helper.MainCharacterExp;
-            SetHelperCharacter(item);
-        }
+        //var formationName = Player.CurrentPlayer.SelectedFormation;
+        //ClearCharacters();
+        //for (var i = 0; i < containers.Length; ++i)
+        //{
+        //    PlayerFormation playerFormation = null;
+        //    if (PlayerFormation.TryGetData(formationName, i, out playerFormation))
+        //    {
+        //        var itemId = playerFormation.ItemId;
+        //        PlayerItem item = null;
+        //        if (!string.IsNullOrEmpty(itemId) && PlayerItem.DataMap.TryGetValue(itemId, out item))
+        //            SetCharacter(i, item);
+        //    }
+        //}
+        //if (BaseGamePlayManager.Helper != null &&
+        //    !string.IsNullOrEmpty(BaseGamePlayManager.Helper.MainCharacter) &&
+        //    GameInstance.GameDatabase.Items.ContainsKey(BaseGamePlayManager.Helper.MainCharacter) &&
+        //    helperContainer != null)
+        //{
+        //    var item = new PlayerItem();
+        //    item.Id = "_Helper";
+        //    item.DataId = BaseGamePlayManager.Helper.MainCharacter;
+        //    item.Exp = BaseGamePlayManager.Helper.MainCharacterExp;
+        //    SetHelperCharacter(item);
+        //}
     }
 
     public virtual void SetCharacters(PlayerItem[] items)

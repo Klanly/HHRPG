@@ -27,8 +27,14 @@ namespace JyGame
 
         //public BattleField battleFieldUI;
 
+        /// <summary>
+        /// 队伍
+        /// </summary>
         public List<Role> Team = new List<Role>();
 
+        /// <summary>
+        /// 跟随
+        /// </summary>
         public List<Role> Follow = new List<Role>();
 
         public string NewbieTask = string.Empty;
@@ -145,7 +151,7 @@ namespace JyGame
             //this.Items.Clear();
             //this.Xiangzi.Clear();
             this.KeyValues.Clear();
-            //this.TrialRoles = string.Empty;
+            this.TrialRoles = string.Empty;
             this.NewbieTask = string.Empty;
             // this.Rank = -1;
             this.IsInited = false;
@@ -170,14 +176,16 @@ namespace JyGame
         //    return false;
         //}
 
-        //// Token: 0x060000AE RID: 174 RVA: 0x000069E8 File Offset: 0x00004BE8
-        //public void ResetTeam()
-        //{
-        //    foreach (Role role in this.Team)
-        //    {
-        //        role.Reset(true);
-        //    }
-        //}
+        /// <summary>
+        /// 重置队伍
+        /// </summary>
+        public void ResetTeam()
+        {
+            foreach (Role role in this.Team)
+            {
+                role.Reset(true);
+            }
+        }
 
         //// Token: 0x060000AF RID: 175 RVA: 0x00006A50 File Offset: 0x00004C50
         //public bool NameInTeam(string roleName)
@@ -225,19 +233,17 @@ namespace JyGame
         //    return null;
         //}
 
-        //// Token: 0x060000B2 RID: 178 RVA: 0x00006C2C File Offset: 0x00004E2C
-        //public void addTeamMember(string roleKey)
-        //{
-        //    this.Team.Add(ResourceManager.Get<Role>(roleKey).Clone());
-        //}
+        public void addTeamMember(string roleKey)
+        {
+            this.Team.Add(ResourceManager.Get<Role>(roleKey).Clone());
+        }
 
-        //// Token: 0x060000B3 RID: 179 RVA: 0x00006C44 File Offset: 0x00004E44
-        //public void addTeamMember(string roleKey, string changeName)
-        //{
-        //    Role role = ResourceManager.Get<Role>(roleKey).Clone();
-        //    role.Name = changeName;
-        //    this.Team.Add(role);
-        //}
+        public void addTeamMember(string roleKey, string changeName)
+        {
+            Role role = ResourceManager.Get<Role>(roleKey).Clone();
+            role.Name = changeName;
+            this.Team.Add(role);
+        }
 
         //// Token: 0x060000B4 RID: 180 RVA: 0x00006C70 File Offset: 0x00004E70
         //public void addFollowMember(string roleKey)
@@ -554,22 +560,21 @@ namespace JyGame
         //    }
         //}
 
-        //// Token: 0x1700001D RID: 29
-        //// (get) Token: 0x060000CA RID: 202 RVA: 0x00007518 File Offset: 0x00005718
-        //// (set) Token: 0x060000CB RID: 203 RVA: 0x00007530 File Offset: 0x00005730
-        //public int Round
-        //{
-        //    get
-        //    {
-        //        return int.Parse(this.getDataOrInit("round", "1"));
-        //    }
-        //    set
-        //    {
-        //        this.KeyValues["round"] = value.ToString();
-        //    }
-        //}
+        /// <summary>
+        /// 周目
+        /// </summary>
+        public int Round
+        {
+            get
+            {
+                return int.Parse(this.getDataOrInit("round", "1"));
+            }
+            set
+            {
+                this.KeyValues["round"] = value.ToString();
+            }
+        }
 
-        //// Token: 0x060000CC RID: 204 RVA: 0x0000754C File Offset: 0x0000574C
         //public void NextZhoumuClear()
         //{
         //    int round = this.Round;
@@ -718,20 +723,20 @@ namespace JyGame
         //    }
         //}
 
-        //// Token: 0x17000025 RID: 37
-        //// (get) Token: 0x060000DD RID: 221 RVA: 0x000078B4 File Offset: 0x00005AB4
-        //// (set) Token: 0x060000DE RID: 222 RVA: 0x000078C8 File Offset: 0x00005AC8
-        //public string GameMode
-        //{
-        //    get
-        //    {
-        //        return this.getDataOrInit("mode", "normal");
-        //    }
-        //    set
-        //    {
-        //        this.KeyValues["mode"] = value.ToString();
-        //    }
-        //}
+        /// <summary>
+        /// 游戏难度
+        /// </summary>
+        public string GameMode
+        {
+            get
+            {
+                return this.getDataOrInit("mode", "normal");
+            }
+            set
+            {
+                this.KeyValues["mode"] = value.ToString();
+            }
+        }
 
         //// Token: 0x17000026 RID: 38
         //// (get) Token: 0x060000DF RID: 223 RVA: 0x000078E0 File Offset: 0x00005AE0
@@ -753,20 +758,20 @@ namespace JyGame
         //    }
         //}
 
-        //// Token: 0x17000027 RID: 39
-        //// (get) Token: 0x060000E0 RID: 224 RVA: 0x00007978 File Offset: 0x00005B78
-        //// (set) Token: 0x060000E1 RID: 225 RVA: 0x00007990 File Offset: 0x00005B90
-        //public bool FriendlyFire
-        //{
-        //    get
-        //    {
-        //        return bool.Parse(this.getDataOrInit("friendlyfire", "false"));
-        //    }
-        //    set
-        //    {
-        //        this.KeyValues["friendlyfire"] = value.ToString();
-        //    }
-        //}
+        /// <summary>
+        /// 同队伍是否能互相伤害
+        /// </summary>
+        public bool FriendlyFire
+        {
+            get
+            {
+                return bool.Parse(this.getDataOrInit("friendlyfire", "false"));
+            }
+            set
+            {
+                this.KeyValues["friendlyfire"] = value.ToString();
+            }
+        }
 
         //// Token: 0x17000028 RID: 40
         //// (get) Token: 0x060000E2 RID: 226 RVA: 0x000079AC File Offset: 0x00005BAC
@@ -880,20 +885,20 @@ namespace JyGame
         //    }
         //}
 
-        //// Token: 0x1700002E RID: 46
-        //// (get) Token: 0x060000F0 RID: 240 RVA: 0x00007B5C File Offset: 0x00005D5C
-        //// (set) Token: 0x060000F1 RID: 241 RVA: 0x00007B70 File Offset: 0x00005D70
-        //public string TrialRoles
-        //{
-        //    get
-        //    {
-        //        return this.getDataOrInit("trailRoles", string.Empty);
-        //    }
-        //    set
-        //    {
-        //        this.KeyValues["trailRoles"] = value.ToString();
-        //    }
-        //}
+        /// <summary>
+        /// 试炼角色
+        /// </summary>
+        public string TrialRoles
+        {
+            get
+            {
+                return this.getDataOrInit("trailRoles", string.Empty);
+            }
+            set
+            {
+                this.KeyValues["trailRoles"] = value.ToString();
+            }
+        }
 
         //// Token: 0x060000F2 RID: 242 RVA: 0x00007B88 File Offset: 0x00005D88
         //public void AddLog(string info)
