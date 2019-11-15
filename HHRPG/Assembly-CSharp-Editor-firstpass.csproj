@@ -63,42 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\UHUDText\Content\Script\Editor\bl_HUDTextEditor.cs" />
-    <Reference Include="UnityEditor.TestRunner">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
@@ -315,6 +279,12 @@
     <Reference Include="DOTweenProEditor">
       <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="zlib.net">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/zlib.net.dll</HintPath>
+    </Reference>
     <Reference Include="LiteDB">
       <HintPath>E:/Projects/HHRPG/HHRPG/Assets/RPGGame/Plugins/LiteDB.dll</HintPath>
     </Reference>
@@ -329,12 +299,6 @@
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>E:/Projects/HHRPG/HHRPG/Assets/RPGGame/Plugins/SQLite/Common/Mono.Data.Sqlite.dll</HintPath>
-    </Reference>
-    <Reference Include="LitJson">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/LitJson.dll</HintPath>
-    </Reference>
-    <Reference Include="zlib.net">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/zlib.net.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>E:/Projects/HHRPG/HHRPG/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>

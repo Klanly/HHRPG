@@ -456,118 +456,120 @@
     <Compile Include="Assets\YouYou_Framework\Utils\SecurityUtil.cs" />
     <Compile Include="Assets\YouYou_Framework\Utils\StringUtil.cs" />
     <Compile Include="Assets\YouYou_Framework\Utils\ZlibHelper.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\ChapterDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\ChapterEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\EquipDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\EquipEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\GameLevelDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\GameLevelEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\GameLevelGradeDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\GameLevelGradeEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\GameLevelMonsterDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\GameLevelMonsterEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\GameLevelRegionDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\GameLevelRegionEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\ItemDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\ItemEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\JobDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\JobEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\JobLevelDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\JobLevelEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\LanguageDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\LanguageEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\MaterialDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\MaterialEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\MessageDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\MessageEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\NPCDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\NPCEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\RechargeShopDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\RechargeShopEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\ShopCategoryDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\ShopCategoryEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\ShopDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\ShopEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\SkillDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\SkillEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\SkillLevelDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\SkillLevelEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\SpriteDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\SpriteEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_CodeDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_CodeEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_EffectDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_EffectEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_PrefabDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_PrefabEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_SceneDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_SceneDetailDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_SceneDetailEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_SceneEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_SoundDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_SoundEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_StorySoundDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_StorySoundEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_UIFormDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\Sys_UIFormEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\TaskDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\TaskEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\WorldMapDBModel.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\DataTable\Create\WorldMapEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Backpack_GoodsChangeReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Backpack_SearchProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Backpack_SearchReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Goods_EquipPutProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Goods_EquipPutReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Goods_SearchEquipDetailProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Goods_SearchEquipDetailReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Goods_SellToSysProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Goods_SellToSysReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Goods_UseItemProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Goods_UseItemReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\ProtoCodeDef.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\RoleOperation_CreateRoleProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\RoleOperation_CreateRoleReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\RoleOperation_DeleteRoleProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\RoleOperation_DeleteRoleReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\RoleOperation_EnterGameProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\RoleOperation_EnterGameReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\RoleOperation_LogOnGameServerProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\RoleOperation_LogOnGameServerReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\RoleOperation_SelectRoleInfoProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\RoleOperation_SelectRoleInfoReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Shop_BuyProductProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Shop_BuyProductReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\System_GameServerConfigReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\System_HeartbeatProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\System_HeartbeatReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Task_SearchTaskProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\Proto\Task_SearchTaskReturnProto.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\Backpack_GoodsChangeReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\Backpack_SearchReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\Goods_EquipPutReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\Goods_SearchEquipDetailReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\Goods_SellToSysReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\Goods_UseItemReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\RoleOperation_CreateRoleReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\RoleOperation_DeleteRoleReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\RoleOperation_EnterGameReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\RoleOperation_LogOnGameServerReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\RoleOperation_SelectRoleInfoReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\Shop_BuyProductReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\SocketProtoListener.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\System_GameServerConfigReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\System_HeartbeatReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\Data\ProtoHandler\Task_SearchTaskReturnHandler.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\DataManager\CacheDataManager.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\DataManager\DataEntity\ChannelConfigEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\DataManager\DataEntity\ServerTaskEntity.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\DataManager\PVEMapDataManager.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\DataManager\SysDataManager.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\DataManager\UserDataManager.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\UI\UIForm\UITaskForm.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\UI\UIForm\UITaskFormItemView.cs" />
-    <Compile Include="Assets\YouYou_Framework\YouYouScript\UI\UIFormId.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\ChapterDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\ChapterEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\EquipDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\EquipEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\GameLevelDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\GameLevelEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\GameLevelGradeDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\GameLevelGradeEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\GameLevelMonsterDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\GameLevelMonsterEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\GameLevelRegionDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\GameLevelRegionEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\ItemDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\ItemEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\JobDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\JobEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\JobLevelDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\JobLevelEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\LanguageDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\LanguageEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\MaterialDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\MaterialEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\MessageDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\MessageEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\NPCDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\NPCEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\RechargeShopDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\RechargeShopEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\RoleDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\RoleEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\ShopCategoryDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\ShopCategoryEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\ShopDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\ShopEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\SkillDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\SkillEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\SkillLevelDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\SkillLevelEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\SpriteDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\SpriteEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_CodeDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_CodeEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_EffectDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_EffectEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_PrefabDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_PrefabEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_SceneDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_SceneDetailDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_SceneDetailEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_SceneEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_SoundDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_SoundEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_StorySoundDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_StorySoundEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_UIFormDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_UIFormEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\TaskDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\TaskEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\WorldMapDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\WorldMapEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Backpack_GoodsChangeReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Backpack_SearchProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Backpack_SearchReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_EquipPutProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_EquipPutReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_SearchEquipDetailProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_SearchEquipDetailReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_SellToSysProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_SellToSysReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_UseItemProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Goods_UseItemReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\ProtoCodeDef.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_CreateRoleProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_CreateRoleReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_DeleteRoleProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_DeleteRoleReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_EnterGameProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_EnterGameReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_LogOnGameServerProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_LogOnGameServerReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_SelectRoleInfoProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\RoleOperation_SelectRoleInfoReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Shop_BuyProductProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Shop_BuyProductReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\System_GameServerConfigReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\System_HeartbeatProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\System_HeartbeatReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Task_SearchTaskProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\Proto\Task_SearchTaskReturnProto.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Backpack_GoodsChangeReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Backpack_SearchReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Goods_EquipPutReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Goods_SearchEquipDetailReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Goods_SellToSysReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Goods_UseItemReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\RoleOperation_CreateRoleReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\RoleOperation_DeleteRoleReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\RoleOperation_EnterGameReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\RoleOperation_LogOnGameServerReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\RoleOperation_SelectRoleInfoReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Shop_BuyProductReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\SocketProtoListener.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\System_GameServerConfigReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\System_HeartbeatReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\Data\ProtoHandler\Task_SearchTaskReturnHandler.cs" />
+    <Compile Include="Assets\YouYouScript\DataManager\CacheDataManager.cs" />
+    <Compile Include="Assets\YouYouScript\DataManager\DataEntity\ChannelConfigEntity.cs" />
+    <Compile Include="Assets\YouYouScript\DataManager\DataEntity\ServerTaskEntity.cs" />
+    <Compile Include="Assets\YouYouScript\DataManager\PVEMapDataManager.cs" />
+    <Compile Include="Assets\YouYouScript\DataManager\SysDataManager.cs" />
+    <Compile Include="Assets\YouYouScript\DataManager\UserDataManager.cs" />
+    <Compile Include="Assets\YouYouScript\UI\UIForm\UITaskForm.cs" />
+    <Compile Include="Assets\YouYouScript\UI\UIForm\UITaskFormItemView.cs" />
+    <Compile Include="Assets\YouYouScript\UI\UIFormId.cs" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
     <None Include="Assets\RPGGame\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
     <None Include="Assets\Demigiant\DOTweenPro\readme.txt" />
@@ -628,36 +630,6 @@
     <None Include="Assets\Demigiant\readme_DOTweenPro.txt" />
     <None Include="Assets\Resources\Scripts\Secure\storysPY.xml" />
     <None Include="Assets\XLua\Resources\tdr\tdr.lua.txt" />
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
@@ -853,6 +825,12 @@
     <Reference Include="DOTweenPro">
       <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="zlib.net">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/zlib.net.dll</HintPath>
+    </Reference>
     <Reference Include="LiteDB">
       <HintPath>E:/Projects/HHRPG/HHRPG/Assets/RPGGame/Plugins/LiteDB.dll</HintPath>
     </Reference>
@@ -867,12 +845,6 @@
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>E:/Projects/HHRPG/HHRPG/Assets/RPGGame/Plugins/SQLite/Common/Mono.Data.Sqlite.dll</HintPath>
-    </Reference>
-    <Reference Include="LitJson">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/LitJson.dll</HintPath>
-    </Reference>
-    <Reference Include="zlib.net">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/zlib.net.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
