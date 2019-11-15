@@ -37,7 +37,6 @@ namespace YouYou
         /// </summary>
         private void InitClassReside()
         {
-            GameEntry.Pool.SetClassObjectResideCount<HttpRoutine>(3);
             GameEntry.Pool.SetClassObjectResideCount<Dictionary<string,object>>(3);
         }
 

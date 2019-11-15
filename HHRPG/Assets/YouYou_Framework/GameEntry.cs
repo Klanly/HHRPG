@@ -54,24 +54,6 @@ namespace YouYou
         }
 
         /// <summary>
-        /// Socket组件
-        /// </summary>
-        public static SocketComponent Socket
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// Http组件
-        /// </summary>
-        public static HttpComponent Http
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
         /// 数据组件
         /// </summary>
         public static DataComponent Data
@@ -135,24 +117,9 @@ namespace YouYou
         }
 
         /// <summary>
-        /// 下载组件
-        /// </summary>
-        public static DownloadComponent Download
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
         /// UI组件
         /// </summary>
         public static UIComponent UI
-        {
-            get;
-            private set;
-        }
-
-        public static LuaComponent Lua
         {
             get;
             private set;
@@ -230,8 +197,6 @@ namespace YouYou
             Fsm = GetBaseComponent<FsmComponent>();
             Procedure = GetBaseComponent<ProcedureComponent>();
             DataTable = GetBaseComponent<DataTableComponent>();
-            Socket = GetBaseComponent<SocketComponent>();
-            Http = GetBaseComponent<HttpComponent>();
             Data = GetBaseComponent<DataComponent>();
             Localization = GetBaseComponent<LocalizationComponent>();
             Pool = GetBaseComponent<PoolComponent>();
@@ -239,9 +204,7 @@ namespace YouYou
             Setting = GetBaseComponent<SettingComponent>();
             GameObj = GetBaseComponent<GameObjComponent>();
             Resource = GetBaseComponent<ResourceComponent>();
-            Download = GetBaseComponent<DownloadComponent>();
             UI = GetBaseComponent<UIComponent>();
-            Lua = GetBaseComponent<LuaComponent>();
         }
         #endregion
 

@@ -33,18 +33,18 @@ namespace YouYou
             ServerTaskList.Clear();
         }
 
-        public void ReceiveTask(Task_SearchTaskReturnProto proto)
-        {
-            int len = proto.CurrTaskItemList.Count;
-            for (int i=0;i<len;i++)
-            {
-                Task_SearchTaskReturnProto.TaskItem item = proto.CurrTaskItemList[i];
-                ServerTaskList.Add(new ServerTaskEntity()
-                {
-                    Id = item.Id,
-                    Status = item.Status
-                });
-            }           
-        }
+        //public void ReceiveTask(Task_SearchTaskReturnProto proto)
+        //{
+        //    int len = proto.CurrTaskItemList.Count;
+        //    for (int i=0;i<len;i++)
+        //    {
+        //        Task_SearchTaskReturnProto.TaskItem item = proto.CurrTaskItemList[i];
+        //        ServerTaskList.Add(new ServerTaskEntity()
+        //        {
+        //            Id = item.Id,
+        //            Status = item.Status
+        //        });
+        //    }           
+        //}
     }
 }

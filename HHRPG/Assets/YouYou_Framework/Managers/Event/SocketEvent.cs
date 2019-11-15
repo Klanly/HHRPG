@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using XLua;
+
 namespace YouYou
 {
     /// <summary>
@@ -10,7 +10,6 @@ namespace YouYou
     /// </summary>
     public class SocketEvent: IDisposable
     {
-        [CSharpCallLua]
         public delegate void OnActionHandler(byte[] buffer);
         public Dictionary<ushort, List<OnActionHandler>> dic = new Dictionary<ushort, List<OnActionHandler>>();
 

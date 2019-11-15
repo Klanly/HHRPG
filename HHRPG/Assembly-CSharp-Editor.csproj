@@ -62,7 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
     <Compile Include="Assets\RPGGame\Core\Editor\CharacterItemEditor.cs" />
     <Compile Include="Assets\RPGGame\Core\Editor\EquipmentItemEditor.cs" />
     <Compile Include="Assets\RPGGame\Core\Editor\IapPackageEditor.cs" />
@@ -75,29 +74,46 @@
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Editor\UnityLayerPropertyDrawer.cs" />
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Editor\UnityScenePropertyDrawer.cs" />
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Editor\UnityTagPropertyDrawer.cs" />
-    <Compile Include="Assets\XLua\Editor\ExampleConfig.cs" />
-    <Compile Include="Assets\XLua\Examples\13_BuildFromCLI\Editor\BuildFromCLI.cs" />
-    <Compile Include="Assets\XLua\Src\Editor\Generator.cs" />
-    <Compile Include="Assets\XLua\Src\Editor\Hotfix.cs" />
-    <Compile Include="Assets\XLua\Src\Editor\LinkXmlGen\LinkXmlGen.cs" />
-    <Compile Include="Assets\XLua\Src\Editor\TemplateRef.cs" />
     <Compile Include="Assets\YouYou_Framework\Editor\LocalizationComponentInspector.cs" />
     <Compile Include="Assets\YouYou_Framework\Editor\PoolComponentInspector.cs" />
     <Compile Include="Assets\YouYou_Framework\Editor\YouYouImageInspector.cs" />
     <Compile Include="Assets\YouYou_Framework\Editor\YouYouTextInspector.cs" />
-    <None Include="Assets\XLua\Src\Editor\LinkXmlGen\LinkXmlGen.tpl.txt" />
-    <None Include="Assets\XLua\Src\Editor\Template\LuaClassWrapGCM.tpl.txt" />
-    <None Include="Assets\XLua\Src\Editor\Template\LuaWrapPusher.tpl.txt" />
-    <None Include="Assets\XLua\Src\Editor\Template\LuaDelegateBridge.tpl.txt" />
-    <None Include="Assets\XLua\Src\Editor\Template\TemplateCommon.lua.txt" />
-    <None Include="Assets\XLua\Src\Editor\Template\LuaEnumWrap.tpl.txt" />
-    <None Include="Assets\XLua\Src\Editor\Template\LuaDelegateWrap.tpl.txt" />
-    <None Include="Assets\XLua\Src\Editor\Template\LuaRegisterGCM.tpl.txt" />
-    <None Include="Assets\XLua\Src\Editor\Template\LuaRegister.tpl.txt" />
-    <None Include="Assets\XLua\Src\Editor\Template\LuaInterfaceBridge.tpl.txt" />
-    <None Include="Assets\XLua\Src\Editor\Template\LuaClassWrap.tpl.txt" />
-    <None Include="Assets\XLua\Src\Editor\Template\LuaEnumWrapGCM.tpl.txt" />
-    <None Include="Assets\XLua\Src\Editor\Template\PackUnpack.tpl.txt" />
+    <Reference Include="UnityEditor.TestRunner">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
@@ -287,39 +303,6 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="DemiLib">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Demigiant/DemiLib/DemiLib.dll</HintPath>
-    </Reference>
-    <Reference Include="DemiEditor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Demigiant/DemiLib/Editor/DemiEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween43">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween46">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween50">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenEditor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenPro">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenProEditor">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="LitJson">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/LitJson.dll</HintPath>
-    </Reference>
-    <Reference Include="zlib.net">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/zlib.net.dll</HintPath>
-    </Reference>
     <Reference Include="LiteDB">
       <HintPath>E:/Projects/HHRPG/HHRPG/Assets/RPGGame/Plugins/LiteDB.dll</HintPath>
     </Reference>
@@ -334,6 +317,36 @@
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>E:/Projects/HHRPG/HHRPG/Assets/RPGGame/Plugins/SQLite/Common/Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenEditor">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenProEditor">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/Demigiant/DemiLib/DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiEditor">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/Demigiant/DemiLib/Editor/DemiEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="zlib.net">
+      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/zlib.net.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>E:/Projects/HHRPG/HHRPG/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -701,6 +714,10 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{15D159A0-80CA-EE23-314A-8585E1575183}</Project>
       <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
+      <Project>{01B96D76-1D55-67EC-DB4E-1B8586CA2441}</Project>
+      <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
