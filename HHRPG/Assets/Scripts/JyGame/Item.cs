@@ -81,30 +81,30 @@ namespace JyGame
             return ResourceManager.Get<Item>(name);
         }
 
-        //public ItemInstance Generate(bool setRandomTrigger = false)
-        //{
-        //    ItemInstance itemInstance = new ItemInstance();
-        //    itemInstance.Name = this.Name;
-        //    if (setRandomTrigger)
-        //    {
-        //        if (Tools.ProbabilityTest(0.1))
-        //        {
-        //            itemInstance.AddRandomTriggers(4);
-        //        }
-        //        else if (Tools.ProbabilityTest(0.2))
-        //        {
-        //            itemInstance.AddRandomTriggers(3);
-        //        }
-        //        else if (Tools.ProbabilityTest(0.4))
-        //        {
-        //            itemInstance.AddRandomTriggers(2);
-        //        }
-        //        else
-        //        {
-        //            itemInstance.AddRandomTriggers(1);
-        //        }
-        //    }
-        //    return itemInstance;
-        //}
+        public ItemInstance Generate(bool setRandomTrigger = false)
+        {
+            ItemInstance itemInstance = new ItemInstance();
+            itemInstance.Name = this.Name;
+            if (setRandomTrigger)
+            {
+                if (Tools.ProbabilityTest(0.1))
+                {
+                    //itemInstance.AddRandomTriggers(4);
+                }
+                else if (Tools.ProbabilityTest(0.2))
+                {
+                    //itemInstance.AddRandomTriggers(3);
+                }
+                else if (Tools.ProbabilityTest(0.4))
+                {
+                    //itemInstance.AddRandomTriggers(2);
+                }
+                else
+                {
+                   // itemInstance.AddRandomTriggers(1);
+                }
+            }
+            return itemInstance;
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace JyGame
 
         public GameEngine gameEngine;
 
-        //public MapUI mapUI;
+        public MapUI mapUI;
 
         //public TouchUI touchUI;
 
@@ -39,9 +39,9 @@ namespace JyGame
 
         public string NewbieTask = string.Empty;
 
-        //public Dictionary<ItemInstance, int> Xiangzi = new Dictionary<ItemInstance, int>();
+        public Dictionary<ItemInstance, int> Xiangzi = new Dictionary<ItemInstance, int>();
 
-        //public Dictionary<ItemInstance, int> Items = new Dictionary<ItemInstance, int>();
+        public Dictionary<ItemInstance, int> Items = new Dictionary<ItemInstance, int>();
 
         public Dictionary<string, string> KeyValues = new Dictionary<string, string>();
 
@@ -66,8 +66,6 @@ namespace JyGame
             this.gameEngine = new GameEngine();
             this.Clear();
             //this.UUID = Guid.NewGuid().ToString();
-            //this.SetLocation("大地图", "南贤居");
-            this.Money = 100;
             this.IsInited = true;
         }
 
@@ -148,12 +146,12 @@ namespace JyGame
         {
             this.Team.Clear();
             this.Follow.Clear();
-            //this.Items.Clear();
-            //this.Xiangzi.Clear();
+            this.Items.Clear();
+            this.Xiangzi.Clear();
             this.KeyValues.Clear();
             this.TrialRoles = string.Empty;
             this.NewbieTask = string.Empty;
-            // this.Rank = -1;
+            this.Rank = -1;
             this.IsInited = false;
         }
 
@@ -458,44 +456,42 @@ namespace JyGame
         //    return dictionary;
         //}
 
-        //// Token: 0x060000C3 RID: 195 RVA: 0x00007338 File Offset: 0x00005538
-        //public void addItem(Item item, int number = 1)
-        //{
-        //    this.addItem(ItemInstance.Generate(item.Name, false), number);
-        //}
+        public void addItem(Item item, int number = 1)
+        {
+            this.addItem(ItemInstance.Generate(item.Name, false), number);
+        }
 
-        //// Token: 0x060000C4 RID: 196 RVA: 0x00007350 File Offset: 0x00005550
-        //public void addItem(ItemInstance item, int number = 1)
-        //{
-        //    if (number > 0)
-        //    {
-        //        for (int i = 0; i < number; i++)
-        //        {
-        //            if (this.Items.ContainsKey(item))
-        //            {
-        //                Dictionary<ItemInstance, int> items;
-        //                Dictionary<ItemInstance, int> dictionary = items = this.Items;
-        //                int num = items[item];
-        //                dictionary[item] = num + 1;
-        //            }
-        //            else
-        //            {
-        //                this.Items.Add(item, 1);
-        //            }
-        //        }
-        //    }
-        //    else if (this.Items.ContainsKey(item))
-        //    {
-        //        Dictionary<ItemInstance, int> items2;
-        //        Dictionary<ItemInstance, int> dictionary2 = items2 = this.Items;
-        //        int num = items2[item];
-        //        dictionary2[item] = num + number;
-        //        if (this.Items[item] <= 0)
-        //        {
-        //            this.Items.Remove(item);
-        //        }
-        //    }
-        //}
+        public void addItem(ItemInstance item, int number = 1)
+        {
+            if (number > 0)
+            {
+                for (int i = 0; i < number; i++)
+                {
+                    if (this.Items.ContainsKey(item))
+                    {
+                        Dictionary<ItemInstance, int> items;
+                        Dictionary<ItemInstance, int> dictionary = items = this.Items;
+                        int num = items[item];
+                        dictionary[item] = num + 1;
+                    }
+                    else
+                    {
+                        this.Items.Add(item, 1);
+                    }
+                }
+            }
+            else if (this.Items.ContainsKey(item))
+            {
+                Dictionary<ItemInstance, int> items2;
+                Dictionary<ItemInstance, int> dictionary2 = items2 = this.Items;
+                int num = items2[item];
+                dictionary2[item] = num + number;
+                if (this.Items[item] <= 0)
+                {
+                    this.Items.Remove(item);
+                }
+            }
+        }
 
         //// Token: 0x060000C5 RID: 197 RVA: 0x00007408 File Offset: 0x00005608
         //public void xiangziAddItem(ItemInstance item, int number = 1)
@@ -545,20 +541,17 @@ namespace JyGame
         //    }
         //}
 
-        //// Token: 0x1700001C RID: 28
-        //// (get) Token: 0x060000C8 RID: 200 RVA: 0x000074EC File Offset: 0x000056EC
-        //// (set) Token: 0x060000C9 RID: 201 RVA: 0x00007500 File Offset: 0x00005700
-        //public string PrevStory
-        //{
-        //    get
-        //    {
-        //        return this.getDataOrInit("prevStory", string.Empty);
-        //    }
-        //    set
-        //    {
-        //        this.KeyValues["prevStory"] = value.ToString();
-        //    }
-        //}
+        public string PrevStory
+        {
+            get
+            {
+                return this.getDataOrInit("prevStory", string.Empty);
+            }
+            set
+            {
+                this.KeyValues["prevStory"] = value.ToString();
+            }
+        }
 
         /// <summary>
         /// 周目
@@ -833,31 +826,27 @@ namespace JyGame
         //    }
         //}
 
-        //// Token: 0x1700002C RID: 44
-        //// (get) Token: 0x060000EA RID: 234 RVA: 0x00007A6C File Offset: 0x00005C6C
-        //// (set) Token: 0x060000EB RID: 235 RVA: 0x00007A84 File Offset: 0x00005C84
-        //public int Rank
-        //{
-        //    get
-        //    {
-        //        return int.Parse(this.getDataOrInit("rank", "0"));
-        //    }
-        //    set
-        //    {
-        //        this.KeyValues["rank"] = value.ToString();
-        //    }
-        //}
+        public int Rank
+        {
+            get
+            {
+                return int.Parse(this.getDataOrInit("rank", "0"));
+            }
+            set
+            {
+                this.KeyValues["rank"] = value.ToString();
+            }
+        }
 
-        //// Token: 0x060000EC RID: 236 RVA: 0x00007AA0 File Offset: 0x00005CA0
-        //public void SetLocation(string mapKey, string location)
-        //{
-        //    string key = "location." + mapKey;
-        //    if (!this.KeyValues.ContainsKey(key))
-        //    {
-        //        this.KeyValues.Add(key, string.Empty);
-        //    }
-        //    this.KeyValues[key] = location;
-        //}
+        public void SetLocation(string mapKey, string location)
+        {
+            string key = "location." + mapKey;
+            if (!this.KeyValues.ContainsKey(key))
+            {
+                this.KeyValues.Add(key, string.Empty);
+            }
+            this.KeyValues[key] = location;
+        }
 
         //// Token: 0x060000ED RID: 237 RVA: 0x00007AE8 File Offset: 0x00005CE8
         //public string GetLocation(string mapKey)
@@ -870,20 +859,17 @@ namespace JyGame
         //    return this.KeyValues[key];
         //}
 
-        //// Token: 0x1700002D RID: 45
-        //// (get) Token: 0x060000EE RID: 238 RVA: 0x00007B30 File Offset: 0x00005D30
-        //// (set) Token: 0x060000EF RID: 239 RVA: 0x00007B44 File Offset: 0x00005D44
-        //public string CurrentBigMap
-        //{
-        //    get
-        //    {
-        //        return this.getDataOrInit("currentBigMap", "大地图");
-        //    }
-        //    set
-        //    {
-        //        this.KeyValues["currentBigMap"] = value.ToString();
-        //    }
-        //}
+        public string CurrentBigMap
+        {
+            get
+            {
+                return this.getDataOrInit("currentBigMap", "大地图");
+            }
+            set
+            {
+                this.KeyValues["currentBigMap"] = value.ToString();
+            }
+        }
 
         /// <summary>
         /// 试炼角色

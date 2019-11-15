@@ -54,8 +54,7 @@ public class MainMenu : MonoBehaviour
     public void OnNewGame()
     {
         RuntimeData.Instance.Init();
-        this.MakeBeginningCondition();
-        SceneManager.LoadScene("ManageScene");
+        RuntimeData.Instance.gameEngine.NewGame();
     }
 
     public void OnLoad()
@@ -136,103 +135,5 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-    }
-
-    /// <summary>
-    /// 创建角色
-    /// </summary>
-    private void MakeBeginningCondition()
-    {      
-        this.makeRole = ResourceManager.Get<Role>("主角").Clone();//赋值
-        this.makeMoney = 100;
-        this.makeItems = new List<Item>();
-        this.makeItems.Add(Item.GetItem("小还丹"));
-        this.makeItems.Add(Item.GetItem("小还丹"));
-        this.makeItems.Add(Item.GetItem("小还丹"));
-
-        if (RuntimeData.Instance.Round == 1)
-        {
-            RuntimeData.Instance.GameMode = "normal";
-            RuntimeData.Instance.FriendlyFire = false;
-        }
-        else
-        {
-            RuntimeData.Instance.GameMode = "normal";
-            RuntimeData.Instance.FriendlyFire = false;
-        }
-
-        RuntimeData.Instance.Money = this.makeMoney;
-        RuntimeData.Instance.Team.Clear();
-        RuntimeData.Instance.Follow.Clear();
-        RuntimeData.Instance.Team.Add(this.makeRole);
-        //RuntimeData.Instance.Items.Clear();
-        foreach (Item item in this.makeItems)
-        {
-            Item item2 = item;
-            // RuntimeData.Instance.addItem(item2, 1);
-        }
-        List<string> list = new List<string>();
-        list.Clear();
-        //switch (RuntimeData.Instance.Round)
-        //{
-        //    case 1:
-        //        break;
-        //    case 2:
-        //        list.Add("鲁连荣");
-        //        list.Add("冲虚道长");
-        //        list.Add("方证大师");
-        //        list.Add("灭绝师太");
-        //        list.Add("张翠山");
-        //        list.Add("宋远桥");
-        //        list.Add("韦一笑");
-        //        list.Add("仪清");
-        //        list.Add("何太冲");
-        //        list.Add("哑仆");
-        //        list.Add("温方达");
-        //        list.Add("温方义");
-        //        list.Add("温方山");
-        //        list.Add("温方施");
-        //        list.Add("温方悟");
-        //        list.Add("安小慧");
-        //        list.Add("阿九");
-        //        break;
-        //    case 3:
-        //        list.Add("紫衫龙王");
-        //        list.Add("白眉鹰王");
-        //        list.Add("商剑鸣");
-        //        list.Add("杨逍");
-        //        list.Add("范遥");
-        //        list.Add("霍都");
-        //        list.Add("孙不二");
-        //        list.Add("龙岛主");
-        //        list.Add("木岛主");
-        //        list.Add("善勇");
-        //        break;
-        //    case 4:
-        //        list.Add("白自在");
-        //        list.Add("向问天");
-        //        list.Add("丁春秋");
-        //        list.Add("成昆");
-        //        list.Add("段延庆");
-        //        list.Add("丘处机");
-        //        list.Add("欧阳锋");
-        //        break;
-        //    default:
-        //        list.Add("任我行");
-        //        list.Add("王重阳");
-        //        list.Add("林朝英");
-        //        list.Add("归辛树");
-        //        list.Add("玉真子");
-        //        list.Add("慕容博");
-        //        list.Add("卓一航");
-        //        list.Add("谢逊");
-        //        list.Add("虚竹");
-        //        break;
-        //}
-        if (list.Count > 0)
-        {
-            //RuntimeData.Instance.Team.Add(ResourceManager.Get<Role>(list[Tools.GetRandomInt(0, list.Count) % list.Count]).Clone());
-        }
-        RuntimeData.Instance.gameEngine.NewGameJump();
     }
 }

@@ -264,6 +264,7 @@
     <Compile Include="Assets\Scripts\JyGame\GlobalTrigger.cs" />
     <Compile Include="Assets\Scripts\JyGame\InternalSkill.cs" />
     <Compile Include="Assets\Scripts\JyGame\Item.cs" />
+    <Compile Include="Assets\Scripts\JyGame\ItemInstance.cs" />
     <Compile Include="Assets\Scripts\JyGame\ItemTrigger.cs" />
     <Compile Include="Assets\Scripts\JyGame\ITTrigger.cs" />
     <Compile Include="Assets\Scripts\JyGame\JYTouch.cs" />
@@ -271,6 +272,7 @@
     <Compile Include="Assets\Scripts\JyGame\Menpai.cs" />
     <Compile Include="Assets\Scripts\JyGame\ModEditorResourceManager.cs" />
     <Compile Include="Assets\Scripts\JyGame\RandomBattleRole.cs" />
+    <Compile Include="Assets\Scripts\JyGame\Require.cs" />
     <Compile Include="Assets\Scripts\JyGame\Resource.cs" />
     <Compile Include="Assets\Scripts\JyGame\ResourceManager.cs" />
     <Compile Include="Assets\Scripts\JyGame\Role.cs" />
@@ -282,11 +284,14 @@
     <Compile Include="Assets\Scripts\JyGame\SpecialSkill.cs" />
     <Compile Include="Assets\Scripts\JyGame\Story.cs" />
     <Compile Include="Assets\Scripts\JyGame\StoryAction.cs" />
+    <Compile Include="Assets\Scripts\JyGame\StoryResult.cs" />
     <Compile Include="Assets\Scripts\JyGame\Task.cs" />
     <Compile Include="Assets\Scripts\JyGame\Tools.cs" />
     <Compile Include="Assets\Scripts\JyGame\Tower.cs" />
+    <Compile Include="Assets\Scripts\JyGame\Trigger.cs" />
     <Compile Include="Assets\Scripts\LoadingUI.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\MapUI.cs" />
     <Compile Include="Assets\Scripts\RuntimeData.cs" />
     <Compile Include="Assets\Scripts\Save\DES.cs" />
     <Compile Include="Assets\Scripts\Save\DynamicData.cs" />

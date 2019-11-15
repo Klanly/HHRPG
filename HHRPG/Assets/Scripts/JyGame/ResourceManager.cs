@@ -39,7 +39,7 @@ namespace JyGame
             //ResourceManager.LoadResource<SpecialSkill>("special_skills.xml", "root/special_skill");
             ResourceManager.LoadResource<Role>("roles.xml", "root/role");
             //ResourceManager.LoadResource<Aoyi>("aoyis.xml", "root/aoyi");
-            //ResourceManager.LoadResource<Story>("storys.xml", "root/story");
+            ResourceManager.LoadResource<Story>("storys.xml", "root/story");
             //ResourceManager.LoadResource<Story>("storysPY.xml", "root/story");
             //ResourceManager.LoadResource<Story>("storysCG.xml", "root/story");
             //ResourceManager.LoadResource<Map>("maps.xml", "root/map");
@@ -215,11 +215,11 @@ namespace JyGame
 
         public static void LoadResource<T>(string uri, string nodepath) where T : BasePojo
         {
-            if (ResourceManager.visitedUri.Contains(uri))
-            {
-                return;
-            }
-            ResourceManager.visitedUri.Add(uri);
+            //if (ResourceManager.visitedUri.Contains(uri))
+            //{
+            //    return;
+            //}
+            //ResourceManager.visitedUri.Add(uri);
             try
             {
                 XmlDocument xmlDocument = new XmlDocument();
@@ -229,7 +229,6 @@ namespace JyGame
                     {
                                 '.'
                     })[0];
-                   
                     string input = Resources.Load(path).ToString();
                     xmlDocument.LoadXml(input);
                 }
