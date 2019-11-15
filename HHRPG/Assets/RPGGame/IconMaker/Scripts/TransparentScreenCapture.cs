@@ -120,7 +120,7 @@ public class TransparentScreenCapture : MonoBehaviour
             alpha);
     }
 
-    public Coroutine CaptureScreenshot(string fileName)
+    public UnityEngine.Coroutine CaptureScreenshot(string fileName)
     {
         return StartCoroutine(_CaptureWithApplicationCaptureScreenShot(fileName));
     }

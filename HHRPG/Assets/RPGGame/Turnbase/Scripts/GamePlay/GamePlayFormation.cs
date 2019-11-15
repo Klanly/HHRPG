@@ -102,7 +102,7 @@ public class GamePlayFormation : BaseGamePlayFormation
         return false;
     }
 
-    public Coroutine MoveCharactersToFormation(bool stillForceMoving)
+    public UnityEngine.Coroutine MoveCharactersToFormation(bool stillForceMoving)
     {
         return StartCoroutine(MoveCharactersToFormationRoutine(stillForceMoving));
     }
@@ -144,7 +144,7 @@ public class GamePlayFormation : BaseGamePlayFormation
         }
     }
 
-    public Coroutine ForceCharactersPlayMoving(float duration)
+    public UnityEngine.Coroutine ForceCharactersPlayMoving(float duration)
     {
         return StartCoroutine(ForceCharactersPlayMovingRoutine(duration));
     }

@@ -38,7 +38,7 @@ public class CharacterEntity : BaseCharacterEntity
     public readonly List<Damage> Damages = new List<Damage>();
     private Vector3 targetPosition;
     private CharacterEntity targetCharacter;
-    private Coroutine movingCoroutine;
+    private UnityEngine.Coroutine movingCoroutine;
     private bool isReachedTargetCharacter;
 
     #region Temp components
@@ -241,7 +241,7 @@ public class CharacterEntity : BaseCharacterEntity
     #endregion
 
     #region Movement/Actions
-    public Coroutine MoveTo(Vector3 position, float speed)
+    public UnityEngine.Coroutine MoveTo(Vector3 position, float speed)
     {
         if (IsMovingToTarget)
             StopCoroutine(movingCoroutine);
@@ -279,7 +279,7 @@ public class CharacterEntity : BaseCharacterEntity
     /// <param name="character">目标角色</param>
     /// <param name="speed">速度</param>
     /// <returns></returns>
-    public Coroutine MoveTo(CharacterEntity character, float speed)
+    public UnityEngine.Coroutine MoveTo(CharacterEntity character, float speed)
     {
         targetCharacter = character;
         return MoveTo(character.TempTransform.position, speed);
