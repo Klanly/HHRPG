@@ -25,6 +25,11 @@ namespace YouYou
         public RoleDBModel RoleDBModel { get; private set; }
 
         /// <summary>
+        /// 故事表
+        /// </summary>
+        public StoryDBModel StoryDBModel { get; private set; }
+
+        /// <summary>
         /// 章表
         /// </summary>
         public ChapterDBModel ChapterDBModel { get; private set; }
@@ -33,11 +38,6 @@ namespace YouYou
         /// 关卡表
         /// </summary>
         public GameLevelDBModel GameLevelDBModel { get; private set; }
-
-        /// <summary>
-        /// 任务表
-        /// </summary>
-        public TaskDBModel TaskDBModel { get; private set; }
 
         /// <summary>
         /// 初始化DBModel
@@ -53,10 +53,10 @@ namespace YouYou
             //Sys_UIFormDBModel = new Sys_UIFormDBModel();
             //LocalizationBModel = new LocalizationBModel();
 
+            StoryDBModel = new StoryDBModel();
             RoleDBModel = new RoleDBModel();
             //ChapterDBModel = new ChapterDBModel();
             //GameLevelDBModel = new GameLevelDBModel();
-            //TaskDBModel = new TaskDBModel();
         }
 
         public void LoadDataTable()
@@ -70,6 +70,7 @@ namespace YouYou
             //Sys_UIFormDBModel.LoadData();
             //LocalizationBModel.LoadData();
 
+            StoryDBModel.LoadData();
             RoleDBModel.LoadData();
             //ChapterDBModel.LoadData();
             //GameLevelDBModel.LoadData();
@@ -98,7 +99,7 @@ namespace YouYou
             //Sys_UIFormDBModel.Clear();
             //LocalizationBModel.Clear();
             RoleDBModel.Clear();
-
+            StoryDBModel.Clear();
             //ChapterDBModel.Clear();
             //GameLevelDBModel.Clear();
             //TaskDBModel.Clear();

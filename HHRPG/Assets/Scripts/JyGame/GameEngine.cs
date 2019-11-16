@@ -12,7 +12,7 @@ namespace JyGame
 
         public int ArenaHardLevel = -1;
 
-        private string _value = "大地图";//所在的江湖位置
+        private int _value = 0;
 
         //		private Story _story;
 
@@ -71,7 +71,7 @@ namespace JyGame
             RuntimeData.Instance.KeyValues["original_主角之家.开场"] = "0";
             RuntimeData.Instance.SetLocation("大地图", "南贤居");
             RuntimeData.Instance.TrialRoles = string.Empty;
-            this.SwitchGameScene("story", "新生村_出生");
+            this.SwitchGameScene("story", 30001);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace JyGame
         /// </summary>
         /// <param name="type"></param>
         /// <param name="value"></param>
-        public void SwitchGameScene(string type, string value)
+        public void SwitchGameScene(string type, int value)
         {
             //if (RuntimeData.Instance.judgeFinishTask())
             //{
@@ -90,7 +90,7 @@ namespace JyGame
 
             if (this.CurrentSceneType.Equals("story"))
             {
-                RuntimeData.Instance.PrevStory = this.CurrentSceneValue;
+                //RuntimeData.Instance.PrevStory = this.CurrentSceneValue;
             }
             this.CurrentSceneType = type;
             this.CurrentSceneValue = value;
@@ -194,7 +194,7 @@ namespace JyGame
                         this.BattleSelectRole_CurrentForbbidenKeys.Add(item);
                     }
                     this.CurrentSceneType = "battle";
-                    this.CurrentSceneValue = "试炼之地_战斗";
+                    //this.CurrentSceneValue = "试炼之地_战斗";
                     //this.BattleSelectRole_BattleCallback = delegate (string rst)
                     //{
                     //    if (rst.Equals("win"))
@@ -322,20 +322,20 @@ namespace JyGame
                     return;
                 case "shop":
                     {
-                        Shop shop = ResourceManager.Get<Shop>(value);
-                        if (shop != null)
-                        {
-                            //ShopUI.CurrentShop = shop;
-                            //ShopUI.Type = ShopType.SHOP;
-                            Application.LoadLevel("Shop");
-                        }
+                        //Shop shop = ResourceManager.Get<Shop>(value);
+                        //if (shop != null)
+                        //{
+                        //    //ShopUI.CurrentShop = shop;
+                        //    //ShopUI.Type = ShopType.SHOP;
+                        //    Application.LoadLevel("Shop");
+                        //}
                         return;
                     }
                 case "game":
                     //this.PlaySmallGame(value);
                     return;
                 case "mainmenu":
-                    Application.LoadLevel("MainMenu");
+                   // Application.LoadLevel("MainMenu");
                     return;
                 case "menpai":
                     LoadingUI.Load("Menpai");
@@ -345,52 +345,52 @@ namespace JyGame
                     Application.LoadLevel("Shop");
                     return;
                 case "item":
-                    if (value.Split(new char[]
-                    {
-                            '#'
-                    }).Length > 1)
-                    {
-                        RuntimeData.Instance.addItem(new ItemInstance
-                        {
-                            Name = value.Split(new char[]
-                            {
-                                    '#'
-                            })[0]
-                        }, int.Parse(value.Split(new char[]
-                        {
-                                '#'
-                        })[1]));
-                    }
-                    else
-                    {
-                        RuntimeData.Instance.addItem(new ItemInstance
-                        {
-                            Name = value
-                        }, 1);
-                    }
+                    //if (value.Split(new char[]
+                    //{
+                    //        '#'
+                    //}).Length > 1)
+                    //{
+                    //    RuntimeData.Instance.addItem(new ItemInstance
+                    //    {
+                    //        Name = value.Split(new char[]
+                    //        {
+                    //                '#'
+                    //        })[0]
+                    //    }, int.Parse(value.Split(new char[]
+                    //    {
+                    //            '#'
+                    //    })[1]));
+                    //}
+                    //else
+                    //{
+                    //    RuntimeData.Instance.addItem(new ItemInstance
+                    //    {
+                    //        Name = value
+                    //    }, 1);
+                    //}
                     return;
                 case "randomitem":
-                    for (int j = 0; j < int.Parse(value.Split(new char[]
-                    {
-                            '#'
-                    })[1]); j++)
-                    {
-                        RuntimeData.Instance.addItem(ItemInstance.Generate(value.Split(new char[]
-                        {
-                                '#'
-                        })[0], true), 1);
-                    }
+                    //for (int j = 0; j < int.Parse(value.Split(new char[]
+                    //{
+                    //        '#'
+                    //})[1]); j++)
+                    //{
+                    //    RuntimeData.Instance.addItem(ItemInstance.Generate(value.Split(new char[]
+                    //    {
+                    //            '#'
+                    //    })[0], true), 1);
+                    //}
                     return;
                 case "addround":
-                    RuntimeData.Instance.Round += int.Parse(value);
+                    //RuntimeData.Instance.Round += int.Parse(value);
                     return;
                 case "clear":
-                    PlayerPrefs.DeleteKey(value);
+                    //PlayerPrefs.DeleteKey(value);
                     //this.SwitchGameScene("map", RuntimeData.Instance.CurrentBigMap);
                     return;
                 case "clearall":
                     PlayerPrefs.DeleteAll();
-                    Application.LoadLevel("MainMenu");
+                   // Application.LoadLevel("MainMenu");
                     return;
                 case "join":
                     //RuntimeData.Instance.addTeamMember(value);
@@ -400,7 +400,7 @@ namespace JyGame
                         //this.battleType = BattleType.Zhenlongqiju;
                         this.BattleSelectRole_CurrentForbbidenKeys.Clear();
                         this.CurrentSceneType = "battle";
-                        this.CurrentSceneValue = "珍珑棋局_战斗";
+                        //this.CurrentSceneValue = "珍珑棋局_战斗";
                         string currentMode = RuntimeData.Instance.GameMode;
                         RuntimeData.Instance.GameMode = "crazy";
                         //this.BattleSelectRole_BattleCallback = delegate (string rst)
@@ -599,7 +599,7 @@ namespace JyGame
             }
         }
 
-        public string CurrentSceneValue
+        public int CurrentSceneValue
         {
             get
             {

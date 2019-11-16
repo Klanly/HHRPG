@@ -543,6 +543,9 @@ namespace JyGame
         //    }
         //}
 
+        /// <summary>
+        /// 前一个故事
+        /// </summary>  
         public string PrevStory
         {
             get

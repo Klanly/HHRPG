@@ -4,19 +4,17 @@ using System.Xml.Serialization;
 
 namespace JyGame
 {
-	[XmlType("result")]
 	public class StoryResult
 	{
-		[XmlAttribute]
 		public string ret;
 
-		[XmlAttribute]
 		public string type;
 
-		[XmlAttribute]
 		public string value;
 
-		[XmlElement("condition")]
+        /// <summary>
+        /// 条件
+        /// </summary>
 		public List<Condition> Conditions;
 	}
 }

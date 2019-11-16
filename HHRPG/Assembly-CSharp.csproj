@@ -288,6 +288,7 @@
     <Compile Include="Assets\Scripts\JyGame\Tools.cs" />
     <Compile Include="Assets\Scripts\JyGame\Tower.cs" />
     <Compile Include="Assets\Scripts\JyGame\Trigger.cs" />
+    <Compile Include="Assets\Scripts\JyGame\TriggerLogic.cs" />
     <Compile Include="Assets\Scripts\LoadingUI.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\MapUI.cs" />
@@ -435,6 +436,8 @@
     <Compile Include="Assets\YouYouScript\Data\DataTable\Create\SkillLevelEntity.cs" />
     <Compile Include="Assets\YouYouScript\Data\DataTable\Create\SpriteDBModel.cs" />
     <Compile Include="Assets\YouYouScript\Data\DataTable\Create\SpriteEntity.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\StoryDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\StoryEntity.cs" />
     <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_CodeDBModel.cs" />
     <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_CodeEntity.cs" />
     <Compile Include="Assets\YouYouScript\Data\DataTable\Create\Sys_EffectDBModel.cs" />

@@ -4,24 +4,12 @@ using System.Xml.Serialization;
 
 namespace JyGame
 {
-	[XmlType("story")]
-	public class Story : BasePojo
+	public class Story 
 	{
-		public override string PK
-		{
-			get
-			{
-				return this.Name;
-			}
-		}
+        public string Name;
 
-		[XmlAttribute("name")]
-		public string Name;
+        public List<StoryAction> Actions = new List<StoryAction>();
 
-		[XmlElement("action")]
-		public List<StoryAction> Actions = new List<StoryAction>();
-
-        [XmlElement("result")]
         public List<StoryResult> Results = new List<StoryResult>();
     }
 }

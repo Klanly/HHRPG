@@ -3,19 +3,17 @@ using System.Xml.Serialization;
 
 namespace JyGame
 {
-	[XmlType("condition")]
 	public class Condition
 	{
-		//[XmlIgnore]
-		//public bool IsTrue
-		//{
-		//	get
-		//	{
-		//		return TriggerLogic.judge(this);
-		//	}
-		//}
+        public bool IsTrue
+        {
+            get
+            {
+                return TriggerLogic.judge(this);
+            }
+        }
 
-		[XmlAttribute]
+        [XmlAttribute]
 		public string type;
 
 		[XmlAttribute]

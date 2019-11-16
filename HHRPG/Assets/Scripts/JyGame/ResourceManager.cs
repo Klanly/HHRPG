@@ -37,9 +37,9 @@ namespace JyGame
             //ResourceManager.LoadResource<Skill>("skills.xml", "root/skill");
             //ResourceManager.LoadResource<InternalSkill>("internal_skills.xml", "root/internal_skill");
             //ResourceManager.LoadResource<SpecialSkill>("special_skills.xml", "root/special_skill");
-            ResourceManager.LoadResource<Role>("roles.xml", "root/role");
+            //ResourceManager.LoadResource<Role>("roles.xml", "root/role");
             //ResourceManager.LoadResource<Aoyi>("aoyis.xml", "root/aoyi");
-            ResourceManager.LoadResource<Story>("storys.xml", "root/story");
+            //ResourceManager.LoadResource<Story>("storys.xml", "root/story");
             //ResourceManager.LoadResource<Story>("storysPY.xml", "root/story");
             //ResourceManager.LoadResource<Story>("storysCG.xml", "root/story");
             //ResourceManager.LoadResource<Map>("maps.xml", "root/map");

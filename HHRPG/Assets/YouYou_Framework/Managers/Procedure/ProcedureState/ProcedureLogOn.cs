@@ -22,6 +22,7 @@ namespace YouYou
             {
                 SceneManager.LoadScene("MainMenu");
             }
+            GameEntry.Procedure.ChangeState(ProcedureState.SelectRole);
         }
 
         public override void OnLeave()
