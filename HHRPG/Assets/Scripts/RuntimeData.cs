@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using YouYou;
 
 namespace JyGame
 {
@@ -231,15 +232,16 @@ namespace JyGame
         //    return null;
         //}
 
-        public void addTeamMember(string roleKey)
+        /// <summary>
+        /// 添加队伍成员
+        /// </summary>
+        /// <param name="roleID">角色ID</param>
+        public void addTeamMember(int roleID)
         {
-            this.Team.Add(ResourceManager.Get<Role>(roleKey).Clone());
-        }
+            RoleEntity roleEntity= GameEntry.DataTable.DataTableManager.RoleDBModel.Get(roleID);          
+            Role role = new Role();
+            role.Name = roleEntity.Name;
 
-        public void addTeamMember(string roleKey, string changeName)
-        {
-            Role role = ResourceManager.Get<Role>(roleKey).Clone();
-            role.Name = changeName;
             this.Team.Add(role);
         }
 

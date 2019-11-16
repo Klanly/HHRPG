@@ -41,7 +41,8 @@ namespace YouYou
         /// </summary>
         public void LoadData()
         {
-            byte[] buffer = GameEntry.Resource.GetFileBuffer(string.Format("{0}/download/DataTable/{1}.bytes",GameEntry.Resource.LocalFilePath,DataTableName));
+            
+            byte[] buffer = GameEntry.Resource.GetFileBuffer(string.Format("{0}/Download/DataTable/{1}.bytes",GameEntry.Resource.LocalFilePath,DataTableName));
 
             using (MMO_MemoryStream ms =new MMO_MemoryStream(buffer))
             {

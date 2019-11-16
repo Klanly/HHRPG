@@ -44,14 +44,14 @@ namespace YouYou
         //    private set;
         //}
 
-        //protected override void OnAwake()
-        //{
-        //    base.OnAwake();
-        //    CacheData = new CacheData();
-        //    SysData = new SysData();
-        //    UserData = new UserData();
-        //    PVEMapData = new PVEMapData();
-        //}
+        protected override void OnAwake()
+        {
+            base.OnAwake();
+            //CacheData = new CacheData();
+            //SysData = new SysData();
+            //UserData = new UserData();
+            //PVEMapData = new PVEMapData();
+        }
 
         public override void Shutdown()
         {

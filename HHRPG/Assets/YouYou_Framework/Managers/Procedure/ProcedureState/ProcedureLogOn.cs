@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace YouYou
 {
@@ -12,12 +13,15 @@ namespace YouYou
         public override void OnEnter()
         {
             base.OnEnter();
-            Debug.Log("Ö´ÐÐµÇÂ½Á÷³Ì");
         }
 
         public override void OnUpdate()
         {
             base.OnUpdate();
+            if(SceneManager.GetActiveScene().name!= "MainMenu")
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
         }
 
         public override void OnLeave()

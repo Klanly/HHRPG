@@ -19,11 +19,7 @@ namespace YouYou
         {
             base.OnAwake();
 
-#if DISABLE_ASSETBUNDLE
             LocalFilePath = Application.dataPath;
-#else
-            LocalFilePath = Application.persistentDataPath;
-#endif
         }
 
         /// <summary>

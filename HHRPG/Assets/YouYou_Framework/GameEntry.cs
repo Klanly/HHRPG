@@ -243,6 +243,7 @@ namespace YouYou
 
         void Start()
         {
+            DontDestroyOnLoad(this);
             InitBaseComponents();
         }
 

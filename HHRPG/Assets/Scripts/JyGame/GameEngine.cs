@@ -66,7 +66,7 @@ namespace JyGame
             RuntimeData.Instance.Team.Clear();
             RuntimeData.Instance.Follow.Clear();
             RuntimeData.Instance.Items.Clear();
-            RuntimeData.Instance.addTeamMember("主角");
+            RuntimeData.Instance.addTeamMember(10001);
             //RuntimeData.Instance.addItem(ItemInstance.Generate("大还丹", false), 10);
             RuntimeData.Instance.KeyValues["original_主角之家.开场"] = "0";
             RuntimeData.Instance.SetLocation("大地图", "南贤居");
@@ -393,7 +393,7 @@ namespace JyGame
                     Application.LoadLevel("MainMenu");
                     return;
                 case "join":
-                    RuntimeData.Instance.addTeamMember(value);
+                    //RuntimeData.Instance.addTeamMember(value);
                     return;
                 case "zhenlongqiju":
                     {

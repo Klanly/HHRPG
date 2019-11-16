@@ -16,6 +16,7 @@ namespace YouYou
             GameEntry.Event.CommonEvent.AddEventListener(SysEventId.LoadDataTableComplete, OnLoadDataTableComplete);
             GameEntry.Event.CommonEvent.AddEventListener(SysEventId.LoadOneDataTableComplete, OnLoadOneDataTableComplete);
             GameEntry.DataTable.LoadDataTableAsync();
+
         }
     
         public override void OnUpdate()
@@ -36,7 +37,7 @@ namespace YouYou
         /// <param name="userData"></param>
         private void OnLoadDataTableComplete(object userData)
         {
-
+            GameEntry.Procedure.ChangeState(ProcedureState.LogOn);
         }
 
         /// <summary>
