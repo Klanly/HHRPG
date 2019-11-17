@@ -923,67 +923,66 @@ namespace JyGame
         //    }
         //}
 
-        //// Token: 0x060000F5 RID: 245 RVA: 0x00007C70 File Offset: 0x00005E70
-        //public string CheckTimeFlags()
-        //{
-        //    List<string> list = new List<string>();
-        //    foreach (string text in this.KeyValues.Keys)
-        //    {
-        //        if (text.StartsWith("TIMEKEY_"))
-        //        {
-        //            string text2 = this.KeyValues[text];
-        //            DateTime d = DateTime.MinValue;
-        //            try
-        //            {
-        //                d = DateTime.Parse(text2.Split(new char[]
-        //                {
-        //                        '#'
-        //                })[0]);
-        //            }
-        //            catch
-        //            {
-        //                d = DateTime.ParseExact(text2.Split(new char[]
-        //                {
-        //                        '#'
-        //                })[0], "yyyy-MM-dd HH:mm:ss", CultureInfo.CurrentCulture);
-        //            }
-        //            int num = int.Parse(text2.Split(new char[]
-        //            {
-        //                    '#'
-        //            })[1]);
-        //            if ((this.Date - d).TotalDays > (double)num)
-        //            {
-        //                list.Add(text);
-        //            }
-        //        }
-        //    }
-        //    string result = string.Empty;
-        //    string text3 = string.Empty;
-        //    foreach (string text4 in list)
-        //    {
-        //        string text5 = this.KeyValues[text4];
-        //        if (text5.Split(new char[]
-        //        {
-        //                '#'
-        //        }).Length > 2)
-        //        {
-        //            result = text5.Split(new char[]
-        //            {
-        //                    '#'
-        //            })[2];
-        //            text3 = text4;
-        //        }
-        //        else
-        //        {
-        //            this.KeyValues.Remove(text4);
-        //        }
-        //    }
-        //    if (text3 != null && !text3.Equals(string.Empty))
-        //    {
-        //        this.KeyValues.Remove(text3);
-        //    }
-        //    return result;
-        //}
+        public string CheckTimeFlags()
+        {
+            List<string> list = new List<string>();
+            foreach (string text in this.KeyValues.Keys)
+            {
+                if (text.StartsWith("TIMEKEY_"))
+                {
+                    string text2 = this.KeyValues[text];
+                    DateTime d = DateTime.MinValue;
+                    try
+                    {
+                        d = DateTime.Parse(text2.Split(new char[]
+                        {
+                                '#'
+                        })[0]);
+                    }
+                    catch
+                    {
+                        d = DateTime.ParseExact(text2.Split(new char[]
+                        {
+                                '#'
+                        })[0], "yyyy-MM-dd HH:mm:ss", CultureInfo.CurrentCulture);
+                    }
+                    int num = int.Parse(text2.Split(new char[]
+                    {
+                            '#'
+                    })[1]);
+                    //if ((this.Date - d).TotalDays > (double)num)
+                    //{
+                    //    list.Add(text);
+                    //}
+                }
+            }
+            string result = string.Empty;
+            string text3 = string.Empty;
+            foreach (string text4 in list)
+            {
+                string text5 = this.KeyValues[text4];
+                if (text5.Split(new char[]
+                {
+                        '#'
+                }).Length > 2)
+                {
+                    result = text5.Split(new char[]
+                    {
+                            '#'
+                    })[2];
+                    text3 = text4;
+                }
+                else
+                {
+                    this.KeyValues.Remove(text4);
+                }
+            }
+            if (text3 != null && !text3.Equals(string.Empty))
+            {
+                this.KeyValues.Remove(text3);
+            }
+            return result;
+        }
 
         //// Token: 0x060000F6 RID: 246 RVA: 0x00007E78 File Offset: 0x00006078
         //public void AddFlag(string key)
@@ -1002,12 +1001,11 @@ namespace JyGame
         //    }
         //}
 
-        //// Token: 0x060000F8 RID: 248 RVA: 0x00007EFC File Offset: 0x000060FC
-        //public bool HasFlag(string key)
-        //{
-        //    string key2 = "FLAG_" + key;
-        //    return RuntimeData.Instance.KeyValues.ContainsKey(key2);
-        //}
+        public bool HasFlag(string key)
+        {
+            string key2 = "FLAG_" + key;
+            return RuntimeData.Instance.KeyValues.ContainsKey(key2);
+        }
 
         public bool IsStoryFinished(string storyName)
         {

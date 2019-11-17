@@ -177,15 +177,14 @@ namespace JyGame
             return default(T);
         }
 
-        //		// Token: 0x06000098 RID: 152 RVA: 0x00005F90 File Offset: 0x00004190
-        //		public static IEnumerable<T> GetAll<T>()
-        //		{
-        //			if (ResourceManager._values.ContainsKey(typeof(T)))
-        //			{
-        //				return ResourceManager._values[typeof(T)].Values.Cast<T>();
-        //			}
-        //			return null;
-        //		}
+        public static IEnumerable<T> GetAll<T>()
+        {
+            if (ResourceManager._values.ContainsKey(typeof(T)))
+            {
+                return ResourceManager._values[typeof(T)].Values.Cast<T>();
+            }
+            return null;
+        }
 
         //		// Token: 0x06000099 RID: 153 RVA: 0x00005FD8 File Offset: 0x000041D8
         //		public static T GetRandom<T>()

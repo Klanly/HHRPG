@@ -74,27 +74,23 @@ namespace JyGame
         [XmlAttribute("name")]
         public string Name;
 
-        //		// Token: 0x040001B7 RID: 439
-        //		[XmlAttribute("pic")]
-        //		public string Pic;
+        // Token: 0x040001B7 RID: 439
+        [XmlAttribute("pic")]
+        public string Pic;
 
-        //		// Token: 0x040001B8 RID: 440
-        //		[XmlAttribute("desc")]
-        //		public string Desc;
+        // Token: 0x040001B8 RID: 440
+        [XmlAttribute("desc")]
+        public string Desc;
 
-        //		// Token: 0x040001B9 RID: 441
-        //		[XmlArrayItem(typeof(Music))]
-        //		[XmlArray("musics")]
-        //		public List<Music> Musics;
+        //[XmlArrayItem(typeof(Music))]
+        //[XmlArray("musics")]
+        //public List<Music> Musics;
 
-        //		// Token: 0x040001BA RID: 442
-        //		[XmlElement("mapunit")]
-        //		public List<MapLocation> MapUnits;
+        //[XmlElement("mapunit")]
+        //public List<MapLocation> MapUnits;
 
-        //		// Token: 0x040001BB RID: 443
-        //		private List<MapLocation> locations = new List<MapLocation>();
+        //private List<MapLocation> locations = new List<MapLocation>();
 
-        //		// Token: 0x040001BC RID: 444
-        //		private List<MapRole> mapRoles = new List<MapRole>();
+        //private List<MapRole> mapRoles = new List<MapRole>();
     }
 }

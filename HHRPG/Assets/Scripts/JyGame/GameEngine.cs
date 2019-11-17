@@ -109,23 +109,22 @@ namespace JyGame
                     return;
                 case "map":
                     {
-                        Debug.Log("执行");
-                        //RuntimeData.Instance.ResetTeam();
-                        ////string text = RuntimeData.Instance.CheckTimeFlags();
-                        ////if (!text.Equals(string.Empty))
-                        ////{
-                        ////    //RuntimeData.Instance.mapUI.LoadStory(text);
-                        ////    return;
-                        ////}
-                        //if (Application.loadedLevelName == "Map")
+                        RuntimeData.Instance.ResetTeam();
+                        string text = RuntimeData.Instance.CheckTimeFlags();
+                        //if (!text.Equals(string.Empty))
                         //{
-                        //   // RuntimeData.Instance.mapUI.LoadMap(value);
+                        //    //RuntimeData.Instance.mapUI.LoadStory(text);
+                        //    return;
                         //}
-                        //else
-                        //{
-                        //    LoadingUI.Load("Map");
-                        //}
-                        //if (Configer.IsAutoSave)
+                        if (loadedLevelName == "Map")
+                        {
+                            RuntimeData.Instance.mapUI.LoadMap(value);
+                        }
+                        else
+                        {
+                            LoadingUI.Load("Map");
+                        }
+                        //if (Configer.IsAutoSave)//自动存档
                         //{
                         //    string content = RuntimeData.Instance.Save();
                         //    SaveManager.SetSave("autosave", content);
