@@ -10,7 +10,7 @@ namespace JyGame
 
 		public string type;
 
-		public string value;
+		public int value;
 
         /// <summary>
         /// 条件

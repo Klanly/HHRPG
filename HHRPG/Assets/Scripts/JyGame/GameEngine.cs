@@ -90,7 +90,7 @@ namespace JyGame
 
             if (this.CurrentSceneType.Equals("story"))
             {
-                //RuntimeData.Instance.PrevStory = this.CurrentSceneValue;
+                RuntimeData.Instance.PrevStory = this.CurrentSceneValue.ToString();
             }
             this.CurrentSceneType = type;
             this.CurrentSceneValue = value;
@@ -109,21 +109,22 @@ namespace JyGame
                     return;
                 case "map":
                     {
-                        RuntimeData.Instance.ResetTeam();
-                        //string text = RuntimeData.Instance.CheckTimeFlags();
-                        //if (!text.Equals(string.Empty))
+                        Debug.Log("执行");
+                        //RuntimeData.Instance.ResetTeam();
+                        ////string text = RuntimeData.Instance.CheckTimeFlags();
+                        ////if (!text.Equals(string.Empty))
+                        ////{
+                        ////    //RuntimeData.Instance.mapUI.LoadStory(text);
+                        ////    return;
+                        ////}
+                        //if (Application.loadedLevelName == "Map")
                         //{
-                        //    //RuntimeData.Instance.mapUI.LoadStory(text);
-                        //    return;
+                        //   // RuntimeData.Instance.mapUI.LoadMap(value);
                         //}
-                        if (Application.loadedLevelName == "Map")
-                        {
-                           // RuntimeData.Instance.mapUI.LoadMap(value);
-                        }
-                        else
-                        {
-                            LoadingUI.Load("Map");
-                        }
+                        //else
+                        //{
+                        //    LoadingUI.Load("Map");
+                        //}
                         //if (Configer.IsAutoSave)
                         //{
                         //    string content = RuntimeData.Instance.Save();

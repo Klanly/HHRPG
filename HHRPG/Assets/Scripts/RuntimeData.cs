@@ -186,7 +186,6 @@ namespace JyGame
             }
         }
 
-        //// Token: 0x060000AF RID: 175 RVA: 0x00006A50 File Offset: 0x00004C50
         //public bool NameInTeam(string roleName)
         //{
         //    foreach (Role role in this.Team)
@@ -1010,20 +1009,18 @@ namespace JyGame
         //    return RuntimeData.Instance.KeyValues.ContainsKey(key2);
         //}
 
-        //// Token: 0x060000F9 RID: 249 RVA: 0x00007F30 File Offset: 0x00006130
-        //public bool IsStoryFinished(string storyName)
-        //{
-        //    return this.KeyValues.ContainsKey(storyName);
-        //}
+        public bool IsStoryFinished(string storyName)
+        {
+            return this.KeyValues.ContainsKey(storyName);
+        }
 
-        //// Token: 0x060000FA RID: 250 RVA: 0x00007F40 File Offset: 0x00006140
-        //public void StoryFinish(string storyName, string storyResult)
-        //{
-        //    if (!string.IsNullOrEmpty(storyName))
-        //    {
-        //        this.KeyValues[storyName] = storyResult;
-        //    }
-        //}
+        public void StoryFinish(string storyName, string storyResult)
+        {
+            if (!string.IsNullOrEmpty(storyName))
+            {
+                this.KeyValues[storyName] = storyResult;
+            }
+        }
 
         private string getDataOrInit(string key, string initValue = "")
         {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using JyGame;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YouYou;
 
@@ -188,13 +189,24 @@ public class MapUI : MonoBehaviour
             sa.type = array2[1];
             story.Actions.Add(sa);
         }
-    
-        //if (story == null)
-        //{
-        //	Debug.LogError("调用了未定义的story:" + story);
-        //	this.LoadMap("大地图");
-        //	return;
-        //}
+
+        string[] array3 = storyEntity.Result.Split(',');
+        for (int i = 0; i < array3.Length; i++)
+        {
+            string[] array4 = array3[i].Split('_');
+            StoryResult sr = new StoryResult();        
+            sr.ret = array4[0];
+            sr.type = array4[1];
+            sr.value = array4[2].ToInt();
+            story.Results.Add(sr);
+        }
+
+        if (story == null)
+        {
+            Debug.LogError("调用了未定义的story:" + story);
+            this.LoadMap("大地图");
+            return;
+        }
         this.LoadStory(story, null);
     }
 
@@ -203,7 +215,8 @@ public class MapUI : MonoBehaviour
         this._story = story;
         this.storyActionIndex = 0;
         this._storyResult = "0";
-        //this.SuggestPanelObj.SetActive(false);
+        //this.SuggestPanelObj.SetActive(false);//关闭剪影面板
+        //背景图片
         //if ((this.BackgroundImage != null || this.BackgroundImage.GetComponent<Image>().sprite == null) && MapUI.prevSprite != null)
         //{
         //	//float alpha = (float)CommonSettings.timeOpacity[RuntimeData.Instance.Date.Hour / 2];
@@ -228,7 +241,6 @@ public class MapUI : MonoBehaviour
 		this.LoadSelection(storyAction, callback);
 	}
 
-	// Token: 0x060004D2 RID: 1234 RVA: 0x000282A0 File Offset: 0x000264A0
 	public void LoadSelection(StoryAction selection, CommonSettings.IntCallBack callback)
 	{
 		//this.selectMenu.Clear();
@@ -272,12 +284,11 @@ public class MapUI : MonoBehaviour
     /// <param name="callback"></param>
 	public void ExecuteNextStoryAction(CommonSettings.VoidCallBack callback = null)
 	{
-
-		//if (this._story == null || this._story.Actions == null)
-		//{
-		//	return;
-		//}
-		this.storyActionIndex++;
+        if (this._story == null || this._story.Actions == null)
+        {
+            return;
+        }
+        this.storyActionIndex++;
 		if (this.storyActionIndex > this._story.Actions.Count)//故事完成
 		{
 			this.jumpDialogFlag = false;//跳过对话
@@ -302,8 +313,6 @@ public class MapUI : MonoBehaviour
 
     private void ExecuteAction(StoryAction action, CommonSettings.VoidCallBack callback = null)
     {
-        Debug.Log(action.type);
-        Debug.Log(action.value);
         string[] array;
         if (action.value.Contains("#"))
         {
@@ -446,7 +455,8 @@ public class MapUI : MonoBehaviour
             case "MUSIC":
                 {
                     string key2 = array[0];
-                    //AudioManager.Instance.Play(key2);
+                    Debug.Log("播放音乐"+key2);
+                    //RPGAudioManager.Instance.Play(key2);
                     this.ExecuteNextStoryAction(callback);
                     return;
                 }
@@ -1702,37 +1712,37 @@ public class MapUI : MonoBehaviour
     /// </summary>
     private void StoryFinished()
     {
-        //RuntimeData.Instance.StoryFinish(this._story.Name, this._storyResult);
-        //foreach (StoryResult storyResult in this._story.Results)
-        //{
-        //    if (storyResult.ret == null)
-        //    {
-        //        storyResult.ret = "0";
-        //    }
-        //    if (storyResult.ret.Equals(this._storyResult))
-        //    {
-        //        bool flag = true;
-        //        foreach (Condition condition in storyResult.Conditions)
-        //        {
-        //            if (!condition.IsTrue)
-        //            {
-        //                flag = false;
-        //                break;
-        //            }
-        //        }
-        //        if (flag)
-        //        {
-        //            RuntimeData.Instance.gameEngine.SwitchGameScene(storyResult.type, storyResult.value);
-        //            return;
-        //        }
-        //    }
-        //}
-        //if (this._storyResult == "lose")
-        //{
-        //    Application.LoadLevel("GameOver");
-        //    return;
-        //}
-        //RuntimeData.Instance.gameEngine.SwitchGameScene("map", RuntimeData.Instance.CurrentBigMap);
+        RuntimeData.Instance.StoryFinish(this._story.Name, this._storyResult);
+        foreach (StoryResult storyResult in this._story.Results)
+        {
+            if (storyResult.ret == null)
+            {
+                storyResult.ret = "0";
+            }
+            if (storyResult.ret.Equals(this._storyResult))
+            {
+                bool flag = true;
+                foreach (Condition condition in storyResult.Conditions)
+                {
+                    if (!condition.IsTrue)
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag)
+                {
+                    RuntimeData.Instance.gameEngine.SwitchGameScene(storyResult.type, storyResult.value);
+                    return;
+                }
+            }
+        }
+        if (this._storyResult == "lose")
+        {
+            SceneManager.LoadScene("GameOver");
+            return;
+        }
+        RuntimeData.Instance.gameEngine.SwitchGameScene("map", RuntimeData.Instance.CurrentBigMap.ToInt());
     }
 
     //private void SetBackground(Sprite sp, float alpha = 1f)

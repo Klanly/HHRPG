@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class AudioManager : MonoBehaviour
+public class RPGAudioManager : MonoBehaviour
 {
-    public static AudioManager Singleton { get; private set; }
+    public static RPGAudioManager Singleton { get; private set; }
 
     public AudioSetting masterVolumeSetting = new AudioSetting() { id = "MASTER" };
     public AudioSetting bgmVolumeSetting = new AudioSetting() { id = "BGM" };
