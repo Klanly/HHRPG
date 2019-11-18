@@ -269,6 +269,8 @@
     <Compile Include="Assets\Scripts\JyGame\ITTrigger.cs" />
     <Compile Include="Assets\Scripts\JyGame\JYTouch.cs" />
     <Compile Include="Assets\Scripts\JyGame\Map.cs" />
+    <Compile Include="Assets\Scripts\JyGame\MapEvent.cs" />
+    <Compile Include="Assets\Scripts\JyGame\MapRole.cs" />
     <Compile Include="Assets\Scripts\JyGame\Menpai.cs" />
     <Compile Include="Assets\Scripts\JyGame\ModEditorResourceManager.cs" />
     <Compile Include="Assets\Scripts\JyGame\RandomBattleRole.cs" />
@@ -294,6 +296,7 @@
     <Compile Include="Assets\Scripts\JyGame\UI\MessageBoxUI.cs" />
     <Compile Include="Assets\Scripts\LoadingUI.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\MapRoleUI.cs" />
     <Compile Include="Assets\Scripts\MapUI.cs" />
     <Compile Include="Assets\Scripts\RoleStatePanelUI.cs" />
     <Compile Include="Assets\Scripts\RuntimeData.cs" />
