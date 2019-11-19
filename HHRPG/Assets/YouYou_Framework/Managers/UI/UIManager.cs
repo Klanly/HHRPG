@@ -29,12 +29,12 @@ namespace YouYou
             }
             //1.¶Á±í
 
-            Sys_UIFormEntity entity = GameEntry.DataTable.DataTableManager.Sys_UIFormDBModel.Get(uiFormId);
+            //Sys_UIFormEntity entity = GameEntry.DataTable.DataTableManager.Sys_UIFormDBModel.Get(uiFormId);
 
-            if (entity == null)
-            {
-                return;
-            }
+            //if (entity == null)
+            //{
+            //    return;
+            //}
 #if DISABLE_ASSETBUNDLE && UNITY_EDITOR
 
             UIFormBase formBase = GameEntry.UI.Dequeue(uiFormId);

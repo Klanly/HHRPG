@@ -56,13 +56,14 @@ namespace JyGame
 		{
 			if (!this.currentMusicKey.Equals(key))
 			{
-				//AudioClip music = Resource.GetMusic(key);
-				//if (music == null)
-				//{
-				//	return;
-				//}
-				//this.audioMgr.clip = music;
-				this.audioMgr.Play();
+                string filePath = "Audios/" + key;
+                 AudioClip music = Resources.Load(filePath) as AudioClip;
+                if (music == null)
+                {
+                    return;
+                }
+                this.audioMgr.clip = music;
+                this.audioMgr.Play();
 				this.currentMusicKey = key;
 			}
 		}

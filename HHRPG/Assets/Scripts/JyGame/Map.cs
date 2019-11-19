@@ -18,6 +18,8 @@ namespace JyGame
         [XmlAttribute("desc")]
         public string Desc;
 
+        public string Bg;
+
         //[XmlArrayItem(typeof(Music))]
         //[XmlArray("musics")]
         //public List<Music> Musics;
@@ -50,7 +52,7 @@ namespace JyGame
         {
             get
             {
-                this.init();
+                //this.init();
                 return this.locations;
             }
         }
@@ -59,7 +61,7 @@ namespace JyGame
         {
             get
             {
-                this.init();
+                //this.init();
                 return this.mapRoles;
             }
         }
@@ -68,18 +70,18 @@ namespace JyGame
         {
             if (!this.initFlag)
             {
-                foreach (MapLocation mapLocation in this.MapUnits)
-                {
-                    if (mapLocation.x >= 0 && mapLocation.y >= 0)
-                    {
-                        this.locations.Add(mapLocation);
-                    }
-                    else
-                    {
-                        this.mapRoles.Add(mapLocation);
-                    }
-                }
-                this.initFlag = true;
+                //foreach (MapLocation mapLocation in this.MapUnits)
+                //{
+                //    if (mapLocation.x >= 0 && mapLocation.y >= 0)
+                //    {
+                //        this.locations.Add(mapLocation);
+                //    }
+                //    else
+                //    {
+                //        this.mapRoles.Add(mapLocation);
+                //    }
+                //}
+                //this.initFlag = true;
             }
         }
     }

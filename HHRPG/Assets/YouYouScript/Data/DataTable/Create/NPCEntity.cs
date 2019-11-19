@@ -1,11 +1,10 @@
 
 //===================================================
 //作    者：边涯  http://www.u3dol.com
-//创建时间：2019-10-02 20:05:24
+//创建时间：2019-11-19 20:14:36
 //备    注：此代码为工具生成 请勿手工修改
 //===================================================
 using System.Collections;
-using YouYou;
 
 /// <summary>
 /// NPC实体
@@ -18,23 +17,18 @@ public partial class NPCEntity : DataTableEntityBase
     public string Name;
 
     /// <summary>
-    /// 预设名称
+    /// 描述
     /// </summary>
-    public string PrefabName;
+    public string Desc;
 
     /// <summary>
     /// 头像
     /// </summary>
-    public string HeadPic;
+    public string Head;
 
     /// <summary>
-    /// 半身像
+    /// 事件 重复次数 名称 类型 条件
     /// </summary>
-    public string HalfBodyPic;
-
-    /// <summary>
-    /// 自言自语
-    /// </summary>
-    public string Talk;
+    public string Event;
 
 }

@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace YouYou
-{
+
     /// <summary>
     /// 数据表实体的基类
     /// </summary>
@@ -14,4 +13,4 @@ namespace YouYou
         /// </summary>
         public int Id;
     }
-}
+

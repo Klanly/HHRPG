@@ -15,10 +15,10 @@ namespace YouYou
         public string GetString(string key,params object[] args)
         {
             string value = null;
-            if(GameEntry.DataTable.DataTableManager.LocalizationBModel.LocalizationDic.TryGetValue(key,out value))
-            {
-                return string.Format(value,args);
-            }
+            //if(GameEntry.DataTable.DataTableManager.LocalizationBModel.LocalizationDic.TryGetValue(key,out value))
+            //{
+            //    return string.Format(value,args);
+            //}
             return value;
         }
 

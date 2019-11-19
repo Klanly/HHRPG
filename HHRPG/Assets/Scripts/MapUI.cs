@@ -37,7 +37,7 @@ public class MapUI : MonoBehaviour
 
     public GameObject ButtonPanel;
 
-    public GameObject BackgroundImage;
+    public Image BackgroundImage;
 
     public GameObject SelectPanel;
 
@@ -412,12 +412,7 @@ public class MapUI : MonoBehaviour
                 {
                     //this.BigMapPanel.SetActive(false);//关闭大地图
                     string key = array[0];
-                    Debug.Log("更换了背景"+ key);
-                    Sprite image = Resource.GetImage(key, false);
-                    //if (image != null)
-                    //{
-                    //    this.SetBackground(image, 1f);//设置背景
-                    //}
+                    this.SetBackground(key, 1f);//设置背景                   
                     this.ExecuteNextStoryAction(callback);
                     return;
                 }
@@ -464,8 +459,7 @@ public class MapUI : MonoBehaviour
             case "MUSIC":
                 {
                     string key2 = array[0];
-                    Debug.Log("播放了" + key2);
-                    //AudioManager.Instance.Play(key2);
+                    AudioManager.Instance.Play(key2);
                     this.ExecuteNextStoryAction(callback);
                     return;
                 }
@@ -1754,20 +1748,16 @@ public class MapUI : MonoBehaviour
         RuntimeData.Instance.gameEngine.SwitchGameScene("map", RuntimeData.Instance.CurrentBigMap.ToInt());
     }
 
-    //private void SetBackground(Sprite sp, float alpha = 1f)
-    //{
-    //	if (sp == null)
-    //	{
-    //		this.BackgroundImage.GetComponent<Image>().color = Color.black;
-    //		this.BackgroundImage.GetComponent<Image>().sprite = null;
-    //	}
-    //	else
-    //	{
-    //		this.BackgroundImage.GetComponent<Image>().color = new Color(1f, 1f, 1f, alpha);
-    //		this.BackgroundImage.GetComponent<Image>().sprite = sp;
-    //		MapUI.prevSprite = sp;
-    //	}
-    //}
+    private void SetBackground(string sp, float alpha = 1f)
+    {
+        string filePath = "Maps/" + sp;
+        Sprite image = Resources.Load<Sprite>(filePath);
+
+        this.BackgroundImage.color = new Color(1f, 1f, 1f, alpha);
+        this.BackgroundImage.sprite = image;
+        MapUI.prevSprite = image;
+
+    }
 
     //// Token: 0x1700015E RID: 350
     //// (get) Token: 0x060004DB RID: 1243 RVA: 0x0002BAEC File Offset: 0x00029CEC
@@ -1781,17 +1771,55 @@ public class MapUI : MonoBehaviour
 
     private IEnumerator DrawMap(int index)
     {
+        MapEntity mapEntity= GameEntry.DataTable.DataTableManager.MapDBModel.Get(index);
         Map map = new Map();
+        map.Name = mapEntity.Name;
+        map.Bg = mapEntity.Music;
+        map.Pic = mapEntity.Pic;
+        string[] array = mapEntity.MapRole.Split('_');
+        for (int i = 0; i < array.Length; i++)
+        {
+            NPCEntity npcEntity = GameEntry.DataTable.DataTableManager.NPCDBModel.Get(array[i].ToInt());
+            MapRole mr = new MapRole();
+            mr.name = npcEntity.Name;
+            mr.description = npcEntity.Desc;
+            mr.Events = new List<MapEvent>();
+
+            string[] array2 = npcEntity.Event.Split(',');
+            for (int j = 0; j < array2.Length; j++)
+            {
+                MapEvent me = new MapEvent();
+                me.Conditions = new List<Condition>();
+                string[] array3 = array2[j].Split('_');
+                me.repeatValue = array3[0];
+                me.value = array3[1];
+                me.type = array3[2];
+
+                if (array3.Length > 3)
+                {
+                    string[] array4=array3[3].Split('#');
+                    for (int l = 0; l < array4.Length; l++)
+                    {
+                        string[] array5=array4[l].Split('|');
+                        Condition cd = new Condition();
+                        cd.value = array5[0];
+                        cd.type= array5[1];
+                        me.Conditions.Add(cd);
+                    }
+                }
+                mr.Events.Add(me);
+            }
+            map.MapRoles.Add(mr);
+        }
+
         this._map = map;
         this.Clear();
         //this.SetMapUIElementVisiable(true);//显示UI
-        //float alpha = (float)CommonSettings.timeOpacity[RuntimeData.Instance.Date.Hour / 2];
 
-        //Music bg = map.GetRandomMusic();
-        //if (bg != null)//播放背景音乐
-        //{
-        //    AudioManager.Instance.Play(bg.Name);
-        //}
+        if (map.Bg != null)//播放背景音乐
+        {
+            AudioManager.Instance.Play(map.Bg);
+        }
 
         if (map.Name == "大地图")
         {
@@ -1804,35 +1832,34 @@ public class MapUI : MonoBehaviour
         }
         else
         {
-            Debug.Log("执行");
             //this.BigMapPanel.SetActive(false);
             //this.MapPanel.SetActive(true);
-            //this.SetBackground(Resource.GetImage(map.Pic, false), alpha);
+            this.SetBackground(map.Pic, 1f);
             //Text descText = this.MapDescriptionPanelObj.transform.FindChild("DescText").GetComponent<Text>();
             //descText.text = map.Desc;
             //this.MapDescriptionPanelObj.SetActive(true);
         }
 
-        if (map.Locations.Count > 0)
-        {
-            //this.LocationInfoText.GetComponent<Text>().text = string.Format("{0}:{1}", RuntimeData.Instance.CurrentBigMap, RuntimeData.Instance.GetLocation(RuntimeData.Instance.CurrentBigMap));
-        }
-        else
-        {
-            this.LocationInfoText.GetComponent<Text>().text = map.Name.TrimEnd(new char[]
-            {
-                '1',
-                '2',
-                '3',
-                '4',
-                '5',
-                '6',
-                '7',
-                '8',
-                '9',
-                '0'
-            });
-        }
+        //if (map.Locations.Count > 0)
+        //{
+        //    //this.LocationInfoText.GetComponent<Text>().text = string.Format("{0}:{1}", RuntimeData.Instance.CurrentBigMap, RuntimeData.Instance.GetLocation(RuntimeData.Instance.CurrentBigMap));
+        //}
+        //else
+        //{
+        //    //this.LocationInfoText.GetComponent<Text>().text = map.Name.TrimEnd(new char[]
+        //    //{
+        //    //    '1',
+        //    //    '2',
+        //    //    '3',
+        //    //    '4',
+        //    //    '5',
+        //    //    '6',
+        //    //    '7',
+        //    //    '8',
+        //    //    '9',
+        //    //    '0'
+        //    //});
+        //}
         //this.TimeInfoText.GetComponent<Text>().text = CommonSettings.DateToGameTime(RuntimeData.Instance.Date);
         //this.MoneyTextObj.GetComponent<Text>().text = RuntimeData.Instance.Money.ToString();
         //this.YuanbaoTextObj.GetComponent<Text>().text = RuntimeData.Instance.Yuanbao.ToString();
@@ -1877,14 +1904,14 @@ public class MapUI : MonoBehaviour
         //    }
         //}
         //yield return 0;
-        //int i = 0;
-        //foreach (MapRole maprole in map.MapRoles)
-        //{
-        //    if (this.AddMapRole(maprole, i))
-        //    {
-        //        i++;
-        //    }
-        //}
+        int q = 0;
+        foreach (MapRole maprole in map.MapRoles)
+        {
+            if (this.AddMapRole(maprole, q))
+            {
+                q++;
+            }
+        }
         yield return 0;
         yield break;
     }
@@ -1919,19 +1946,25 @@ public class MapUI : MonoBehaviour
     //	gameObject.GetComponent<MapLocationUI>().Bind(this, location, num);
     //}
 
-    //// Token: 0x060004DF RID: 1247 RVA: 0x0002BC64 File Offset: 0x00029E64
-    //private bool AddMapRole(MapRole mapRole, int index)
-    //{
-    //	MapEvent activeEvent = mapRole.GetActiveEvent();
-    //	if (activeEvent == null)
-    //	{
-    //		return false;
-    //	}
-    //	GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.MapRoleObjPrefab);
-    //	gameObject.transform.SetParent(this.MapRolePanel.transform);
-    //	gameObject.GetComponent<MapRoleUI>().Bind(this, mapRole, index, activeEvent);
-    //	return true;
-    //}
+    /// <summary>
+    /// 添加角色
+    /// </summary>
+    /// <param name="mapRole"></param>
+    /// <param name="index"></param>
+    /// <returns></returns>
+    private bool AddMapRole(MapRole mapRole, int index)
+    {
+        MapEvent activeEvent = mapRole.GetActiveEvent();
+        if (activeEvent == null)
+        {
+            Debug.Log("没有事件");
+            return false;
+        }
+        GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.MapRoleObjPrefab);
+        gameObject.transform.SetParent(this.MapRolePanel.transform);
+        //gameObject.GetComponent<MapRoleUI>().Bind(this, mapRole, index, activeEvent);
+        return true;
+    }
 
     private void Clear()
     {

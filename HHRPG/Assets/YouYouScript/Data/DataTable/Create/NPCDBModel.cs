@@ -1,13 +1,12 @@
 
 //===================================================
 //作    者：边涯  http://www.u3dol.com
-//创建时间：2019-10-02 20:05:28
+//创建时间：2019-11-19 20:14:36
 //备    注：此代码为工具生成 请勿手工修改
 //===================================================
 using System.Collections;
 using System.Collections.Generic;
 using System;
-using YouYou;
 
 /// <summary>
 /// NPC数据管理
@@ -32,10 +31,9 @@ public partial class NPCDBModel : DataTableDBModelBase<NPCDBModel, NPCEntity>
             NPCEntity entity = new NPCEntity();
             entity.Id = ms.ReadInt();
             entity.Name = ms.ReadUTF8String();
-            entity.PrefabName = ms.ReadUTF8String();
-            entity.HeadPic = ms.ReadUTF8String();
-            entity.HalfBodyPic = ms.ReadUTF8String();
-            entity.Talk = ms.ReadUTF8String();
+            entity.Desc = ms.ReadUTF8String();
+            entity.Head = ms.ReadUTF8String();
+            entity.Event = ms.ReadUTF8String();
 
             m_List.Add(entity);
             m_Dic[entity.Id] = entity;
