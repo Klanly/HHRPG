@@ -270,6 +270,7 @@
     <Compile Include="Assets\Scripts\JyGame\JYTouch.cs" />
     <Compile Include="Assets\Scripts\JyGame\Map.cs" />
     <Compile Include="Assets\Scripts\JyGame\MapEvent.cs" />
+    <Compile Include="Assets\Scripts\JyGame\MapLocation.cs" />
     <Compile Include="Assets\Scripts\JyGame\MapRole.cs" />
     <Compile Include="Assets\Scripts\JyGame\Menpai.cs" />
     <Compile Include="Assets\Scripts\JyGame\ModEditorResourceManager.cs" />

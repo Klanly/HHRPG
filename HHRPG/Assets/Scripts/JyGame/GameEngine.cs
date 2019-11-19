@@ -111,18 +111,20 @@ namespace JyGame
                     {
                         RuntimeData.Instance.ResetTeam();
                         string text = RuntimeData.Instance.CheckTimeFlags();
-                        //if (!text.Equals(string.Empty))
-                        //{
-                        //    //RuntimeData.Instance.mapUI.LoadStory(text);
-                        //    return;
-                        //}
+                        Debug.Log(text);
+                        if (!text.Equals(string.Empty))
+                        {
+                            RuntimeData.Instance.mapUI.LoadStory(text.ToInt());
+                            return;
+                        }
                         if (loadedLevelName == "Map")
                         {
                             RuntimeData.Instance.mapUI.LoadMap(value);
                         }
                         else
                         {
-                            LoadingUI.Load("Map");
+                            //LoadingUI.Load("Map");
+                            SceneManager.LoadScene("Map");
                         }
                         //if (Configer.IsAutoSave)//自动存档
                         //{

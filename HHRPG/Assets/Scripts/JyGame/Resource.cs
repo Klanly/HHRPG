@@ -78,31 +78,30 @@ namespace JyGame
         //			return AssetBundleManager.GetBattleBg(key);
         //		}
 
-        //		// Token: 0x06000222 RID: 546 RVA: 0x000184CC File Offset: 0x000166CC
-        //		public static Sprite GetImage(string key, bool forceLoadFromResource = false)
-        //		{
-        //			Resource resource = ResourceManager.Get<Resource>(key);
-        //			if (resource == null)
-        //			{
-        //				return null;
-        //			}
-        //			string text = resource.Value.Split(new char[]
-        //			{
-        //				'.'
-        //			})[0];
-        //			if (CommonSettings.MOD_EDITOR_MODE && !forceLoadFromResource)
-        //			{
-        //				return ModEditorResourceManager.GetSprite(text);
-        //			}
-        //			if (key.StartsWith("地图."))
-        //			{
-        //				return AssetBundleManager.GetMap(text.Split(new char[]
-        //				{
-        //					'/'
-        //				}).Last<string>());
-        //			}
-        //			return Resources.Load<Sprite>(text);
-        //		}
+        public static Sprite GetImage(string key, bool forceLoadFromResource = false)
+        {
+            Resource resource = ResourceManager.Get<Resource>(key);
+            if (resource == null)
+            {
+                return null;
+            }
+            string text = resource.Value.Split(new char[]
+            {
+                        '.'
+            })[0];
+            if (CommonSettings.MOD_EDITOR_MODE && !forceLoadFromResource)
+            {
+                return ModEditorResourceManager.GetSprite(text);
+            }
+            if (key.StartsWith("地图."))
+            {
+                //return AssetBundleManager.GetMap(text.Split(new char[]
+                //{
+                //            '/'
+                //}).Last<string>());
+            }
+            return Resources.Load<Sprite>(text);
+        }
 
         //		// Token: 0x06000223 RID: 547 RVA: 0x00018550 File Offset: 0x00016750
         //		private IEnumerator LoadTextureFromURL(string url, Action<Texture2D> cb)

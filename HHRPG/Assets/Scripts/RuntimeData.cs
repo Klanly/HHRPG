@@ -186,26 +186,25 @@ namespace JyGame
             }
         }
 
-        //public bool NameInTeam(string roleName)
-        //{
-        //    foreach (Role role in this.Team)
-        //    {
-        //        if (role.Name.Equals(roleName))
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    foreach (Role role2 in this.Follow)
-        //    {
-        //        if (role2.Name.Equals(roleName))
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
+        public bool NameInTeam(string roleName)
+        {
+            foreach (Role role in this.Team)
+            {
+                if (role.Name.Equals(roleName))
+                {
+                    return true;
+                }
+            }
+            foreach (Role role2 in this.Follow)
+            {
+                if (role2.Name.Equals(roleName))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-        //// Token: 0x060000B0 RID: 176 RVA: 0x00006B34 File Offset: 0x00004D34
         //public Role GetTeamRole(string roleKey)
         //{
         //    foreach (Role role in this.Team)
@@ -984,7 +983,6 @@ namespace JyGame
             return result;
         }
 
-        //// Token: 0x060000F6 RID: 246 RVA: 0x00007E78 File Offset: 0x00006078
         //public void AddFlag(string key)
         //{
         //    string key2 = "FLAG_" + key;

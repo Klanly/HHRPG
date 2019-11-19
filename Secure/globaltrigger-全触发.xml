@@ -1,4 +1,4 @@
-<root>
+﻿<root>
   <trigger story="mainStory_黑暗的阴影">
     <condition value="主角#10" type="level_greater_than" />
     <condition value="4" type="friendCount" />
@@ -6,7 +6,7 @@
   <trigger story="mainStory_神秘剑客">
     <condition value="主角#15" type="level_greater_than" />
     <condition value="8" type="friendCount" />
-    <condition value="mainStory_黑暗的阴影1" type="should_finish" />
+    <condition value="mainStory_黑暗的阴影" type="should_finish" />
   </trigger>
   <trigger story="mainStory_组织1">
     <condition value="主角#22" type="level_greater_than" />

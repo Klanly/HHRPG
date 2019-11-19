@@ -82,7 +82,7 @@ namespace JyGame
 
 		// Token: 0x040001C9 RID: 457
 		[XmlElement("event")]
-		//public List<MapEvent> Events;
+		public List<MapEvent> Events;
 
 		// Token: 0x040001CA RID: 458
 		[XmlAttribute]

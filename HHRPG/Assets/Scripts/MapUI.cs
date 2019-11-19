@@ -106,8 +106,6 @@ public class MapUI : MonoBehaviour
         }
     }
 
-    //// Token: 0x17000159 RID: 345
-    //// (get) Token: 0x060004C8 RID: 1224 RVA: 0x00028000 File Offset: 0x00026200
     //public SelectMenu selectMenu
     //{
     //	get
@@ -116,8 +114,6 @@ public class MapUI : MonoBehaviour
     //	}
     //}
 
-    //// Token: 0x1700015A RID: 346
-    //// (get) Token: 0x060004C9 RID: 1225 RVA: 0x0002801C File Offset: 0x0002621C
     //public ItemMenu itemMenu
     //{
     //	get
@@ -126,8 +122,6 @@ public class MapUI : MonoBehaviour
     //	}
     //}
 
-    //// Token: 0x1700015B RID: 347
-    //// (get) Token: 0x060004CA RID: 1226 RVA: 0x0002802C File Offset: 0x0002622C
     //public LogMenu logMenu
     //{
     //	get
@@ -136,8 +130,6 @@ public class MapUI : MonoBehaviour
     //	}
     //}
 
-    //// Token: 0x1700015C RID: 348
-    //// (get) Token: 0x060004CB RID: 1227 RVA: 0x00028048 File Offset: 0x00026248
     //public NameInputPanel nameInputPanel
     //{
     //	get
@@ -154,18 +146,18 @@ public class MapUI : MonoBehaviour
     //	}
     //}
 
-    public void LoadMap(int mapName)
+    public void LoadMap(int mapId)
 	{
-		//this.RoleStatePanelObj.GetComponent<RoleStatePanelUI>().Refresh();//角色状态
-		//GlobalTrigger currentTrigger = GlobalTrigger.GetCurrentTrigger();
-  //      if (currentTrigger != null)
-  //      {
-  //          //this.LoadStory(currentTrigger.story);
-  //          return;
-  //      }
-        RuntimeData.Instance.CurrentBigMap = mapName.ToString();
+        //this.RoleStatePanelObj.GetComponent<RoleStatePanelUI>().Refresh();//角色状态
+        //GlobalTrigger currentTrigger = GlobalTrigger.GetCurrentTrigger();
+        //if (currentTrigger != null)
+        //{
+        //    //this.LoadStory(currentTrigger.story);
+        //    return;
+        //}
+        //RuntimeData.Instance.CurrentBigMap = mapId.ToString();
         this.Init();
-        base.StartCoroutine(this.DrawMap(mapName));
+        base.StartCoroutine(this.DrawMap(mapId));
     }
 
 	private void SetMapUIElementVisiable(bool isVisiable)
@@ -180,6 +172,9 @@ public class MapUI : MonoBehaviour
 	{
         StoryEntity storyEntity = GameEntry.DataTable.DataTableManager.StoryDBModel.Get(storyID);
         Story story = new Story();
+        story.Actions = new List<StoryAction>();
+        story.Results = new List<StoryResult>();
+
         string[] array = storyEntity.Action.Split(',');
         for (int i = 0; i < array.Length; i++)
         {
@@ -192,12 +187,27 @@ public class MapUI : MonoBehaviour
 
         string[] array3 = storyEntity.Result.Split(',');
         for (int i = 0; i < array3.Length; i++)
-        {
+        {          
             string[] array4 = array3[i].Split('_');
-            StoryResult sr = new StoryResult();        
+            StoryResult sr = new StoryResult();
+            sr.Conditions = new List<Condition>();
             sr.value = array4[0].ToInt();
             sr.type = array4[1];
             sr.ret = array4[2];
+
+            if (array4.Length>3)
+            {
+                string[] array5 = array4[3].Split('#');
+                for (int l = 0; l < array5.Length; l++)
+                {
+                    string[] array6 = array5[l].Split('|');
+                    Condition cd = new Condition();
+                    cd.value = array6[0];
+                    cd.type = array6[1];
+                    sr.Conditions.Add(cd);
+                }
+            }
+
             story.Results.Add(sr);
         }
 
@@ -403,7 +413,7 @@ public class MapUI : MonoBehaviour
                     //this.BigMapPanel.SetActive(false);//关闭大地图
                     string key = array[0];
                     Debug.Log("更换了背景"+ key);
-                    //Sprite image = Resource.GetImage(key, false);
+                    Sprite image = Resource.GetImage(key, false);
                     //if (image != null)
                     //{
                     //    this.SetBackground(image, 1f);//设置背景
@@ -1721,10 +1731,10 @@ public class MapUI : MonoBehaviour
             {
                 bool flag = true;
                 foreach (Condition condition in storyResult.Conditions)
-                {
-                    Debug.Log("执行");
+                {                
                     if (!condition.IsTrue)
                     {
+                        Debug.Log("没有激活");
                         flag = false;
                         break;
                     }
@@ -1772,53 +1782,57 @@ public class MapUI : MonoBehaviour
     private IEnumerator DrawMap(int index)
     {
         Map map = new Map();
-        //this._map = map;
-        //this.Clear(); 
-        //this.SetMapUIElementVisiable(true);
+        this._map = map;
+        this.Clear();
+        //this.SetMapUIElementVisiable(true);//显示UI
         //float alpha = (float)CommonSettings.timeOpacity[RuntimeData.Instance.Date.Hour / 2];
+
         //Music bg = map.GetRandomMusic();
-        //if (bg != null)
+        //if (bg != null)//播放背景音乐
         //{
         //    AudioManager.Instance.Play(bg.Name);
         //}
-        //if (map.Name == "大地图")
-        //{
-        //    this.BigMapPanel.SetActive(true);
-        //    this.MapPanel.SetActive(false);
-        //    MapUI.prevSprite = null;
-        //    this.SetBackground(null, 1f);
-        //    this.BigMap.GetComponent<Image>().color = new Color(1f, 1f, 1f, alpha);
-        //    this.BigMap.GetComponent<Image>().sprite = Resource.GetImage(map.Pic, false);
-        //}
-        //else
-        //{
-        //    this.BigMapPanel.SetActive(false);
-        //    this.MapPanel.SetActive(true);
-        //    this.SetBackground(Resource.GetImage(map.Pic, false), alpha);
-        //    Text descText = this.MapDescriptionPanelObj.transform.FindChild("DescText").GetComponent<Text>();
-        //    descText.text = map.Desc;
-        //    this.MapDescriptionPanelObj.SetActive(true);
-        //}
-        //if (map.Locations.Count > 0)
-        //{
-        //    this.LocationInfoText.GetComponent<Text>().text = string.Format("{0}:{1}", RuntimeData.Instance.CurrentBigMap, RuntimeData.Instance.GetLocation(RuntimeData.Instance.CurrentBigMap));
-        //}
-        //else
-        //{
-        //    this.LocationInfoText.GetComponent<Text>().text = map.Name.TrimEnd(new char[]
-        //    {
-        //        '1',
-        //        '2',
-        //        '3',
-        //        '4',
-        //        '5',
-        //        '6',
-        //        '7',
-        //        '8',
-        //        '9',
-        //        '0'
-        //    });
-        //}
+
+        if (map.Name == "大地图")
+        {
+            //this.BigMapPanel.SetActive(true);
+            //this.MapPanel.SetActive(false);
+            //MapUI.prevSprite = null;
+            //this.SetBackground(null, 1f);
+            //this.BigMap.GetComponent<Image>().color = new Color(1f, 1f, 1f, alpha);
+            //this.BigMap.GetComponent<Image>().sprite = Resource.GetImage(map.Pic, false);
+        }
+        else
+        {
+            Debug.Log("执行");
+            //this.BigMapPanel.SetActive(false);
+            //this.MapPanel.SetActive(true);
+            //this.SetBackground(Resource.GetImage(map.Pic, false), alpha);
+            //Text descText = this.MapDescriptionPanelObj.transform.FindChild("DescText").GetComponent<Text>();
+            //descText.text = map.Desc;
+            //this.MapDescriptionPanelObj.SetActive(true);
+        }
+
+        if (map.Locations.Count > 0)
+        {
+            //this.LocationInfoText.GetComponent<Text>().text = string.Format("{0}:{1}", RuntimeData.Instance.CurrentBigMap, RuntimeData.Instance.GetLocation(RuntimeData.Instance.CurrentBigMap));
+        }
+        else
+        {
+            this.LocationInfoText.GetComponent<Text>().text = map.Name.TrimEnd(new char[]
+            {
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+                '8',
+                '9',
+                '0'
+            });
+        }
         //this.TimeInfoText.GetComponent<Text>().text = CommonSettings.DateToGameTime(RuntimeData.Instance.Date);
         //this.MoneyTextObj.GetComponent<Text>().text = RuntimeData.Instance.Money.ToString();
         //this.YuanbaoTextObj.GetComponent<Text>().text = RuntimeData.Instance.Yuanbao.ToString();
@@ -1875,8 +1889,6 @@ public class MapUI : MonoBehaviour
         yield break;
     }
 
-    //// Token: 0x1700015F RID: 351
-    //// (get) Token: 0x060004DD RID: 1245 RVA: 0x0002BB20 File Offset: 0x00029D20
     //private MapLocation CurrentLocation
     //{
     //	get
@@ -1921,23 +1933,22 @@ public class MapUI : MonoBehaviour
     //	return true;
     //}
 
-    //// Token: 0x060004E0 RID: 1248 RVA: 0x0002BCB4 File Offset: 0x00029EB4
-    //private void Clear()
-    //{
-    //	foreach (object obj in this.BigMap.transform.FindChild("MapLocationContainer"))
-    //	{
-    //		Transform transform = (Transform)obj;
-    //		UnityEngine.Object.Destroy(transform.gameObject);
-    //	}
-    //	this.BigMap.transform.FindChild("MapLocationContainer").DetachChildren();
-    //	foreach (object obj2 in this.MapRolePanel.transform)
-    //	{
-    //		Transform transform2 = (Transform)obj2;
-    //		UnityEngine.Object.Destroy(transform2.gameObject);
-    //	}
-    //	this.MapRolePanel.transform.DetachChildren();
-    //	this.SuggestPanelObj.SetActive(false);
-    //}
+    private void Clear()
+    {
+        //foreach (object obj in this.BigMap.transform.FindChild("MapLocationContainer"))
+        //{
+        //    Transform transform = (Transform)obj;
+        //    UnityEngine.Object.Destroy(transform.gameObject);
+        //}
+        //this.BigMap.transform.FindChild("MapLocationContainer").DetachChildren();
+        //foreach (object obj2 in this.MapRolePanel.transform)
+        //{
+        //    Transform transform2 = (Transform)obj2;
+        //    UnityEngine.Object.Destroy(transform2.gameObject);
+        //}
+        //this.MapRolePanel.transform.DetachChildren();
+        //this.SuggestPanelObj.SetActive(false);
+    }
 
     //// Token: 0x060004E1 RID: 1249 RVA: 0x0002BDDC File Offset: 0x00029FDC
     //public void ShowEventConfirmPanel(Sprite image, MapEvent evt, string name, string desc, int timeCost)

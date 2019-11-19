@@ -214,48 +214,40 @@ namespace JyGame
         //			}
         //		}
 
-        //		// Token: 0x17000092 RID: 146
-        //		// (get) Token: 0x06000230 RID: 560 RVA: 0x00018B04 File Offset: 0x00016D04
-        //		// (set) Token: 0x06000231 RID: 561 RVA: 0x00018B0C File Offset: 0x00016D0C
-        //		[XmlAttribute]
-        //		public int level
-        //		{
-        //			get
-        //			{
-        //				return this._level;
-        //			}
-        //			set
-        //			{
-        //				this._level = value;
-        //				this.exp = this.PrevLevelupExp;
-        //			}
-        //		}
+        [XmlAttribute]
+        public int level
+        {
+            get
+            {
+                return this._level;
+            }
+            set
+            {
+                this._level = value;
+                this.exp = this.PrevLevelupExp;
+            }
+        }
 
-        //		// Token: 0x17000093 RID: 147
-        //		// (get) Token: 0x06000232 RID: 562 RVA: 0x00018B24 File Offset: 0x00016D24
-        //		public int Level
-        //		{
-        //			get
-        //			{
-        //				return this.level;
-        //			}
-        //		}
+        public int Level
+        {
+            get
+            {
+                return this.level;
+            }
+        }
 
-        //		// Token: 0x17000094 RID: 148
-        //		// (get) Token: 0x06000233 RID: 563 RVA: 0x00018B2C File Offset: 0x00016D2C
-        //		// (set) Token: 0x06000234 RID: 564 RVA: 0x00018B34 File Offset: 0x00016D34
-        //		[XmlIgnore]
-        //		public int Exp
-        //		{
-        //			get
-        //			{
-        //				return this.exp;
-        //			}
-        //			set
-        //			{
-        //				this.exp = value;
-        //			}
-        //		}
+        [XmlIgnore]
+        public int Exp
+        {
+            get
+            {
+                return this.exp;
+            }
+            set
+            {
+                this.exp = value;
+            }
+        }
 
         //		// Token: 0x17000095 RID: 149
         //		// (get) Token: 0x06000235 RID: 565 RVA: 0x00018B40 File Offset: 0x00016D40
@@ -406,16 +398,14 @@ namespace JyGame
         //			}
         //		}
 
-        //		// Token: 0x1700009A RID: 154
-        //		// (get) Token: 0x06000240 RID: 576 RVA: 0x00018EFC File Offset: 0x000170FC
-        //		[XmlIgnore]
-        //		public int PrevLevelupExp
-        //		{
-        //			get
-        //			{
-        //				return CommonSettings.LevelupExp(this.Level - 1);
-        //			}
-        //		}
+        [XmlIgnore]
+        public int PrevLevelupExp
+        {
+            get
+            {
+                return CommonSettings.LevelupExp(this.Level - 1);
+            }
+        }
 
         //		// Token: 0x06000241 RID: 577 RVA: 0x00018F0C File Offset: 0x0001710C
         //		public void AddTalent(string talent)

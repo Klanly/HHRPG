@@ -286,226 +286,225 @@ namespace JyGame
 			}
 		}
 
-		//public static bool TOUCH_MODE
-		//{
-		//	get
-		//	{
-		//		return RuntimeData.Instance.gameEngine.IsMobilePlatform;
-		//	}
-		//}
+        //public static bool TOUCH_MODE
+        //{
+        //	get
+        //	{
+        //		return RuntimeData.Instance.gameEngine.IsMobilePlatform;
+        //	}
+        //}
 
-		//public static SkillCoverType GetDefaultCoverType(int skillTypeCode)
-		//{
-		//	switch (skillTypeCode)
-		//	{
-		//	case 0:
-		//		return SkillCoverType.NORMAL;
-		//	case 1:
-		//		return SkillCoverType.LINE;
-		//	case 2:
-		//		return SkillCoverType.FRONT;
-		//	case 3:
-		//		return SkillCoverType.CROSS;
-		//	default:
-		//		return SkillCoverType.NORMAL;
-		//	}
-		//}
+        //public static SkillCoverType GetDefaultCoverType(int skillTypeCode)
+        //{
+        //	switch (skillTypeCode)
+        //	{
+        //	case 0:
+        //		return SkillCoverType.NORMAL;
+        //	case 1:
+        //		return SkillCoverType.LINE;
+        //	case 2:
+        //		return SkillCoverType.FRONT;
+        //	case 3:
+        //		return SkillCoverType.CROSS;
+        //	default:
+        //		return SkillCoverType.NORMAL;
+        //	}
+        //}
 
-		//public static int MAX_HPMP
-		//{
-		//	get
-		//	{
-		//		return 10000 + (RuntimeData.Instance.Round - 1) * 1000;
-		//	}
-		//}
+        //public static int MAX_HPMP
+        //{
+        //	get
+        //	{
+        //		return 10000 + (RuntimeData.Instance.Round - 1) * 1000;
+        //	}
+        //}
 
-		//public static string AttributeToChinese(string attr)
-		//{
-		//	for (int i = 0; i < CommonSettings.RoleAttributeList.Length; i++)
-		//	{
-		//		if (CommonSettings.RoleAttributeList[i].Equals(attr))
-		//		{
-		//			return CommonSettings.RoleAttributeChineseList[i];
-		//		}
-		//	}
-		//	throw new Exception("invalid attribute " + attr);
-		//}
+        //public static string AttributeToChinese(string attr)
+        //{
+        //	for (int i = 0; i < CommonSettings.RoleAttributeList.Length; i++)
+        //	{
+        //		if (CommonSettings.RoleAttributeList[i].Equals(attr))
+        //		{
+        //			return CommonSettings.RoleAttributeChineseList[i];
+        //		}
+        //	}
+        //	throw new Exception("invalid attribute " + attr);
+        //}
 
-		//public static string DateToGameTime(DateTime date)
-		//{
-		//	return string.Format("江湖{0}年{1}月{2}日{3}时", new object[]
-		//	{
-		//		Tools.chineseNumber[date.Year],
-		//		Tools.chineseNumber[date.Month],
-		//		Tools.chineseNumber[date.Day],
-		//		Tools.chineseTime[date.Hour / 2]
-		//	});
-		//}
+        //public static string DateToGameTime(DateTime date)
+        //{
+        //	return string.Format("江湖{0}年{1}月{2}日{3}时", new object[]
+        //	{
+        //		Tools.chineseNumber[date.Year],
+        //		Tools.chineseNumber[date.Month],
+        //		Tools.chineseNumber[date.Day],
+        //		Tools.chineseTime[date.Hour / 2]
+        //	});
+        //}
 
-		//public static string HourToChineseTime(int hour)
-		//{
-		//	int num = hour / 24;
-		//	int num2 = hour % 24;
-		//	string text = string.Empty;
-		//	if (num > 0)
-		//	{
-		//		text += string.Format("{0}天", num);
-		//	}
-		//	if (num2 != 0)
-		//	{
-		//		text += string.Format("{0}个时辰", num2 / 2);
-		//	}
-		//	return text;
-		//}
+        //public static string HourToChineseTime(int hour)
+        //{
+        //	int num = hour / 24;
+        //	int num2 = hour % 24;
+        //	string text = string.Empty;
+        //	if (num > 0)
+        //	{
+        //		text += string.Format("{0}天", num);
+        //	}
+        //	if (num2 != 0)
+        //	{
+        //		text += string.Format("{0}个时辰", num2 / 2);
+        //	}
+        //	return text;
+        //}
 
-		//public static string getRoleName(string roleKey)
-		//{
-		//	string result = string.Empty;
-		//	if (roleKey == "女主")
-		//	{
-		//		result = RuntimeData.Instance.femaleName;
-		//	}
-		//	else if (roleKey == "主角")
-		//	{
-		//		result = RuntimeData.Instance.maleName;
-		//	}
-		//	else
-		//	{
-		//		Role role = ResourceManager.Get<Role>(roleKey);
-		//		if (role != null)
-		//		{
-		//			result = role.Name;
-		//		}
-		//		else
-		//		{
-		//			result = roleKey;
-		//		}
-		//	}
-		//	return result;
-		//}
+        //public static string getRoleName(string roleKey)
+        //{
+        //	string result = string.Empty;
+        //	if (roleKey == "女主")
+        //	{
+        //		result = RuntimeData.Instance.femaleName;
+        //	}
+        //	else if (roleKey == "主角")
+        //	{
+        //		result = RuntimeData.Instance.maleName;
+        //	}
+        //	else
+        //	{
+        //		Role role = ResourceManager.Get<Role>(roleKey);
+        //		if (role != null)
+        //		{
+        //			result = role.Name;
+        //		}
+        //		else
+        //		{
+        //			result = roleKey;
+        //		}
+        //	}
+        //	return result;
+        //}
 
-		//// Token: 0x06000039 RID: 57 RVA: 0x00002F84 File Offset: 0x00001184
-		//public static string getRoleHead(string roleKey)
-		//{
-		//	if (roleKey == "主角")
-		//	{
-		//		foreach (Role role in RuntimeData.Instance.Team)
-		//		{
-		//			if (role.Key == "主角")
-		//			{
-		//				return role.Head;
-		//			}
-		//		}
-		//		return string.Empty;
-		//	}
-		//	return ResourceManager.Get<Role>(roleKey).Head;
-		//}
+        //// Token: 0x06000039 RID: 57 RVA: 0x00002F84 File Offset: 0x00001184
+        //public static string getRoleHead(string roleKey)
+        //{
+        //	if (roleKey == "主角")
+        //	{
+        //		foreach (Role role in RuntimeData.Instance.Team)
+        //		{
+        //			if (role.Key == "主角")
+        //			{
+        //				return role.Head;
+        //			}
+        //		}
+        //		return string.Empty;
+        //	}
+        //	return ResourceManager.Get<Role>(roleKey).Head;
+        //}
 
-		//// Token: 0x0600003A RID: 58 RVA: 0x0000302C File Offset: 0x0000122C
-		//public static void adjustAttr(Role role, string type, int value)
-		//{
-		//	switch (type)
-		//	{
-		//	case "hp":
-		//		role.hp += value;
-		//		break;
-		//	case "maxhp":
-		//		role.maxhp += value;
-		//		break;
-		//	case "mp":
-		//		role.mp += value;
-		//		break;
-		//	case "maxmp":
-		//		role.maxmp += value;
-		//		break;
-		//	case "gengu":
-		//		role.gengu += value;
-		//		break;
-		//	case "bili":
-		//		role.bili += value;
-		//		break;
-		//	case "fuyuan":
-		//		role.fuyuan += value;
-		//		break;
-		//	case "shenfa":
-		//		role.shenfa += value;
-		//		break;
-		//	case "dingli":
-		//		role.dingli += value;
-		//		break;
-		//	case "wuxing":
-		//		role.wuxing += value;
-		//		break;
-		//	case "quanzhang":
-		//		role.quanzhang += value;
-		//		break;
-		//	case "jianfa":
-		//		role.jianfa += value;
-		//		break;
-		//	case "daofa":
-		//		role.daofa += value;
-		//		break;
-		//	case "qimen":
-		//		role.qimen += value;
-		//		break;
-		//	}
-		//}
+        //// Token: 0x0600003A RID: 58 RVA: 0x0000302C File Offset: 0x0000122C
+        //public static void adjustAttr(Role role, string type, int value)
+        //{
+        //	switch (type)
+        //	{
+        //	case "hp":
+        //		role.hp += value;
+        //		break;
+        //	case "maxhp":
+        //		role.maxhp += value;
+        //		break;
+        //	case "mp":
+        //		role.mp += value;
+        //		break;
+        //	case "maxmp":
+        //		role.maxmp += value;
+        //		break;
+        //	case "gengu":
+        //		role.gengu += value;
+        //		break;
+        //	case "bili":
+        //		role.bili += value;
+        //		break;
+        //	case "fuyuan":
+        //		role.fuyuan += value;
+        //		break;
+        //	case "shenfa":
+        //		role.shenfa += value;
+        //		break;
+        //	case "dingli":
+        //		role.dingli += value;
+        //		break;
+        //	case "wuxing":
+        //		role.wuxing += value;
+        //		break;
+        //	case "quanzhang":
+        //		role.quanzhang += value;
+        //		break;
+        //	case "jianfa":
+        //		role.jianfa += value;
+        //		break;
+        //	case "daofa":
+        //		role.daofa += value;
+        //		break;
+        //	case "qimen":
+        //		role.qimen += value;
+        //		break;
+        //	}
+        //}
 
-		//// Token: 0x0600003B RID: 59 RVA: 0x0000326C File Offset: 0x0000146C
-		//public static int LevelupExp(int level)
-		//{
-		//	if (level <= 0)
-		//	{
-		//		return 0;
-		//	}
-		//	return (int)((double)(level * 20) + 1.1 * (double)CommonSettings.LevelupExp(level - 1));
-		//}
+        public static int LevelupExp(int level)
+        {
+            if (level <= 0)
+            {
+                return 0;
+            }
+            return (int)((double)(level * 20) + 1.1 * (double)CommonSettings.LevelupExp(level - 1));
+        }
 
-		//// Token: 0x0600003C RID: 60 RVA: 0x00003294 File Offset: 0x00001494
-		//public static string GetRandomBattleMusic()
-		//{
-		//	return CommonSettings.randomBattleMusics[Tools.GetRandomInt(0, CommonSettings.randomBattleMusics.Length - 1)];
-		//}
+        //// Token: 0x0600003C RID: 60 RVA: 0x00003294 File Offset: 0x00001494
+        //public static string GetRandomBattleMusic()
+        //{
+        //	return CommonSettings.randomBattleMusics[Tools.GetRandomInt(0, CommonSettings.randomBattleMusics.Length - 1)];
+        //}
 
-		//// Token: 0x0600003D RID: 61 RVA: 0x000032AC File Offset: 0x000014AC
-		//public static string GetEnemyRandomTalentListCrazyDefence()
-		//{
-		//	int randomInt = Tools.GetRandomInt(0, CommonSettings.EnemyRandomTalentListCrazyDefence.Length);
-		//	return CommonSettings.EnemyRandomTalentListCrazyDefence[randomInt % CommonSettings.EnemyRandomTalentListCrazyDefence.Length];
-		//}
+        //// Token: 0x0600003D RID: 61 RVA: 0x000032AC File Offset: 0x000014AC
+        //public static string GetEnemyRandomTalentListCrazyDefence()
+        //{
+        //	int randomInt = Tools.GetRandomInt(0, CommonSettings.EnemyRandomTalentListCrazyDefence.Length);
+        //	return CommonSettings.EnemyRandomTalentListCrazyDefence[randomInt % CommonSettings.EnemyRandomTalentListCrazyDefence.Length];
+        //}
 
-		//// Token: 0x0600003E RID: 62 RVA: 0x000032D8 File Offset: 0x000014D8
-		//public static string GetEnemyRandomTalentListCrazyAttack()
-		//{
-		//	int randomInt = Tools.GetRandomInt(0, CommonSettings.EnemyRandomTalentListCrazyAttack.Length);
-		//	return CommonSettings.EnemyRandomTalentListCrazyAttack[randomInt % CommonSettings.EnemyRandomTalentListCrazyAttack.Length];
-		//}
+        //// Token: 0x0600003E RID: 62 RVA: 0x000032D8 File Offset: 0x000014D8
+        //public static string GetEnemyRandomTalentListCrazyAttack()
+        //{
+        //	int randomInt = Tools.GetRandomInt(0, CommonSettings.EnemyRandomTalentListCrazyAttack.Length);
+        //	return CommonSettings.EnemyRandomTalentListCrazyAttack[randomInt % CommonSettings.EnemyRandomTalentListCrazyAttack.Length];
+        //}
 
-		//// Token: 0x0600003F RID: 63 RVA: 0x00003304 File Offset: 0x00001504
-		//public static string GetEnemyRandomTalentListCrazyOther()
-		//{
-		//	int randomInt = Tools.GetRandomInt(0, CommonSettings.EnemyRandomTalentListCrazyOther.Length);
-		//	return CommonSettings.EnemyRandomTalentListCrazyOther[randomInt % CommonSettings.EnemyRandomTalentListCrazyOther.Length];
-		//}
+        //// Token: 0x0600003F RID: 63 RVA: 0x00003304 File Offset: 0x00001504
+        //public static string GetEnemyRandomTalentListCrazyOther()
+        //{
+        //	int randomInt = Tools.GetRandomInt(0, CommonSettings.EnemyRandomTalentListCrazyOther.Length);
+        //	return CommonSettings.EnemyRandomTalentListCrazyOther[randomInt % CommonSettings.EnemyRandomTalentListCrazyOther.Length];
+        //}
 
-		//// Token: 0x06000040 RID: 64 RVA: 0x00003330 File Offset: 0x00001530
-		//public static string GetEnemyRandomTalent(bool female)
-		//{
-		//	string text = string.Empty;
-		//	string[] enemyRandomTalentsList = CommonSettings.EnemyRandomTalentsList;
-		//	for (;;)
-		//	{
-		//		int randomInt = Tools.GetRandomInt(0, enemyRandomTalentsList.Length);
-		//		text = enemyRandomTalentsList[randomInt % enemyRandomTalentsList.Length];
-		//		if (!female || !(text == "好色"))
-		//		{
-		//			if (female || !(text == "大小姐"))
-		//			{
-		//				break;
-		//			}
-		//		}
-		//	}
-		//	return text;
-		//}
-	}
+        //// Token: 0x06000040 RID: 64 RVA: 0x00003330 File Offset: 0x00001530
+        //public static string GetEnemyRandomTalent(bool female)
+        //{
+        //	string text = string.Empty;
+        //	string[] enemyRandomTalentsList = CommonSettings.EnemyRandomTalentsList;
+        //	for (;;)
+        //	{
+        //		int randomInt = Tools.GetRandomInt(0, enemyRandomTalentsList.Length);
+        //		text = enemyRandomTalentsList[randomInt % enemyRandomTalentsList.Length];
+        //		if (!female || !(text == "好色"))
+        //		{
+        //			if (female || !(text == "大小姐"))
+        //			{
+        //				break;
+        //			}
+        //		}
+        //	}
+        //	return text;
+        //}
+    }
 }
