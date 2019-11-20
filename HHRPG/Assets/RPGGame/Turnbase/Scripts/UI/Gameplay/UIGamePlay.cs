@@ -11,7 +11,7 @@ public class UIGamePlay : UIGamePlayGeneric
     {
         base.Update();
         var gamePlayManager = Manager as GamePlayManager;
-        if (textWave != null)
-            textWave.text = gamePlayManager.CurrentWave <= 0 ? "" : "Wave " + gamePlayManager.CurrentWave + "/" + gamePlayManager.MaxWave;
+       // if (textWave != null)
+            //textWave.text = gamePlayManager.CurrentWave <= 0 ? "" : "Wave " + gamePlayManager.CurrentWave + "/" + gamePlayManager.MaxWave;
     }
 }

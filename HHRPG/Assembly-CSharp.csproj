@@ -92,7 +92,6 @@
     <Compile Include="Assets\RPGGame\Core\Scripts\GameData\LootBox.cs" />
     <Compile Include="Assets\RPGGame\Core\Scripts\GameData\Stamina.cs" />
     <Compile Include="Assets\RPGGame\Core\Scripts\GamePlay\BaseCharacterBuff.cs" />
-    <Compile Include="Assets\RPGGame\Core\Scripts\GamePlay\BaseCharacterEntity.cs" />
     <Compile Include="Assets\RPGGame\Core\Scripts\GamePlay\BaseCharacterSkill.cs" />
     <Compile Include="Assets\RPGGame\Core\Scripts\GamePlay\BaseDamage.cs" />
     <Compile Include="Assets\RPGGame\Core\Scripts\GamePlay\GameEffect.cs" />
@@ -169,15 +168,11 @@
     <Compile Include="Assets\RPGGame\EditorUtilities\Scripts\ScriptableObjectUtility.cs" />
     <Compile Include="Assets\RPGGame\IconMaker\Scripts\IconCaptureController.cs" />
     <Compile Include="Assets\RPGGame\IconMaker\Scripts\TransparentScreenCapture.cs" />
-    <Compile Include="Assets\RPGGame\Turnbase\Scripts\Environment\EnvironmentManager.cs" />
-    <Compile Include="Assets\RPGGame\Turnbase\Scripts\Environment\EnvironmentObject.cs" />
     <Compile Include="Assets\RPGGame\Turnbase\Scripts\GameData\Animation\AttackAnimationData.cs" />
     <Compile Include="Assets\RPGGame\Turnbase\Scripts\GameData\Animation\SkillCastAnimationData.cs" />
-    <Compile Include="Assets\RPGGame\Turnbase\Scripts\GameData\EnvironmentData.cs" />
     <Compile Include="Assets\RPGGame\Turnbase\Scripts\GameData\Skill.cs" />
     <Compile Include="Assets\RPGGame\Turnbase\Scripts\GameData\Stage.cs" />
     <Compile Include="Assets\RPGGame\Turnbase\Scripts\GamePlay\CharacterBuff.cs" />
-    <Compile Include="Assets\RPGGame\Turnbase\Scripts\GamePlay\CharacterEntity.cs" />
     <Compile Include="Assets\RPGGame\Turnbase\Scripts\GamePlay\CharacterSkill.cs" />
     <Compile Include="Assets\RPGGame\Turnbase\Scripts\GamePlay\Damage.cs" />
     <Compile Include="Assets\RPGGame\Turnbase\Scripts\UI\Gameplay\UICharacterAction.cs" />
@@ -210,8 +205,10 @@
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityLayer.cs" />
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityScene.cs" />
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityTag.cs" />
+    <Compile Include="Assets\Scripts\BaseCharacterEntity.cs" />
     <Compile Include="Assets\Scripts\BaseGamePlayFormation.cs" />
     <Compile Include="Assets\Scripts\BaseGamePlayManager.cs" />
+    <Compile Include="Assets\Scripts\CharacterEntity.cs" />
     <Compile Include="Assets\Scripts\GamePlayFormation.cs" />
     <Compile Include="Assets\Scripts\GamePlayManager.cs" />
     <Compile Include="Assets\Scripts\JyGame\AnimationGroup.cs" />

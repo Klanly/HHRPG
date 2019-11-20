@@ -45,7 +45,7 @@ public class UICharacterStatsGeneric : UIBase
         if (!notFollowCharacter)
             TempObjectFollower.targetObject = character.uiContainer;
 
-        var itemData = character.Item.ItemData;
+        //var itemData = character.Item.ItemData;
         var rate = (float)character.Hp / (float)character.MaxHp;
 
         if (textHpPerMaxHp != null)
@@ -58,17 +58,17 @@ public class UICharacterStatsGeneric : UIBase
             imageHpGage.fillAmount = rate;
 
         if (textTitle != null)
-            textTitle.text = itemData.title;
+           // textTitle.text = itemData.title;
 
         if (imageIcon != null)
-            imageIcon.sprite = itemData.icon;
+           // imageIcon.sprite = itemData.icon;
 
         if (uiLevel != null)
         {
             uiLevel.level = character.Item.Level;
-            uiLevel.maxLevel = character.Item.MaxLevel;
-            uiLevel.collectExp = character.Item.CollectExp;
-            uiLevel.nextExp = character.Item.NextExp;
+           // uiLevel.maxLevel = character.Item.MaxLevel;
+           // uiLevel.collectExp = character.Item.CollectExp;
+           // uiLevel.nextExp = character.Item.NextExp;
         }
 
         var i = 0;

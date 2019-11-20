@@ -11,7 +11,6 @@ public class GamePlayManager : BaseGamePlayManager
     [Header("Formation/Spawning")]
     public GamePlayFormation playerFormation;
     public GamePlayFormation foeFormation;
-    public EnvironmentManager environmentManager;
     public Transform mapCenter;
     public float spawnOffset = 5f;
     [Header("Speed/Delay")]
@@ -25,9 +24,7 @@ public class GamePlayManager : BaseGamePlayManager
     public UICharacterStats uiCharacterStatsPrefab;
     public UICharacterActionManager uiCharacterActionManager;
     public CharacterEntity ActiveCharacter { get; private set; }
-    public int CurrentWave { get; private set; }
     public Stage CastedStage { get { return PlayingStage as Stage; } }
-    public int MaxWave { get { return CastedStage.waves.Length; } }
 
     /// <summary>
     /// 地图中心位置
@@ -49,123 +46,94 @@ public class GamePlayManager : BaseGamePlayManager
             inputCamera = Camera.main;
         // Setup uis
         //uiCharacterActionManager.Hide();
-        // Setup player formation
+        // 设置玩家阵型
         playerFormation.isPlayerFormation = true;
-        //playerFormation.foeFormation = foeFormation;
-        //// Setup foe formation
-        //foeFormation.ClearCharacters();
-        //foeFormation.isPlayerFormation = false;
-        //foeFormation.foeFormation = playerFormation;
-
-        //SetupEnvironment();
+        playerFormation.foeFormation = foeFormation;
+        //设置敌人阵型
+        foeFormation.ClearCharacters();
+        foeFormation.isPlayerFormation = false;
+        foeFormation.foeFormation = playerFormation;
     }
 
     private void Start()
     {
-        CurrentWave = 0;
-        StartCoroutine(StartGame());
+        StartGame();
     }
 
     private void Update()
     {
-        if (uiPauseGame.IsVisible())
-        {
-            Time.timeScale = 0;
-            return;
-        }
+        //if (uiPauseGame.IsVisible())
+        //{
+        //    Time.timeScale = 0;
+        //    return;
+        //}
 
-        if (IsAutoPlay != isAutoPlayDirty)
-        {
-            if (IsAutoPlay)
-            {
-                uiCharacterActionManager.Hide();
-                if (ActiveCharacter != null)
-                    ActiveCharacter.RandomAction();
-            }
-            isAutoPlayDirty = IsAutoPlay;
-        }
+        //if (IsAutoPlay != isAutoPlayDirty)
+        //{
+        //    if (IsAutoPlay)
+        //    {
+        //        uiCharacterActionManager.Hide();
+        //        if (ActiveCharacter != null)
+        //            ActiveCharacter.RandomAction();
+        //    }
+        //    isAutoPlayDirty = IsAutoPlay;
+        //}
 
-        Time.timeScale = !isEnding && IsSpeedMultiply ? 2 : 1;
+        //Time.timeScale = !isEnding && IsSpeedMultiply ? 2 : 1;
 
-        if (Input.GetMouseButtonDown(0) && ActiveCharacter != null && ActiveCharacter.IsPlayerCharacter)
-        {
-            Ray ray = inputCamera.ScreenPointToRay(InputManager.MousePosition());
-            RaycastHit hitInfo;
-            if (!Physics.Raycast(ray, out hitInfo))
-                return;
+        //if (Input.GetMouseButtonDown(0) && ActiveCharacter != null && ActiveCharacter.IsPlayerCharacter)
+        //{
+        //    Ray ray = inputCamera.ScreenPointToRay(InputManager.MousePosition());
+        //    RaycastHit hitInfo;
+        //    if (!Physics.Raycast(ray, out hitInfo))
+        //        return;
 
-            var targetCharacter = hitInfo.collider.GetComponent<CharacterEntity>();
-            if (targetCharacter != null)
-            {
-                if (ActiveCharacter.DoAction(targetCharacter))
-                {
-                    playerFormation.SetCharactersSelectable(false);
-                    foeFormation.SetCharactersSelectable(false);
-                }
-            }
-        }
+        //    var targetCharacter = hitInfo.collider.GetComponent<CharacterEntity>();
+        //    if (targetCharacter != null)
+        //    {
+        //        if (ActiveCharacter.DoAction(targetCharacter))
+        //        {
+        //            playerFormation.SetCharactersSelectable(false);
+        //            foeFormation.SetCharactersSelectable(false);
+        //        }
+        //    }
+        //}
     }
 
-    IEnumerator StartGame()
+    public void StartGame()
     {
-        //yield return playerFormation.MoveCharactersToFormation(true);
-        //environmentManager.isPause = false;
-        //yield return playerFormation.ForceCharactersPlayMoving(moveToNextWaveDelay);
-        //environmentManager.isPause = true;
-        //NextWave();
-        //yield return foeFormation.MoveCharactersToFormation(false);
-        //NewTurn();
-        yield return null;
+        NewWave();//下一次战斗
+        //NewTurn();//下一回合
     }
 
-    public void SetupEnvironment()
-    {
-        environmentManager.spawningObjects = CastedStage.environment.environmentObjects;
-        environmentManager.SpawnObjects();
-        environmentManager.isPause = true;
-    }
-
-    public void NextWave()
+    public void NewWave()
     {
         PlayerItem[] characters;
         StageFoe[] foes;
-        var wave = CastedStage.waves[CurrentWave];
-        if (!wave.useRandomFoes && wave.foes.Length > 0)
-            foes = wave.foes;
-        else
-            foes = CastedStage.RandomFoes().foes;
-
-        characters = new PlayerItem[foes.Length];
-        for (var i = 0; i < characters.Length; ++i)
+        var wave = CastedStage.waves;
+        if (!wave.useRandomFoes && wave.foes.Length > 0)//判断是否随机敌人
         {
-            var foe = foes[i];
-            if (foe != null && foe.character != null)
-            {
-                var character = PlayerItem.CreateActorItemWithLevel(foe.character, foe.level);
-                characters[i] = character;
-            }
+            foes = wave.foes;
         }
+        else
+        {
+            foes = CastedStage.RandomFoes().foes;
+        }
+           
 
-        if (characters.Length == 0)
-            Debug.LogError("Missing Foes Data");
+        //characters = new PlayerItem[foes.Length];
+        //for (var i = 0; i < characters.Length; ++i)
+        //{
+        //    var foe = foes[i];
+        //    if (foe != null && foe.character != null)
+        //    {
+        //        var character = PlayerItem.CreateActorItemWithLevel(foe.character, foe.level);
+        //        characters[i] = character;
+        //    }
+        //}
 
-        foeFormation.SetCharacters(characters);
-        foeFormation.Revive();
-        ++CurrentWave;
-    }
-
-    IEnumerator MoveToNextWave()
-    {
-        yield return new WaitForSeconds(beforeMoveToNextWaveDelay);
-        foeFormation.ClearCharacters();
-        playerFormation.SetActiveDeadCharacters(false);
-        environmentManager.isPause = false;
-        yield return playerFormation.ForceCharactersPlayMoving(moveToNextWaveDelay);
-        environmentManager.isPause = true;
-        playerFormation.SetActiveDeadCharacters(true);
-        NextWave();
-        yield return foeFormation.MoveCharactersToFormation(false);
-        NewTurn();
+        ////foeFormation.SetCharacters(characters);
+        //foeFormation.Revive();
     }
 
     public void NewTurn()
@@ -281,12 +249,12 @@ public class GamePlayManager : BaseGamePlayManager
         else if (!foeFormation.IsAnyCharacterAlive())
         {
             ActiveCharacter = null;
-            if (CurrentWave >= CastedStage.waves.Length)
-            {
-                StartCoroutine(WinGameRoutine());
-                return;
-            }
-            StartCoroutine(MoveToNextWave());
+            //if (CurrentWave >= CastedStage.waves.Length)
+            //{
+            //    StartCoroutine(WinGameRoutine());
+            //    return;
+            //}
+            //StartCoroutine(MoveToNextWave());
         }
         else
             NewTurn();

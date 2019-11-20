@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -26,20 +27,15 @@ MonoBehaviour:
     randomRate: 0.5
   unlockStages:
   - {fileID: 11400000, guid: cab292f11ff705846b9511c284897a2a, type: 2}
-  environment: {fileID: 11400000, guid: 556bdaa599db2b047b97b333057400d7, type: 2}
   waves:
-  - useRandomFoes: 1
-    foes: []
-  - useRandomFoes: 1
-    foes: []
-  - useRandomFoes: 0
+    useRandomFoes: 1
     foes:
-    - character: {fileID: 11400000, guid: acb9ad3bcfd5c5244b348377d424271f, type: 2}
-      level: 2
-    - character: {fileID: 11400000, guid: 9acbc12dd3113754dabc3a3aee20e67f, type: 2}
-      level: 2
-    - character: {fileID: 11400000, guid: d411b5586a228454eb157093650db45f, type: 2}
-      level: 2
+    - character: {fileID: 0}
+      level: 0
+    - character: {fileID: 0}
+      level: 0
+    - character: {fileID: 0}
+      level: 0
     - character: {fileID: 0}
       level: 0
     - character: {fileID: 0}

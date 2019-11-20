@@ -18,9 +18,9 @@ public class CharacterBuff : BaseCharacterBuff
         var pAtkHealRate = PAtkHealRate;
         var mAtkHealRate = MAtkHealRate;
         if (pAtkHealRate != 0)
-            healAmount += Mathf.CeilToInt(giver.Item.Attributes.pAtk * pAtkHealRate);
+           // healAmount += Mathf.CeilToInt(giver.Item.Attributes.pAtk * pAtkHealRate);
         if (mAtkHealRate != 0)
-            healAmount += Mathf.CeilToInt(giver.Item.Attributes.mAtk * mAtkHealRate);
+          //  healAmount += Mathf.CeilToInt(giver.Item.Attributes.mAtk * mAtkHealRate);
         ApplyHeal();
     }
 

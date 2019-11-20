@@ -25,9 +25,8 @@ public class StageWave
 
 public class Stage : BaseStage
 {
-    public EnvironmentData environment;
     [Header("Battle")]
-    public StageWave[] waves;
+    public StageWave waves;
     public StageRandomFoe[] randomFoes;
 
     public StageRandomFoe RandomFoes()
@@ -55,23 +54,23 @@ public class Stage : BaseStage
                 }
             }
         }
-        foreach (var wave in waves)
-        {
-            if (wave.useRandomFoes)
-                continue;
+        ////foreach (var wave in waves)
+        ////{
+        ////    if (wave.useRandomFoes)
+        ////        continue;
 
-            var foes = wave.foes;
-            foreach (var foe in foes)
-            {
-                var item = foe.character;
-                if (item != null)
-                {
-                    var newEntry = PlayerItem.CreateActorItemWithLevel(item, foe.level);
-                    newEntry.Id = foe.character.Id + "_" + foe.level;
-                    dict[foe.character.Id + "_" + foe.level] = newEntry;
-                }
-            }
-        }
+        ////    var foes = wave.foes;
+        ////    foreach (var foe in foes)
+        ////    {
+        ////        var item = foe.character;
+        ////        if (item != null)
+        ////        {
+        ////            var newEntry = PlayerItem.CreateActorItemWithLevel(item, foe.level);
+        ////            newEntry.Id = foe.character.Id + "_" + foe.level;
+        ////            dict[foe.character.Id + "_" + foe.level] = newEntry;
+        ////        }
+        ////    }
+        ////}
         return new List<PlayerItem>(dict.Values);
     }
 }

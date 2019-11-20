@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class GamePlayFormation : BaseGamePlayFormation
 {
+    /// <summary>
+    /// 敌人阵型
+    /// </summary>
     public GamePlayFormation foeFormation;
     public bool isPlayerFormation;
     public GamePlayManager Manager { get { return GamePlayManager.Singleton; } }
@@ -27,46 +30,19 @@ public class GamePlayFormation : BaseGamePlayFormation
             return null;
 
         UICharacterStats uiStats;
-        if (UIStats.TryGetValue(position, out uiStats))
-        {
-            Destroy(uiStats.gameObject);
-            UIStats.Remove(position);
-        }
+        //if (UIStats.TryGetValue(position, out uiStats))
+        //{
+        //    Destroy(uiStats.gameObject);
+        //    UIStats.Remove(position);
+        //}
 
-        if (Manager != null)
-        {
-            uiStats = Instantiate(Manager.uiCharacterStatsPrefab, Manager.uiCharacterStatsContainer);
-            uiStats.transform.localScale = Vector3.one;
-            uiStats.character = character;
-            character.uiCharacterStats = uiStats;
-        }
-
-        return character;
-    }
-
-    public override BaseCharacterEntity SetHelperCharacter(PlayerItem item)
-    {
-        var character = base.SetHelperCharacter(item) as CharacterEntity;
-
-        if (character == null)
-            return null;
-
-        var position = character.Position;
-
-        UICharacterStats uiStats;
-        if (UIStats.TryGetValue(position, out uiStats))
-        {
-            Destroy(uiStats.gameObject);
-            UIStats.Remove(position);
-        }
-
-        if (Manager != null)
-        {
-            uiStats = Instantiate(Manager.uiCharacterStatsPrefab, Manager.uiCharacterStatsContainer);
-            uiStats.transform.localScale = Vector3.one;
-            uiStats.character = character;
-            character.uiCharacterStats = uiStats;
-        }
+        //if (Manager != null)
+        //{
+        //    uiStats = Instantiate(Manager.uiCharacterStatsPrefab, Manager.uiCharacterStatsContainer);
+        //    uiStats.transform.localScale = Vector3.one;
+        //    uiStats.character = character;
+        //    character.uiCharacterStats = uiStats;
+        //}
 
         return character;
     }
@@ -101,38 +77,6 @@ public class GamePlayFormation : BaseGamePlayFormation
         }
         rotation = Quaternion.identity;
         return false;
-    }
-
-    public UnityEngine.Coroutine MoveCharactersToFormation(bool stillForceMoving)
-    {
-        return StartCoroutine(MoveCharactersToFormationRoutine(stillForceMoving));
-    }
-
-    private IEnumerator MoveCharactersToFormationRoutine(bool stillForceMoving)
-    {
-        var characters = Characters.Values;
-        foreach (var character in characters)
-        {
-            var castedCharacter = character as CharacterEntity;
-            castedCharacter.forcePlayMoving = stillForceMoving;
-            castedCharacter.MoveTo(character.Container.position, Manager.formationMoveSpeed);
-        }
-        while (true)
-        {
-            yield return 0;
-            var ifEveryoneReachedTarget = true;
-            foreach (var character in characters)
-            {
-                var castedCharacter = character as CharacterEntity;
-                if (castedCharacter.IsMovingToTarget)
-                {
-                    ifEveryoneReachedTarget = false;
-                    break;
-                }
-            }
-            if (ifEveryoneReachedTarget)
-                break;
-        }
     }
 
     public void SetActiveDeadCharacters(bool isActive)

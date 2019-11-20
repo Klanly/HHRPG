@@ -182,17 +182,7 @@ public abstract class BaseGamePlayManager : MonoBehaviour
     /// <param name="data"></param>
     public static void StartStage(BaseStage data)
     {
-        PlayingStage = data;
-        //GameInstance.GameService.StartStage(data.Id, (result) =>
-        //{
-        //    GameInstance.Singleton.OnGameServiceStartStageResult(result);
-        //    BattleSession = result.session;
-        //    Debug.Log(BattleSession);
-        //    GameInstance.Singleton.LoadBattleScene();
-        //}, (error) =>
-        //{
-        //    GameInstance.Singleton.OnGameServiceError(error);
-        //});
+        PlayingStage = data;       
     }
 
     public virtual void OnRevive()

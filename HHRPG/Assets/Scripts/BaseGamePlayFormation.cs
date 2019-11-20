@@ -6,7 +6,6 @@ using UnityEngine;
 public class BaseGamePlayFormation : MonoBehaviour
 {
     public Transform[] containers;
-    public Transform helperContainer;
     public readonly Dictionary<int, BaseCharacterEntity> Characters = new Dictionary<int, BaseCharacterEntity>();
 
     /// <summary>
@@ -22,49 +21,24 @@ public class BaseGamePlayFormation : MonoBehaviour
         }        
     }
 
-    public virtual void SetCharacters(PlayerItem[] items)
+    public virtual void SetCharacters(Role[] items)
     {
         ClearCharacters();
-        for (var i = 0; i < containers.Length; ++i)
-        {
-            if (items.Length <= i)
-                break;
-            var item = items[i];
-            //SetCharacter(i, item);
-        }
+        //for (var i = 0; i < containers.Length; ++i)
+        //{
+        //    if (items.Length <= i)
+        //        break;
+        //    var item = items[i];
+        //    SetCharacter(i, item);
+        //}
     }
 
-    public virtual BaseCharacterEntity SetCharacter(int position, Role item)//PlayerItem
+    public virtual BaseCharacterEntity SetCharacter(int position, Role item)
     {
         var container = containers[position];
         container.RemoveAllChildren();
-        Debug.Log("创建角色"+ item.Name);
-        //var character = Instantiate(item.CharacterData.model);
-        //character.SetFormation(this, position, container);
-        //character.Item = item;
-        //Characters[position] = character;
-
-        //return character;
-        return null;
-    }
-
-    public virtual BaseCharacterEntity SetHelperCharacter(PlayerItem item)
-    {
-        if (helperContainer == null)
-            return null;
-
-        var position = containers.Length;
-
-        if (item.CharacterData.model == null)
-        {
-            Debug.LogWarning("Character's model is empty, this MUST be set");
-            return null;
-        }
-
-        var container = helperContainer;
-        container.RemoveAllChildren();
-
-        var character = Instantiate(item.CharacterData.model);
+        GameObject go= Resources.Load("Characters/zhujiao_cike_animation")as GameObject;
+        var character = Instantiate(go).GetComponent<BaseCharacterEntity>();
         character.SetFormation(this, position, container);
         character.Item = item;
         Characters[position] = character;
@@ -81,8 +55,6 @@ public class BaseGamePlayFormation : MonoBehaviour
         {
             container.RemoveAllChildren();
         }
-        if (helperContainer != null)
-            helperContainer.RemoveAllChildren();
         Characters.Clear();
     }
 }
