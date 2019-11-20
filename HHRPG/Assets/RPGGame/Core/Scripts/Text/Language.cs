@@ -105,28 +105,28 @@ public static class DefaultLocale
         Texts.Add(GameText.FORMAT_ATTRIBUTE, "{0}: {1}{2}");
         Texts.Add(GameText.FORMAT_BONUS, "{0}{1}");
         // Error texts
-        Texts.Add(GameServiceErrorCode.EMPTY_USERNAME_OR_PASSWORD, "Username or password is empty");
-        Texts.Add(GameServiceErrorCode.EXISTED_USERNAME, "Username is already used");
-        Texts.Add(GameServiceErrorCode.EMPTY_PROFILE_NAME, "Name is empty");
-        Texts.Add(GameServiceErrorCode.EXISTED_PROFILE_NAME, "Name is already used");
-        Texts.Add(GameServiceErrorCode.INVALID_USERNAME_OR_PASSWORD, "Username or password is invalid");
-        Texts.Add(GameServiceErrorCode.INVALID_LOGIN_TOKEN, "Invalid login token");
-        Texts.Add(GameServiceErrorCode.INVALID_PLAYER_DATA, "Invalid player data");
-        Texts.Add(GameServiceErrorCode.INVALID_PLAYER_ITEM_DATA, "Invalid player item data");
-        Texts.Add(GameServiceErrorCode.INVALID_ITEM_DATA, "Invalid item data");
-        Texts.Add(GameServiceErrorCode.INVALID_FORMATION_DATA, "Invalid formation data");
-        Texts.Add(GameServiceErrorCode.INVALID_STAGE_DATA, "Invalid stage data");
-        Texts.Add(GameServiceErrorCode.INVALID_LOOT_BOX_DATA, "Invalid loot box data");
-        Texts.Add(GameServiceErrorCode.INVALID_IAP_PACKAGE_DATA, "Invalid IAP package data");
-        Texts.Add(GameServiceErrorCode.INVALID_EQUIP_POSITION, "Invalid equip position");
-        Texts.Add(GameServiceErrorCode.INVALID_BATTLE_SESSION, "Invalid battle session");
-        Texts.Add(GameServiceErrorCode.NOT_ENOUGH_SOFT_CURRENCY, "Not enough " + Texts[GameText.TITLE_SOFT_CURRENCY]);
-        Texts.Add(GameServiceErrorCode.NOT_ENOUGH_HARD_CURRENCY, "Not enough " + Texts[GameText.TITLE_HARD_CURRENCY]);
-        Texts.Add(GameServiceErrorCode.NOT_ENOUGH_STAGE_STAMINA, "Not enough " + Texts[GameText.TITLE_STAGE_STAMINA]);
-        Texts.Add(GameServiceErrorCode.NOT_ENOUGH_ITEMS, "Not enough items");
-        Texts.Add(GameServiceErrorCode.CANNOT_EVOLVE, "Cannot evolve");
-        Texts.Add(GameServiceErrorCode.NOT_AVAILABLE, "Services not available");
-        Texts.Add(GameServiceErrorCode.UNKNOW, "Unknow Error");
+        //Texts.Add(GameServiceErrorCode.EMPTY_USERNAME_OR_PASSWORD, "Username or password is empty");
+        //Texts.Add(GameServiceErrorCode.EXISTED_USERNAME, "Username is already used");
+        //Texts.Add(GameServiceErrorCode.EMPTY_PROFILE_NAME, "Name is empty");
+        //Texts.Add(GameServiceErrorCode.EXISTED_PROFILE_NAME, "Name is already used");
+        //Texts.Add(GameServiceErrorCode.INVALID_USERNAME_OR_PASSWORD, "Username or password is invalid");
+        //Texts.Add(GameServiceErrorCode.INVALID_LOGIN_TOKEN, "Invalid login token");
+        //Texts.Add(GameServiceErrorCode.INVALID_PLAYER_DATA, "Invalid player data");
+        //Texts.Add(GameServiceErrorCode.INVALID_PLAYER_ITEM_DATA, "Invalid player item data");
+        //Texts.Add(GameServiceErrorCode.INVALID_ITEM_DATA, "Invalid item data");
+        //Texts.Add(GameServiceErrorCode.INVALID_FORMATION_DATA, "Invalid formation data");
+        //Texts.Add(GameServiceErrorCode.INVALID_STAGE_DATA, "Invalid stage data");
+        //Texts.Add(GameServiceErrorCode.INVALID_LOOT_BOX_DATA, "Invalid loot box data");
+        //Texts.Add(GameServiceErrorCode.INVALID_IAP_PACKAGE_DATA, "Invalid IAP package data");
+        //Texts.Add(GameServiceErrorCode.INVALID_EQUIP_POSITION, "Invalid equip position");
+        //Texts.Add(GameServiceErrorCode.INVALID_BATTLE_SESSION, "Invalid battle session");
+        //Texts.Add(GameServiceErrorCode.NOT_ENOUGH_SOFT_CURRENCY, "Not enough " + Texts[GameText.TITLE_SOFT_CURRENCY]);
+        //Texts.Add(GameServiceErrorCode.NOT_ENOUGH_HARD_CURRENCY, "Not enough " + Texts[GameText.TITLE_HARD_CURRENCY]);
+        //Texts.Add(GameServiceErrorCode.NOT_ENOUGH_STAGE_STAMINA, "Not enough " + Texts[GameText.TITLE_STAGE_STAMINA]);
+        //Texts.Add(GameServiceErrorCode.NOT_ENOUGH_ITEMS, "Not enough items");
+        //Texts.Add(GameServiceErrorCode.CANNOT_EVOLVE, "Cannot evolve");
+        //Texts.Add(GameServiceErrorCode.NOT_AVAILABLE, "Services not available");
+        //Texts.Add(GameServiceErrorCode.UNKNOW, "Unknow Error");
     }
 }
 

@@ -66,7 +66,7 @@ public class UILootBox : UIDataItem<LootBox>
 
     public void OnClickOpen(int packIndex)
     {
-        var gameInstance = GameInstance.Singleton;
+        //var gameInstance = GameInstance.Singleton;
         //var gameService = GameInstance.GameService;
         if (packIndex > data.lootboxPacks.Length - 1)
             packIndex = 0;
@@ -76,14 +76,14 @@ public class UILootBox : UIDataItem<LootBox>
             case LootBoxRequirementType.RequireSoftCurrency:
                 if (!PlayerCurrency.HaveEnoughSoftCurrency(price))
                 {
-                    gameInstance.WarnNotEnoughSoftCurrency();
+                    //gameInstance.WarnNotEnoughSoftCurrency();
                     return;
                 }
                 break;
             case LootBoxRequirementType.RequireHardCurrency:
                 if (!PlayerCurrency.HaveEnoughHardCurrency(price))
                 {
-                    gameInstance.WarnNotEnoughHardCurrency();
+                    //gameInstance.WarnNotEnoughHardCurrency();
                     return;
                 }
                 break;
@@ -91,23 +91,23 @@ public class UILootBox : UIDataItem<LootBox>
         //gameService.OpenLootBox(data.Id, packIndex, OnOpenLootBoxSuccess, OnOpenLootBoxFail);
     }
 
-    private void OnOpenLootBoxSuccess(ItemResult result)
-    {
-        GameInstance.Singleton.OnGameServiceItemResult(result);
-        var updateCurrencies = result.updateCurrencies;
-        foreach (var updateCurrency in updateCurrencies)
-        {
-            PlayerCurrency.SetData(updateCurrency);
-        }
-        var items = new List<PlayerItem>();
-        items.AddRange(result.createItems);
-        items.AddRange(result.updateItems);
-        if (items.Count > 0)
-            GameInstance.Singleton.ShowRewardItemsDialog(items);
-    }
+    //private void OnOpenLootBoxSuccess(ItemResult result)
+    //{
+    //    GameInstance.Singleton.OnGameServiceItemResult(result);
+    //    var updateCurrencies = result.updateCurrencies;
+    //    foreach (var updateCurrency in updateCurrencies)
+    //    {
+    //        PlayerCurrency.SetData(updateCurrency);
+    //    }
+    //    var items = new List<PlayerItem>();
+    //    items.AddRange(result.createItems);
+    //    items.AddRange(result.updateItems);
+    //    if (items.Count > 0)
+    //        GameInstance.Singleton.ShowRewardItemsDialog(items);
+    //}
 
     private void OnOpenLootBoxFail(string error)
     {
-        GameInstance.Singleton.OnGameServiceError(error);
+        //GameInstance.Singleton.OnGameServiceError(error);
     }
 }

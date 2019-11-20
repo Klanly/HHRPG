@@ -157,7 +157,7 @@ public class CharacterEntity : BaseCharacterEntity
     {
         if (hitCount <= 0)
             hitCount = 1;
-        var gameDb = GameInstance.GameDatabase;
+        //var gameDb = GameInstance.GameDatabase;
         var attributes = GetTotalAttributes();
         var pDmg = pAtk - attributes.pDef;
         var mDmg = mAtk - attributes.mDef;
@@ -168,7 +168,7 @@ public class CharacterEntity : BaseCharacterEntity
         var totalDmg = pDmg + mDmg;
         var isCritical = false;
         var isBlock = false;
-        totalDmg += Mathf.CeilToInt(totalDmg * Random.Range(gameDb.minAtkVaryRate, gameDb.maxAtkVaryRate)) + fixDamage;
+        //totalDmg += Mathf.CeilToInt(totalDmg * Random.Range(gameDb.minAtkVaryRate, gameDb.maxAtkVaryRate)) + fixDamage;
         // Critical occurs
         if (Random.value <= critChance)
         {

@@ -80,8 +80,8 @@ public class PlayerItem : BasePlayerData, ILevel, IPlayerItem
         PlayerItem result = Clone();
         if (EvolveItem != null)
             result.DataId = EvolveItem.Id;
-        if (GameInstance.GameDatabase.resetItemLevelAfterEvolve)
-            result.Exp = 0;
+        //if (GameInstance.GameDatabase.resetItemLevelAfterEvolve)
+        //    result.Exp = 0;
         return result;
     }
 

@@ -99,43 +99,43 @@ public class UIItemSell : UIItemSelection
 
     public void OnClickSell()
     {
-        var gameInstance = GameInstance.Singleton;
+        //var gameInstance = GameInstance.Singleton;
         //var gameService = GameInstance.GameService;
         var idAmountPair = GetSelectedItemIdAmountPair();
         //gameService.SellItems(idAmountPair, OnSellSuccess, OnSellFail);
     }
 
-    private void OnSellSuccess(ItemResult result)
-    {
-        GameInstance.Singleton.OnGameServiceItemResult(result);
-        eventSellSuccess.Invoke();
-        if (uiSelectedItemList != null)
-            uiSelectedItemList.ClearListItems();
-        var items = GetAvailableItems();
-        var updateItem = result.updateItems;
-        foreach (var entry in updateItem)
-        {
-            var id = entry.Id;
-            if (items.ContainsKey(id))
-                items[id].SetData(entry);
-        }
-        var deleteItemIds = result.deleteItemIds;
-        foreach (var deleteItemId in deleteItemIds)
-        {
-            if (uiAvailableItemList != null)
-                uiAvailableItemList.RemoveListItem(deleteItemId);
-        }
-        var updateCurrencies = result.updateCurrencies;
-        foreach (var updateCurrency in updateCurrencies)
-        {
-            PlayerCurrency.SetData(updateCurrency);
-        }
-        Calculate();
-    }
+    //private void OnSellSuccess(ItemResult result)
+    //{
+    //    GameInstance.Singleton.OnGameServiceItemResult(result);
+    //    eventSellSuccess.Invoke();
+    //    if (uiSelectedItemList != null)
+    //        uiSelectedItemList.ClearListItems();
+    //    var items = GetAvailableItems();
+    //    var updateItem = result.updateItems;
+    //    foreach (var entry in updateItem)
+    //    {
+    //        var id = entry.Id;
+    //        if (items.ContainsKey(id))
+    //            items[id].SetData(entry);
+    //    }
+    //    var deleteItemIds = result.deleteItemIds;
+    //    foreach (var deleteItemId in deleteItemIds)
+    //    {
+    //        if (uiAvailableItemList != null)
+    //            uiAvailableItemList.RemoveListItem(deleteItemId);
+    //    }
+    //    var updateCurrencies = result.updateCurrencies;
+    //    foreach (var updateCurrency in updateCurrencies)
+    //    {
+    //        PlayerCurrency.SetData(updateCurrency);
+    //    }
+    //    Calculate();
+    //}
 
     private void OnSellFail(string error)
     {
-        GameInstance.Singleton.OnGameServiceError(error);
+        //GameInstance.Singleton.OnGameServiceError(error);
         eventSellFail.Invoke();
     }
 }

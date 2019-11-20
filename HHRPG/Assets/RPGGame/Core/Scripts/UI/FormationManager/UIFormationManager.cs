@@ -55,52 +55,52 @@ public class UIFormationManager : UIBase
         var firstKey = string.Empty;
         if (UIFormationToggles.Count == 0)
         {
-            var formations = GameInstance.GameDatabase.Formations;
-            foreach (var formation in formations)
-            {
-                var key = formation.Key;
-                var value = formation.Value;
-                if (!string.IsNullOrEmpty(key) && !UIFormationToggles.ContainsKey(key))
-                {
-                    var newFormationObject = Instantiate(uiFormationPrefab.gameObject);
-                    newFormationObject.transform.SetParent(formationContainer);
-                    newFormationObject.transform.localScale = Vector3.one;
-                    newFormationObject.SetActive(true);
+            //var formations = GameInstance.GameDatabase.Formations;
+            //foreach (var formation in formations)
+            //{
+            //    var key = formation.Key;
+            //    var value = formation.Value;
+            //    if (!string.IsNullOrEmpty(key) && !UIFormationToggles.ContainsKey(key))
+            //    {
+            //        var newFormationObject = Instantiate(uiFormationPrefab.gameObject);
+            //        newFormationObject.transform.SetParent(formationContainer);
+            //        newFormationObject.transform.localScale = Vector3.one;
+            //        newFormationObject.SetActive(true);
 
-                    var rectTransform = newFormationObject.GetComponent<RectTransform>();
-                    rectTransform.anchorMin = Vector2.zero;
-                    rectTransform.anchorMax = Vector2.one;
-                    rectTransform.sizeDelta = Vector2.zero;
-                    rectTransform.anchoredPosition = Vector2.zero;
+            //        var rectTransform = newFormationObject.GetComponent<RectTransform>();
+            //        rectTransform.anchorMin = Vector2.zero;
+            //        rectTransform.anchorMax = Vector2.one;
+            //        rectTransform.sizeDelta = Vector2.zero;
+            //        rectTransform.anchoredPosition = Vector2.zero;
 
-                    var newFormationTogglerObject = Instantiate(uiFormationTogglerPrefab.gameObject);
-                    var newFormationToggler = newFormationTogglerObject.GetComponent<UIFormationToggle>();
-                    newFormationTogglerObject.transform.SetParent(togglerContainer);
-                    newFormationTogglerObject.transform.localPosition = Vector3.zero;
-                    newFormationTogglerObject.transform.localScale = Vector3.one;
-                    newFormationTogglerObject.SetActive(true);
+            //        var newFormationTogglerObject = Instantiate(uiFormationTogglerPrefab.gameObject);
+            //        var newFormationToggler = newFormationTogglerObject.GetComponent<UIFormationToggle>();
+            //        newFormationTogglerObject.transform.SetParent(togglerContainer);
+            //        newFormationTogglerObject.transform.localPosition = Vector3.zero;
+            //        newFormationTogglerObject.transform.localScale = Vector3.one;
+            //        newFormationTogglerObject.SetActive(true);
 
-                    newFormationToggler.formation = value;
-                    newFormationToggler.TempToggle.onValueChanged.AddListener((isSelected) =>
-                    {
-                        if (isSelected)
-                        {
-                            var formationName = key;
-                            SelectFormation(formationName);
-                        }
-                    });
+            //        newFormationToggler.formation = value;
+            //        newFormationToggler.TempToggle.onValueChanged.AddListener((isSelected) =>
+            //        {
+            //            if (isSelected)
+            //            {
+            //                var formationName = key;
+            //                SelectFormation(formationName);
+            //            }
+            //        });
 
-                    var newFormation = newFormationObject.GetComponent<UIFormation>();
-                    newFormation.formationName = key;
-                    newFormation.SetFormationData(this);
-                    var newFormationToggleData = new UIFormationToggleData();
-                    newFormationToggleData.toggler = newFormationToggler;
-                    newFormationToggleData.uiFormation = newFormation;
-                    UIFormationToggles.Add(key, newFormationToggleData);
-                    if (UIFormationToggles.Count == 1)
-                        firstKey = key;
-                }
-            }
+            //        var newFormation = newFormationObject.GetComponent<UIFormation>();
+            //        newFormation.formationName = key;
+            //        newFormation.SetFormationData(this);
+            //        var newFormationToggleData = new UIFormationToggleData();
+            //        newFormationToggleData.toggler = newFormationToggler;
+            //        newFormationToggleData.uiFormation = newFormation;
+            //        UIFormationToggles.Add(key, newFormationToggleData);
+            //        if (UIFormationToggles.Count == 1)
+            //            firstKey = key;
+            //    }
+            //}
             // Must have at least one entry to set formation
             if (!string.IsNullOrEmpty(firstKey))
             {
@@ -179,13 +179,13 @@ public class UIFormationManager : UIBase
         //GameInstance.GameService.SelectFormation(formationName, OnSelectFormationSuccess, OnSelectFormationFail);
     }
 
-    private void OnSelectFormationSuccess(PlayerResult result)
-    {
-        Player.CurrentPlayer = result.player;
-    }
+    //private void OnSelectFormationSuccess(PlayerResult result)
+    //{
+    //    Player.CurrentPlayer = result.player;
+    //}
 
     private void OnSelectFormationFail(string error)
     {
-        GameInstance.Singleton.OnGameServiceError(error);
+       // GameInstance.Singleton.OnGameServiceError(error);
     }
 }

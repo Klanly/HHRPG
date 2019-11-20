@@ -77,18 +77,18 @@ public class UIPlayer : UIDataItem<Player>
 
         if (uiMainCharacter != null)
         {
-            if (string.IsNullOrEmpty(data.MainCharacter) || !GameInstance.GameDatabase.Items.ContainsKey(data.MainCharacter))
-            {
-                uiMainCharacter.data = null;
-            }
-            else
-            {
-                uiMainCharacter.data = new PlayerItem()
-                {
-                    DataId = data.MainCharacter,
-                    Exp = data.MainCharacterExp,
-                };
-            }
+            //if (string.IsNullOrEmpty(data.MainCharacter) || !GameInstance.GameDatabase.Items.ContainsKey(data.MainCharacter))
+            //{
+            //    uiMainCharacter.data = null;
+            //}
+            //else
+            //{
+            //    uiMainCharacter.data = new PlayerItem()
+            //    {
+            //        DataId = data.MainCharacter,
+            //        Exp = data.MainCharacterExp,
+            //    };
+            //}
         }
     }
 
@@ -102,15 +102,15 @@ public class UIPlayer : UIDataItem<Player>
         //GameInstance.GameService.FriendRequest(data.Id, OnFriendRequestSuccess, OnFriendRequestFail);
     }
 
-    private void OnFriendRequestSuccess(GameServiceResult result)
-    {
-        if (eventFriendRequestSuccess != null)
-            eventFriendRequestSuccess.Invoke();
-    }
+    //private void OnFriendRequestSuccess(GameServiceResult result)
+    //{
+    //    if (eventFriendRequestSuccess != null)
+    //        eventFriendRequestSuccess.Invoke();
+    //}
 
     private void OnFriendRequestFail(string error)
     {
-        GameInstance.Singleton.OnGameServiceError(error);
+       // GameInstance.Singleton.OnGameServiceError(error);
         if (eventFriendRequestFail != null)
             eventFriendRequestFail.Invoke();
     }
@@ -120,37 +120,37 @@ public class UIPlayer : UIDataItem<Player>
         //GameInstance.GameService.FriendAccept(data.Id, OnFriendAcceptSuccess, OnFriendAcceptFail);
     }
 
-    private void OnFriendAcceptSuccess(GameServiceResult result)
-    {
-        if (uiPlayerList != null)
-            uiPlayerList.RemoveListItem(data.Id);
-        if (eventFriendAcceptSuccess != null)
-            eventFriendAcceptSuccess.Invoke();
-    }
+    //private void OnFriendAcceptSuccess(GameServiceResult result)
+    //{
+    //    if (uiPlayerList != null)
+    //        uiPlayerList.RemoveListItem(data.Id);
+    //    if (eventFriendAcceptSuccess != null)
+    //        eventFriendAcceptSuccess.Invoke();
+    //}
 
-    private void OnFriendAcceptFail(string error)
-    {
-        GameInstance.Singleton.OnGameServiceError(error);
-        if (eventFriendAcceptFail != null)
-            eventFriendAcceptFail.Invoke();
-    }
+    //private void OnFriendAcceptFail(string error)
+    //{
+    //    GameInstance.Singleton.OnGameServiceError(error);
+    //    if (eventFriendAcceptFail != null)
+    //        eventFriendAcceptFail.Invoke();
+    //}
 
     public void OnClickFriendDecline()
     {
         //GameInstance.GameService.FriendDecline(data.Id, OnFriendDeclineSuccess, OnFriendDeclineFail);
     }
 
-    private void OnFriendDeclineSuccess(GameServiceResult result)
-    {
-        if (uiPlayerList != null)
-            uiPlayerList.RemoveListItem(data.Id);
-        if (eventFriendDeclineSuccess != null)
-            eventFriendDeclineSuccess.Invoke();
-    }
+    //private void OnFriendDeclineSuccess(GameServiceResult result)
+    //{
+    //    if (uiPlayerList != null)
+    //        uiPlayerList.RemoveListItem(data.Id);
+    //    if (eventFriendDeclineSuccess != null)
+    //        eventFriendDeclineSuccess.Invoke();
+    //}
 
     private void OnFriendDeclineFail(string error)
     {
-        GameInstance.Singleton.OnGameServiceError(error);
+       // GameInstance.Singleton.OnGameServiceError(error);
         if (eventFriendDeclineFail != null)
             eventFriendDeclineFail.Invoke();
     }
@@ -160,17 +160,17 @@ public class UIPlayer : UIDataItem<Player>
         //GameInstance.GameService.FriendDelete(data.Id, OnFriendDeleteSuccess, OnFriendDeleteFail);
     }
 
-    private void OnFriendDeleteSuccess(GameServiceResult result)
-    {
-        if (uiPlayerList != null)
-            uiPlayerList.RemoveListItem(data.Id);
-        if (eventFriendDeleteSuccess != null)
-            eventFriendDeleteSuccess.Invoke();
-    }
+    //private void OnFriendDeleteSuccess(GameServiceResult result)
+    //{
+    //    if (uiPlayerList != null)
+    //        uiPlayerList.RemoveListItem(data.Id);
+    //    if (eventFriendDeleteSuccess != null)
+    //        eventFriendDeleteSuccess.Invoke();
+    //}
 
     private void OnFriendDeleteFail(string error)
     {
-        GameInstance.Singleton.OnGameServiceError(error);
+        //GameInstance.Singleton.OnGameServiceError(error);
         if (eventFriendDeleteFail != null)
             eventFriendDeleteFail.Invoke();
     }

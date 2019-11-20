@@ -13,10 +13,10 @@ public class UIIapPackageManager : UIBase
 
         if (uiIapPackageList != null)
         {
-            var availableIAPPackagees = GameInstance.AvailableIapPackages;
-            var allIAPPackagees = GameInstance.GameDatabase.IapPackages;
-            var list = allIAPPackagees.Values.Where(a => availableIAPPackagees.Contains(a.Id)).ToList();
-            uiIapPackageList.SetListItems(list);
+            //var availableIAPPackagees = GameInstance.AvailableIapPackages;
+            //var allIAPPackagees = GameInstance.GameDatabase.IapPackages;
+            //var list = allIAPPackagees.Values.Where(a => availableIAPPackagees.Contains(a.Id)).ToList();
+            //uiIapPackageList.SetListItems(list);
         }
     }
 }

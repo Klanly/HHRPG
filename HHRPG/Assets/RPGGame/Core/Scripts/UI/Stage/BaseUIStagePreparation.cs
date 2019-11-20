@@ -38,17 +38,6 @@ public abstract class BaseUIStagePreparation<TUI, TStage> : UIDataItem<TStage>
 
     public void OnClickStartStage()
     {
-        BaseGamePlayManager.StartStage(data, GetHelper());
-    }
-
-    public Player GetHelper()
-    {
-        if (uiHelperList != null)
-        {
-            var list = uiHelperList.GetSelectedDataList();
-            if (list.Count > 0)
-                return list[0];
-        }
-        return null;
+        BaseGamePlayManager.StartStage(data);
     }
 }

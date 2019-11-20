@@ -85,50 +85,50 @@ public class UIItemLevelUp : UIItemWithMaterials
 
     public void OnClickLevelUp()
     {
-        var gameInstance = GameInstance.Singleton;
+       // var gameInstance = GameInstance.Singleton;
         //var gameService = GameInstance.GameService;
         if (!PlayerCurrency.HaveEnoughSoftCurrency(totalLevelUpPrice))
         {
-            gameInstance.WarnNotEnoughSoftCurrency();
+            //gameInstance.WarnNotEnoughSoftCurrency();
             return;
         }
         var idAmountPair = GetSelectedItemIdAmountPair();
         //gameService.LevelUpItem(Item.Id, idAmountPair, OnLevelUpSuccess, OnLevelUpFail);
     }
 
-    private void OnLevelUpSuccess(ItemResult result)
-    {
-        GameInstance.Singleton.OnGameServiceItemResult(result);
-        eventLevelUpSuccess.Invoke();
-        if (uiSelectedItemList != null)
-            uiSelectedItemList.ClearListItems();
-        var items = GetAvailableItems();
-        var updateItems = result.updateItems;
-        foreach (var updateItem in updateItems)
-        {
-            var id = updateItem.Id;
-            if (updateItem.Id == Item.Id)
-                Item = updateItem;
-            if (items.ContainsKey(id))
-                items[id].SetData(updateItem);
-        }
-        var deleteItemIds = result.deleteItemIds;
-        foreach (var deleteItemId in deleteItemIds)
-        {
-            if (uiAvailableItemList != null)
-                uiAvailableItemList.RemoveListItem(deleteItemId);
-        }
-        var updateCurrencies = result.updateCurrencies;
-        foreach (var updateCurrency in updateCurrencies)
-        {
-            PlayerCurrency.SetData(updateCurrency);
-        }
-        SetupLevelUp();
-    }
+    //private void OnLevelUpSuccess(ItemResult result)
+    //{
+    //    GameInstance.Singleton.OnGameServiceItemResult(result);
+    //    eventLevelUpSuccess.Invoke();
+    //    if (uiSelectedItemList != null)
+    //        uiSelectedItemList.ClearListItems();
+    //    var items = GetAvailableItems();
+    //    var updateItems = result.updateItems;
+    //    foreach (var updateItem in updateItems)
+    //    {
+    //        var id = updateItem.Id;
+    //        if (updateItem.Id == Item.Id)
+    //            Item = updateItem;
+    //        if (items.ContainsKey(id))
+    //            items[id].SetData(updateItem);
+    //    }
+    //    var deleteItemIds = result.deleteItemIds;
+    //    foreach (var deleteItemId in deleteItemIds)
+    //    {
+    //        if (uiAvailableItemList != null)
+    //            uiAvailableItemList.RemoveListItem(deleteItemId);
+    //    }
+    //    var updateCurrencies = result.updateCurrencies;
+    //    foreach (var updateCurrency in updateCurrencies)
+    //    {
+    //        PlayerCurrency.SetData(updateCurrency);
+    //    }
+    //    SetupLevelUp();
+    //}
 
     private void OnLevelUpFail(string error)
     {
-        GameInstance.Singleton.OnGameServiceError(error);
+        //GameInstance.Singleton.OnGameServiceError(error);
         eventLevelUpFail.Invoke();
     }
 }

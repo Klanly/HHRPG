@@ -163,16 +163,16 @@ public class UIEquipmentManager : UIBase
             //GameInstance.GameService.UnEquipItem(uiItem.data.Id, OnSetEquipmentSuccess, OnSetEquipmentFail);
     }
 
-    private void OnSetEquipmentSuccess(ItemResult result)
-    {
-        GameInstance.Singleton.OnGameServiceItemResult(result);
-        Setup();
-    }
+    //private void OnSetEquipmentSuccess(ItemResult result)
+    //{
+    //    GameInstance.Singleton.OnGameServiceItemResult(result);
+    //    Setup();
+    //}
 
-    private void OnSetEquipmentFail(string error)
-    {
-        GameInstance.Singleton.OnGameServiceError(error);
-    }
+    //private void OnSetEquipmentFail(string error)
+    //{
+    //    GameInstance.Singleton.OnGameServiceError(error);
+    //}
 
     public string GetEquipmentPosition(UIItem ui)
     {

@@ -14,30 +14,30 @@ public class EnvironmentManager : MonoBehaviour
 
     private void Awake()
     {
-        if (spawnOnAwake)
-            SpawnObjects();
+        //if (spawnOnAwake)
+        //    SpawnObjects();
     }
 
     private void Update()
     {
-        if (isPause || !isSpawned)
-            return;
+        //if (isPause || !isSpawned)
+        //    return;
 
-        foreach (var obj in objects)
-        {
-            obj.TempTransform.position += Vector3.left * moveSpeed * Time.deltaTime;
-        }
+        //foreach (var obj in objects)
+        //{
+        //    obj.TempTransform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        //}
 
-        var firstObj = objects[0];
-        var lastObj = objects[objects.Count - 1];
-        if (!firstObj.GetBounds().Intersects(recycleBounds))
-        {
-            objects.RemoveAt(0);
-            objects.Add(firstObj);
-            var oldPosition = firstObj.TempTransform.position;
-            var lastPosition = lastObj.TempTransform.position;
-            firstObj.TempTransform.position = new Vector3(lastPosition.x + lastObj.GetBounds().size.x, oldPosition.y, oldPosition.z);
-        }
+        //var firstObj = objects[0];
+        //var lastObj = objects[objects.Count - 1];
+        //if (!firstObj.GetBounds().Intersects(recycleBounds))
+        //{
+        //    objects.RemoveAt(0);
+        //    objects.Add(firstObj);
+        //    var oldPosition = firstObj.TempTransform.position;
+        //    var lastPosition = lastObj.TempTransform.position;
+        //    firstObj.TempTransform.position = new Vector3(lastPosition.x + lastObj.GetBounds().size.x, oldPosition.y, oldPosition.z);
+        //}
     }
 
     private void OnDrawGizmos()

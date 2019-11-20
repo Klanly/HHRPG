@@ -10,7 +10,7 @@ public class UIStamina : UIDataItem<PlayerStamina>
     public Text recoveryingTime;
     public bool isCurrentPlayerStamina;
 
-    private GameDatabase gameDatabase { get { return GameInstance.GameDatabase; } }
+    private GameDatabase gameDatabase { get { return null; } }
     private int tempMaxStamina;
     public override void UpdateData()
     {

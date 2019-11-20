@@ -38,6 +38,6 @@ public abstract class BaseUISkill<TSkill> : UIDataItem<TSkill>
 
     public void ShowDataOnMessageDialog()
     {
-        GameInstance.Singleton.ShowMessageDialog(data.title, data.description);
+        //GameInstance.Singleton.ShowMessageDialog(data.title, data.description);
     }
 }

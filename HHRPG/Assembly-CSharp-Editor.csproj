@@ -333,21 +333,6 @@
     <Reference Include="DOTweenProEditor">
       <HintPath>E:/Projects/HHRPG/HHRPG/Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
     </Reference>
-    <Reference Include="LiteDB">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/RPGGame/Plugins/LiteDB.dll</HintPath>
-    </Reference>
-    <Reference Include="LitJson">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/RPGGame/Plugins/LitJson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/RPGGame/Plugins/MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/RPGGame/Plugins/MongoDB.Driver.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Data.Sqlite">
-      <HintPath>E:/Projects/HHRPG/HHRPG/Assets/RPGGame/Plugins/SQLite/Common/Mono.Data.Sqlite.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>E:/Projects/HHRPG/HHRPG/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>

@@ -42,13 +42,13 @@ public class UIIapPackage : UIDataItem<IapPackage>
 
     public void OnClickOpen()
     {
-        var gameInstance = GameInstance.Singleton;
+        //var gameInstance = GameInstance.Singleton;
         //var gameService = GameInstance.GameService;
-        if (!gameInstance.gameDatabase.IapPackages.ContainsKey(data.Id))
-            return;
+        //if (!gameInstance.gameDatabase.IapPackages.ContainsKey(data.Id))
+        //    return;
         
-        GameInstance.PurchaseCallback = ResponsePurchase;
-        GameInstance.Singleton.Purchase(data.Id);
+       // GameInstance.PurchaseCallback = ResponsePurchase;
+        //GameInstance.Singleton.Purchase(data.Id);
     }
 
     private void ResponsePurchase(bool success, string errorMessage)

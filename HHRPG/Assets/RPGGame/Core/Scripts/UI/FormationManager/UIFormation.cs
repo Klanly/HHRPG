@@ -89,15 +89,15 @@ public class UIFormation : UIBase
         }
     }
 
-    private void OnSetFormationSuccess(FormationListResult result)
-    {
-        GameInstance.Singleton.OnGameServiceFormationListResult(result);
-        SetFormationData(slotPrefab);
-    }
+    //private void OnSetFormationSuccess(FormationListResult result)
+    //{
+    //    GameInstance.Singleton.OnGameServiceFormationListResult(result);
+    //    SetFormationData(slotPrefab);
+    //}
 
     private void OnSetFormationFail(string error)
     {
-        GameInstance.Singleton.OnGameServiceError(error);
+       // GameInstance.Singleton.OnGameServiceError(error);
     }
 
     public void ShowGuideObject()

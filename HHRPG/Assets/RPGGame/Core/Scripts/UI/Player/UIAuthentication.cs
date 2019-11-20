@@ -49,23 +49,23 @@ public class UIAuthentication : UIBase
         //gameService.GuestLogin(duid, OnLoginSuccess, OnError);
     }
 
-    private void OnLoginSuccess(PlayerResult result)
-    {
-        var gameInstance = GameInstance.Singleton;
-        gameInstance.OnGameServiceLogin(result);
-        eventLogin.Invoke();
-    }
+    //private void OnLoginSuccess(PlayerResult result)
+    //{
+    //    //var gameInstance = GameInstance.Singleton;
+    //    gameInstance.OnGameServiceLogin(result);
+    //    eventLogin.Invoke();
+    //}
 
-    private void OnRegisterSuccess(PlayerResult result)
-    {
-        var gameInstance = GameInstance.Singleton;
-        eventRegister.Invoke();
-    }
+    //private void OnRegisterSuccess(PlayerResult result)
+    //{
+    //    var gameInstance = GameInstance.Singleton;
+    //    eventRegister.Invoke();
+    //}
 
     private void OnError(string error)
     {
-        var gameInstance = GameInstance.Singleton;
-        gameInstance.OnGameServiceError(error);
+       // var gameInstance = GameInstance.Singleton;
+        //gameInstance.OnGameServiceError(error);
         eventError.Invoke();
     }
 }

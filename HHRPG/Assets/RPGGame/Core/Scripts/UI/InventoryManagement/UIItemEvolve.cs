@@ -118,48 +118,48 @@ public class UIItemEvolve : UIItemWithMaterials
 
     public void OnClickEvolve()
     {
-        var gameInstance = GameInstance.Singleton;
+       // var gameInstance = GameInstance.Singleton;
         //var gameService = GameInstance.GameService;
         if (!PlayerCurrency.HaveEnoughSoftCurrency(Item.EvolvePrice))
         {
-            gameInstance.WarnNotEnoughSoftCurrency();
+            //gameInstance.WarnNotEnoughSoftCurrency();
             return;
         }
         var idAmountPair = GetSelectedItemIdAmountPair();
         //gameService.EvolveItem(Item.Id, idAmountPair, OnEvolveSuccess, OnEvolveFail);
     }
 
-    private void OnEvolveSuccess(ItemResult result)
-    {
-        GameInstance.Singleton.OnGameServiceItemResult(result);
-        eventEvolveSuccess.Invoke();
-        var items = GetAvailableItems();
-        var updateItems = result.updateItems;
-        foreach (var updateItem in updateItems)
-        {
-            var id = updateItem.Id;
-            if (updateItem.Id == Item.Id)
-                Item = updateItem;
-            if (items.ContainsKey(id))
-                items[id].SetData(updateItem);
-        }
-        var deleteItemIds = result.deleteItemIds;
-        foreach (var deleteItemId in deleteItemIds)
-        {
-            if (uiAvailableItemList != null)
-                uiAvailableItemList.RemoveListItem(deleteItemId);
-        }
-        var updateCurrencies = result.updateCurrencies;
-        foreach (var updateCurrency in updateCurrencies)
-        {
-            PlayerCurrency.SetData(updateCurrency);
-        }
-        SetupEvolve();
-    }
+    //private void OnEvolveSuccess(ItemResult result)
+    //{
+    //    GameInstance.Singleton.OnGameServiceItemResult(result);
+    //    eventEvolveSuccess.Invoke();
+    //    var items = GetAvailableItems();
+    //    var updateItems = result.updateItems;
+    //    foreach (var updateItem in updateItems)
+    //    {
+    //        var id = updateItem.Id;
+    //        if (updateItem.Id == Item.Id)
+    //            Item = updateItem;
+    //        if (items.ContainsKey(id))
+    //            items[id].SetData(updateItem);
+    //    }
+    //    var deleteItemIds = result.deleteItemIds;
+    //    foreach (var deleteItemId in deleteItemIds)
+    //    {
+    //        if (uiAvailableItemList != null)
+    //            uiAvailableItemList.RemoveListItem(deleteItemId);
+    //    }
+    //    var updateCurrencies = result.updateCurrencies;
+    //    foreach (var updateCurrency in updateCurrencies)
+    //    {
+    //        PlayerCurrency.SetData(updateCurrency);
+    //    }
+    //    SetupEvolve();
+    //}
 
     private void OnEvolveFail(string error)
     {
-        GameInstance.Singleton.OnGameServiceError(error);
+        //GameInstance.Singleton.OnGameServiceError(error);
         eventEvolveFail.Invoke();
     }
 }

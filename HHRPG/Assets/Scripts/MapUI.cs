@@ -1962,7 +1962,7 @@ public class MapUI : MonoBehaviour
         }
         GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.MapRoleObjPrefab);
         gameObject.transform.SetParent(this.MapRolePanel.transform);
-        //gameObject.GetComponent<MapRoleUI>().Bind(this, mapRole, index, activeEvent);
+        gameObject.GetComponent<MapRoleUI>().Bind(this, mapRole, index, activeEvent);
         return true;
     }
 
