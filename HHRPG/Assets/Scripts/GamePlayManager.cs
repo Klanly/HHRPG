@@ -53,11 +53,37 @@ public class GamePlayManager : BaseGamePlayManager
         foeFormation.ClearCharacters();
         foeFormation.isPlayerFormation = false;
         foeFormation.foeFormation = playerFormation;
+
+        PlayerItem[] characters;
+        StageFoe[] foes;
+        var wave = CastedStage.waves;
+        if (!wave.useRandomFoes && wave.foes.Length > 0)//判断是否随机敌人
+        {
+            foes = wave.foes;
+        }
+        else
+        {
+            foes = CastedStage.RandomFoes().foes;
+        }
+
+        //characters = new PlayerItem[foes.Length];//把角色列表拿出来
+        //for (var i = 0; i < characters.Length; ++i)
+        //{
+        //    var foe = foes[i];
+        //    if (foe != null && foe.character != null)
+        //    {
+        //        var character = PlayerItem.CreateActorItemWithLevel(foe.character, foe.level);
+        //        characters[i] = character;
+        //    }
+        //}
+
+        //foeFormation.SetCharacters(characters);//设置敌人
+        //foeFormation.Revive();
     }
 
     private void Start()
     {
-        StartGame();
+        NewTurn();
     }
 
     private void Update()
@@ -100,42 +126,6 @@ public class GamePlayManager : BaseGamePlayManager
         //}
     }
 
-    public void StartGame()
-    {
-        NewWave();//下一次战斗
-        //NewTurn();//下一回合
-    }
-
-    public void NewWave()
-    {
-        PlayerItem[] characters;
-        StageFoe[] foes;
-        var wave = CastedStage.waves;
-        if (!wave.useRandomFoes && wave.foes.Length > 0)//判断是否随机敌人
-        {
-            foes = wave.foes;
-        }
-        else
-        {
-            foes = CastedStage.RandomFoes().foes;
-        }
-           
-
-        //characters = new PlayerItem[foes.Length];
-        //for (var i = 0; i < characters.Length; ++i)
-        //{
-        //    var foe = foes[i];
-        //    if (foe != null && foe.character != null)
-        //    {
-        //        var character = PlayerItem.CreateActorItemWithLevel(foe.character, foe.level);
-        //        characters[i] = character;
-        //    }
-        //}
-
-        ////foeFormation.SetCharacters(characters);
-        //foeFormation.Revive();
-    }
-
     public void NewTurn()
     {
         if (ActiveCharacter != null)
@@ -144,51 +134,62 @@ public class GamePlayManager : BaseGamePlayManager
         CharacterEntity activatingCharacter = null;
         var maxTime = int.MinValue;
         List<BaseCharacterEntity> characters = new List<BaseCharacterEntity>();
-        characters.AddRange(playerFormation.Characters.Values);
-        characters.AddRange(foeFormation.Characters.Values);
-        for (int i = 0; i < characters.Count; ++i)
+        characters.AddRange(playerFormation.Characters.Values);//把玩家角色加入列表
+        characters.AddRange(foeFormation.Characters.Values);//把敌人角色加入列表
+        for (int i = 0; i < characters.Count; ++i)//进行排序
         {
             CharacterEntity character = characters[i] as CharacterEntity;
             if (character != null)
             {
-                if (character.Hp > 0)
+                if (character.Hp > 0)//如果角色没死
                 {
-                    int spd = (int)character.GetTotalAttributes().spd;
+                    int spd = (int)character.GetTotalAttributes().spd;//获得角色速度
                     if (spd <= 0)
                         spd = 1;
                     character.currentTimeCount += spd;
-                    if (character.currentTimeCount > maxTime)
+                    if (character.currentTimeCount > maxTime)//速度快的先出手
                     {
                         maxTime = character.currentTimeCount;
                         activatingCharacter = character;
                     }
                 }
                 else
+                {
                     character.currentTimeCount = 0;
+                }                 
             }
         }
         ActiveCharacter = activatingCharacter;
-        ActiveCharacter.DecreaseBuffsTurn();
-        ActiveCharacter.DecreaseSkillsTurn();
-        ActiveCharacter.ResetStates();
-        if (ActiveCharacter.Hp > 0)
+        ActiveCharacter.DecreaseBuffsTurn();//减少Buff
+        ActiveCharacter.DecreaseSkillsTurn();//减少技能CD
+        ActiveCharacter.ResetStates();//重置状态
+        if (ActiveCharacter.Hp > 0)//如果角色没死
         {
-            if (ActiveCharacter.IsPlayerCharacter)
+            if (ActiveCharacter.IsPlayerCharacter)//行动角色如果是玩家
             {
-                if (IsAutoPlay)
+                if (IsAutoPlay)//是否自动模式
+                {
                     ActiveCharacter.RandomAction();
+                }
                 else
+                {
                     uiCharacterActionManager.Show();
+                }                  
             }
             else
-                ActiveCharacter.RandomAction();
+            {
+                ActiveCharacter.RandomAction();//如果是敌人随机行动
+            }           
         }
         else
-            ActiveCharacter.NotifyEndAction();
+        {
+            ActiveCharacter.NotifyEndAction();//通知结束行动
+        }
     }
 
     /// <summary>
     /// This will be called by Character class to show target scopes or do action
+    /// 这将由字符类调用来显示目标范围或do操作
     /// </summary>
     /// <param name="character"></param>
     public void ShowTargetScopesOrDoAction(CharacterEntity character)
