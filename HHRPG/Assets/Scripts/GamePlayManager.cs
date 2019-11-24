@@ -57,7 +57,7 @@ public class GamePlayManager : BaseGamePlayManager
         PlayerItem[] characters;
         StageFoe[] foes;
         var wave = CastedStage.waves;
-        if (!wave.useRandomFoes && wave.foes.Length > 0)//判断是否随机敌人
+        if (!wave.useRandomFoes && wave.foes.Length > 0)//判断是否随机敌人  //改为判断个数组就是随机 如果只有一个数组就一个敌人
         {
             foes = wave.foes;
         }

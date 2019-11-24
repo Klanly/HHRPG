@@ -267,37 +267,5 @@ namespace YouYou
                 curr.Value.Shutdown();
             }
         }
-
-//        /// <summary>
-//        /// 打印日志
-//        /// </summary>
-//        /// <param name="message"></param>
-//        public static void Log(LogCategory catetory, string message)
-//        {
-//            switch (catetory)
-//            {
-//                default:
-//                case LogCategory.Normal:
-//#if DEBUG_LOG_NORMAL
-//                    Debug.Log(message);
-//#endif
-//                    break;
-//                case LogCategory.Procedure:
-//#if DEBUG_LOG_PROCEDURE
-//                    Debug.Log(string.Format("<color=#ffffff>{0}</color>", message));
-//#endif
-//                    break;
-//                case LogCategory.Resource:
-//#if DEBUG_LOG_RESOURCE
-//                    Debug.Log(string.Format("<color=#ace44a>{0}</color>", message));
-//#endif
-//                    break;
-//                case LogCategory.Proto:
-//#if DEBUG_LOG_PROTO
-//                    Debug.Log(message);
-//#endif
-//                    break;
-//            }
-//        }
     }
 }
