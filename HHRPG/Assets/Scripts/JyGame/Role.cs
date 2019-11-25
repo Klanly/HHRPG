@@ -5,128 +5,81 @@ using System.Xml.Serialization;
 
 namespace JyGame
 {
-    [XmlType("role")]
-    public class Role : BasePojo
+    public class Role
     {
-        [XmlAttribute("key")]
         public string Key;
 
-        [XmlAttribute("animation")]
-        public string Animation;
+        public string model;
 
-        [XmlAttribute("name")]
         public string Name;
 
-        [XmlAttribute("head")]
         public string Head;
 
-        [XmlAttribute]
         public int hp;
 
-        [XmlAttribute]
         public int maxhp;
 
-        [XmlAttribute]
         public int mp;
 
-        [XmlAttribute]
         public int maxmp;
 
-        [XmlAttribute]
         public int wuxing;
 
-        [XmlAttribute]
         public int shenfa;
 
-        [XmlAttribute]
         public int bili;
 
-        [XmlAttribute]
         public int gengu;
 
-        [XmlAttribute]
         public int fuyuan;
 
-        [XmlAttribute]
         public int dingli;
 
-        [XmlAttribute]
         public int quanzhang;
 
-        [XmlAttribute]
         public int jianfa;
 
-        [XmlAttribute]
         public int daofa;
 
-        [XmlAttribute]
         public int qimen;
 
-        [XmlAttribute]
         public string currentSkillName = string.Empty;
 
         private int _level;
 
-        [XmlAttribute]
         public int exp;
 
-        [XmlAttribute("arena")]
         public string ArenaValue;
 
-        [XmlAttribute("female")]
         public int FemaleValue;
 
-        [XmlIgnore]
         public List<string> Talents = new List<string>();
 
-        [XmlAttribute]
         public int leftpoint;
 
-        [XmlAttribute("grow_template")]
         public string GrowTemplateValue = "default";
 
-        //[XmlArrayItem(typeof(SkillInstance))]
-        //[XmlArray("skills")]
         //public List<SkillInstance> Skills = new List<SkillInstance>();
 
-        //[XmlArray("internal_skills")]
-        //[XmlArrayItem(typeof(InternalSkillInstance))]
         //public List<InternalSkillInstance> InternalSkills = new List<InternalSkillInstance>();
 
-        //[XmlArray("special_skills")]
-        //[XmlArrayItem(typeof(SpecialSkillInstance))]
         //public List<SpecialSkillInstance> SpecialSkills = new List<SpecialSkillInstance>();
 
-        [XmlIgnore]
         public int balls;
 
-        //[XmlArray("items")]
         //[XmlArrayItem(typeof(ItemInstance))]
         //public List<ItemInstance> Equipment = new List<ItemInstance>();
 
-        //[XmlIgnore]
         //public AttributeFinalHelper AttributesFinal;
 
-        [XmlIgnore]
         public AttributeHelper Attributes;
 
-        //[XmlIgnore]
         //public BattleSprite Sprite;
 
         public Role()
         {
             //this.AttributesFinal = new AttributeFinalHelper(this);
             this.Attributes = new AttributeHelper(this);
-        }
-
-
-        [XmlIgnore]
-        public override string PK
-        {
-            get
-            {
-                return this.Key;
-            }
         }
 
         //		public override void InitBind()
@@ -214,7 +167,6 @@ namespace JyGame
         //			}
         //		}
 
-        [XmlAttribute]
         public int level
         {
             get
@@ -236,7 +188,6 @@ namespace JyGame
             }
         }
 
-        [XmlIgnore]
         public int Exp
         {
             get
@@ -333,11 +284,6 @@ namespace JyGame
         //			}
         //			return null;
         //		}
-
-        public Role Clone()
-        {
-            return BasePojo.Create<Role>(this.Xml);
-        }
 
         public void Reset(bool recover = true)
         {

@@ -19,9 +19,9 @@ public class UIWin //: UIDataItem<FinishStageResult>
     {
         get
         {
-            var unlockStages = BaseGamePlayManager.PlayingStage.unlockStages;
-            if (unlockStages != null && unlockStages.Length > 0)
-                return unlockStages[0];
+            //var unlockStages = BaseGamePlayManager.PlayingStage.unlockStages;
+            //if (unlockStages != null && unlockStages.Length > 0)
+            //    return unlockStages[0];
             return null;
         }
     }
@@ -115,8 +115,8 @@ public class UIWin //: UIDataItem<FinishStageResult>
 
     public void OnClickGoToNextStage()
     {
-        var nextStage = NextStage;
-        if (nextStage != null)
-            BaseGamePlayManager.StartStage(nextStage);
+        //var nextStage = NextStage;
+        //if (nextStage != null)
+        //    BaseGamePlayManager.StartStage(nextStage);
     }
 }

@@ -32,6 +32,11 @@ namespace YouYou
         public NPCDBModel NPCDBModel { get; private set; }
 
         /// <summary>
+        /// Battle表
+        /// </summary>
+        public BattleDBModel BattleDBModel { get; private set; }
+
+        /// <summary>
         /// 初始化DBModel
         /// </summary>
         private void InitDBModel()
@@ -40,7 +45,7 @@ namespace YouYou
             MapDBModel = new MapDBModel();
             StoryDBModel = new StoryDBModel();
             RoleDBModel = new RoleDBModel();
-  
+            BattleDBModel = new BattleDBModel();
         }
 
         public void LoadDataTable()
@@ -50,7 +55,7 @@ namespace YouYou
             NPCDBModel.LoadData();
             StoryDBModel.LoadData();
             RoleDBModel.LoadData();
-  
+            BattleDBModel.LoadData();
 
             //所有表Load完毕
             GameEntry.Event.CommonEvent.Dispatch(SysEventId.LoadDataTableComplete);
@@ -72,7 +77,7 @@ namespace YouYou
             NPCDBModel.Clear();
             RoleDBModel.Clear();
             StoryDBModel.Clear();
-
+            BattleDBModel.Clear();
         }
     }
 }

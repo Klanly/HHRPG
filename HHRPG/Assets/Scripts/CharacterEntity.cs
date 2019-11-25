@@ -730,7 +730,7 @@ public class CharacterEntity : BaseCharacterEntity
         return target != null && Formation == target.Formation;
     }
 
-    public override void SetFormation(BaseGamePlayFormation formation, int position, Transform container)
+    public override void SetFormation(GamePlayFormation formation, int position, Transform container)
     {
         if (container == null)
             return;

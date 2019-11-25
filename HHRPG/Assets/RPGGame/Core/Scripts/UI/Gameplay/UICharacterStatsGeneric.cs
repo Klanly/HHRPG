@@ -65,7 +65,7 @@ public class UICharacterStatsGeneric : UIBase
 
         if (uiLevel != null)
         {
-            uiLevel.level = character.Item.Level;
+            //uiLevel.level = character.Item.Level;
            // uiLevel.maxLevel = character.Item.MaxLevel;
            // uiLevel.collectExp = character.Item.CollectExp;
            // uiLevel.nextExp = character.Item.NextExp;

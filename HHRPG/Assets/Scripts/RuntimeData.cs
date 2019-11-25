@@ -236,14 +236,9 @@ namespace JyGame
         /// <param name="roleID">角色ID</param>
         public void addTeamMember(int roleID)
         {
-            RoleEntity roleEntity= GameEntry.DataTable.DataTableManager.RoleDBModel.Get(roleID);          
-            Role role = new Role();
-            role.Name = roleEntity.Name;
-
-            this.Team.Add(role);
+            this.Team.Add(GameEntry.DataTable.GetRole(roleID));
         }
 
-        //// Token: 0x060000B4 RID: 180 RVA: 0x00006C70 File Offset: 0x00004E70
         //public void addFollowMember(string roleKey)
         //{
         //    this.Follow.Add(ResourceManager.Get<Role>(roleKey).Clone());

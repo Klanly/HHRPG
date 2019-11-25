@@ -49,16 +49,16 @@ public abstract class BaseCharacterEntity : MonoBehaviour
         }
     }
 
-    private Role item;
-    public Role Item
+    private Role role;
+    public Role Role
     {
-        get { return item; }
+        get { return role; }
         set
         {
-            //if (value == null || item == value || value.CharacterData == null)
-            //    return;
-            item = value;
-            Skills.Clear();
+            if (value == null || role == value)
+                return;
+            role = value;
+            //Skills.Clear();
             //var skills = item.CharacterData.skills;
             //foreach (var skill in skills)
             //{
@@ -68,13 +68,13 @@ public abstract class BaseCharacterEntity : MonoBehaviour
             //        Skills.Add(NewSkill(1, skill));
             //    }
             //}
-            Revive();
+            //Revive();
         }
     }
    // public List<BaseAttackAnimationData> AttackAnimations { get { return Item.CharacterData.attackAnimations; } }
     public readonly Dictionary<string, BaseCharacterBuff> Buffs = new Dictionary<string, BaseCharacterBuff>();
     public readonly List<BaseCharacterSkill> Skills = new List<BaseCharacterSkill>();
-    public BaseGamePlayFormation Formation { get; protected set; }
+    public GamePlayFormation Formation { get; protected set; }
     public int Position { get; protected set; }
 
     public int MaxHp
@@ -146,9 +146,6 @@ public abstract class BaseCharacterEntity : MonoBehaviour
 
     public void Revive()
     {
-        if (Item == null)
-            return;
-
         Hp = MaxHp;
     }
 
@@ -169,15 +166,15 @@ public abstract class BaseCharacterEntity : MonoBehaviour
 
     public CalculationAttributes GetTotalAttributes()
     {
-        var result = Item.Attributes;
+        //var result = Item.Attributes;
         //var equipmentBonus = Item.EquipmentBonus;
         //result += equipmentBonus;
 
-        var buffs = new List<BaseCharacterBuff>(Buffs.Values);
-        foreach (var buff in buffs)
-        {
-            //result += buff.Attributes;
-        }
+        //var buffs = new List<BaseCharacterBuff>(Buffs.Values);
+        //foreach (var buff in buffs)
+        //{
+        //    //result += buff.Attributes;
+        //}
 
         // If this is character item, applies rate attributes
         //result.hp += Mathf.CeilToInt(result.hpRate * result.hp);
@@ -200,7 +197,7 @@ public abstract class BaseCharacterEntity : MonoBehaviour
         return null;
     }
 
-    public virtual void SetFormation(BaseGamePlayFormation formation, int position, Transform container)
+    public virtual void SetFormation(GamePlayFormation formation, int position, Transform container)
     {
         if (container == null)
             return;

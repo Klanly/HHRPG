@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using YouYou;
 
 public class GamePlayManager : BaseGamePlayManager
 {
+    public static string BattleSession { get; private set; }
+    public static int PlayingBattle { get; protected set; }//战斗编号
     public static GamePlayManager Singleton { get; private set; }
     public Camera inputCamera;
     [Header("Formation/Spawning")]
@@ -24,7 +27,6 @@ public class GamePlayManager : BaseGamePlayManager
     public UICharacterStats uiCharacterStatsPrefab;
     public UICharacterActionManager uiCharacterActionManager;
     public CharacterEntity ActiveCharacter { get; private set; }
-    public Stage CastedStage { get { return PlayingStage as Stage; } }
 
     /// <summary>
     /// 地图中心位置
@@ -54,36 +56,23 @@ public class GamePlayManager : BaseGamePlayManager
         foeFormation.isPlayerFormation = false;
         foeFormation.foeFormation = playerFormation;
 
-        PlayerItem[] characters;
-        StageFoe[] foes;
-        var wave = CastedStage.waves;
-        if (!wave.useRandomFoes && wave.foes.Length > 0)//判断是否随机敌人  //改为判断个数组就是随机 如果只有一个数组就一个敌人
+        BattleEntity battleEntity = GameEntry.DataTable.DataTableManager.BattleDBModel.Get(PlayingBattle);
+        string[] array=battleEntity.Role.Split(',');
+        if (array.Length > 1)
         {
-            foes = wave.foes;
+            //随机敌人 
         }
         else
         {
-            foes = CastedStage.RandomFoes().foes;
+            string[] array2=array[0].Split('_');
+            foeFormation.SetCharacters(array2);//设置敌人
         }
-
-        //characters = new PlayerItem[foes.Length];//把角色列表拿出来
-        //for (var i = 0; i < characters.Length; ++i)
-        //{
-        //    var foe = foes[i];
-        //    if (foe != null && foe.character != null)
-        //    {
-        //        var character = PlayerItem.CreateActorItemWithLevel(foe.character, foe.level);
-        //        characters[i] = character;
-        //    }
-        //}
-
-        //foeFormation.SetCharacters(characters);//设置敌人
-        //foeFormation.Revive();
+        foeFormation.Revive();
     }
 
     private void Start()
     {
-        NewTurn();
+        //NewTurn();
     }
 
     private void Update()
@@ -271,5 +260,14 @@ public class GamePlayManager : BaseGamePlayManager
     public override int CountDeadCharacters()
     {
         return playerFormation.CountDeadCharacters();
+    }
+
+    /// <summary>
+    /// 设置关卡 设置战斗
+    /// </summary>
+    /// <param name="data"></param>
+    public static void StartBattle(int indx)
+    {
+        PlayingBattle = indx;
     }
 }

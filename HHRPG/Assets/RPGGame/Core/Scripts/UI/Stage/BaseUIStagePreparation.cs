@@ -38,6 +38,6 @@ public abstract class BaseUIStagePreparation<TUI, TStage> : UIDataItem<TStage>
 
     public void OnClickStartStage()
     {
-        BaseGamePlayManager.StartStage(data);
+        //BaseGamePlayManager.StartStage(data);
     }
 }

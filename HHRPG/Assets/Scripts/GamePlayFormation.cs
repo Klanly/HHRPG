@@ -3,16 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using YouYou;
 
-public class GamePlayFormation : BaseGamePlayFormation
+public class GamePlayFormation : MonoBehaviour
 {
     /// <summary>
     /// 敌人阵型
     /// </summary>
     public GamePlayFormation foeFormation;
+    /// <summary>
+    /// 是否玩家阵型
+    /// </summary>
     public bool isPlayerFormation;
     public GamePlayManager Manager { get { return GamePlayManager.Singleton; } }
     public readonly Dictionary<int, UICharacterStats> UIStats = new Dictionary<int, UICharacterStats>();
+    public Transform[] containers;
+    /// <summary>
+    /// 角色
+    /// </summary>
+    public readonly Dictionary<int, BaseCharacterEntity> Characters = new Dictionary<int, BaseCharacterEntity>();
 
     private void Start()
     {
@@ -22,14 +31,43 @@ public class GamePlayFormation : BaseGamePlayFormation
         }                  
     }
 
-    public override BaseCharacterEntity SetCharacter(int position, Role item)
+    /// <summary>
+    /// 设置阵型角色
+    /// </summary>
+    public virtual void SetFormationCharacters()
     {
-        var character = base.SetCharacter(position, item) as CharacterEntity;
+        List<Role> Teamlist = RuntimeData.Instance.Team;
+        ClearCharacters();
+        for (var i = 0; i < Teamlist.Count; ++i)
+        {
+            SetCharacter(i, Teamlist[i]);
+        }
+    }
+
+    public virtual void SetCharacters(string[] items)
+    {
+        ClearCharacters();
+        for (var i = 0; i < items.Length; ++i)
+        {
+            SetCharacter(i, GameEntry.DataTable.GetRole(items[i].ToInt()));
+        }
+    }
+
+    public void SetCharacter(int position, Role role)
+    {
+        var container = containers[position];
+        container.RemoveAllChildren();
+        string path = "Characters/" + role.model;
+        GameObject go = Resources.Load(path) as GameObject;
+        var character = Instantiate(go).GetComponent<BaseCharacterEntity>();
+        character.SetFormation(this, position, container);
+        character.Role = role;
+        Characters[position] = character;
 
         if (character == null)
-            return null;
+            return;
 
-        UICharacterStats uiStats;
+        //UICharacterStats uiStats;
         //if (UIStats.TryGetValue(position, out uiStats))
         //{
         //    Destroy(uiStats.gameObject);
@@ -43,8 +81,18 @@ public class GamePlayFormation : BaseGamePlayFormation
         //    uiStats.character = character;
         //    character.uiCharacterStats = uiStats;
         //}
+    }
 
-        return character;
+    /// <summary>
+    /// 清除角色
+    /// </summary>
+    public virtual void ClearCharacters()
+    {
+        foreach (var container in containers)
+        {
+            container.RemoveAllChildren();
+        }
+        Characters.Clear();
     }
 
     public void Revive()

@@ -27,7 +27,7 @@ public class MapRoleUI : MonoBehaviour, IPointerEnterHandler, IEventSystemHandle
     public void OnMapRoleClicked()
 	{
         Debug.Log("点击");
-        BaseGamePlayManager.StartStage(null);//进入战斗之前要设置关卡信息
+        GamePlayManager.StartBattle(70001);//进入战斗之前要设置关卡信息
         SceneManager.LoadScene("BattleScene");
         //if (CommonSettings.TOUCH_MODE)
         //{

@@ -206,7 +206,6 @@
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityScene.cs" />
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityTag.cs" />
     <Compile Include="Assets\Scripts\BaseCharacterEntity.cs" />
-    <Compile Include="Assets\Scripts\BaseGamePlayFormation.cs" />
     <Compile Include="Assets\Scripts\BaseGamePlayManager.cs" />
     <Compile Include="Assets\Scripts\CharacterEntity.cs" />
     <Compile Include="Assets\Scripts\GamePlayFormation.cs" />
@@ -219,8 +218,6 @@
     <Compile Include="Assets\Scripts\JyGame\AttributeHelper.cs" />
     <Compile Include="Assets\Scripts\JyGame\AudioManager.cs" />
     <Compile Include="Assets\Scripts\JyGame\BasePojo.cs" />
-    <Compile Include="Assets\Scripts\JyGame\Battle.cs" />
-    <Compile Include="Assets\Scripts\JyGame\BattleRole.cs" />
     <Compile Include="Assets\Scripts\JyGame\Buff.cs" />
     <Compile Include="Assets\Scripts\JyGame\CommonSettings.cs" />
     <Compile Include="Assets\Scripts\JyGame\Condition.cs" />
@@ -238,7 +235,6 @@
     <Compile Include="Assets\Scripts\JyGame\MapRole.cs" />
     <Compile Include="Assets\Scripts\JyGame\Menpai.cs" />
     <Compile Include="Assets\Scripts\JyGame\ModEditorResourceManager.cs" />
-    <Compile Include="Assets\Scripts\JyGame\RandomBattleRole.cs" />
     <Compile Include="Assets\Scripts\JyGame\Require.cs" />
     <Compile Include="Assets\Scripts\JyGame\Resource.cs" />
     <Compile Include="Assets\Scripts\JyGame\ResourceManager.cs" />
@@ -368,6 +364,8 @@
     <Compile Include="Assets\YouYou_Framework\Utils\SecurityUtil.cs" />
     <Compile Include="Assets\YouYou_Framework\Utils\StringUtil.cs" />
     <Compile Include="Assets\YouYou_Framework\Utils\ZlibHelper.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\BattleDBModel.cs" />
+    <Compile Include="Assets\YouYouScript\Data\DataTable\Create\BattleEntity.cs" />
     <Compile Include="Assets\YouYouScript\Data\DataTable\Create\GlobalTriggerDBModel.cs" />
     <Compile Include="Assets\YouYouScript\Data\DataTable\Create\GlobalTriggerEntity.cs" />
     <Compile Include="Assets\YouYouScript\Data\DataTable\Create\MapDBModel.cs" />

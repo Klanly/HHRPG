@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public abstract class BaseGamePlayManager : MonoBehaviour
 {
-    public static string BattleSession { get; private set; }
-    public static BaseStage PlayingStage { get; protected set; }
     [Header("Combat Texts")]
     public Transform combatTextContainer;
     public UICombatText combatDamagePrefab;
@@ -173,17 +171,10 @@ public abstract class BaseGamePlayManager : MonoBehaviour
 
     public void Restart()
     {
-        StartStage(PlayingStage);
+        //StartStage(PlayingStage);
     }
 
-    /// <summary>
-    /// 设置关卡 设置战斗
-    /// </summary>
-    /// <param name="data"></param>
-    public static void StartStage(BaseStage data)
-    {
-        PlayingStage = data;       
-    }
+   
 
     public virtual void OnRevive()
     {
