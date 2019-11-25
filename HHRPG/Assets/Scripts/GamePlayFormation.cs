@@ -59,7 +59,7 @@ public class GamePlayFormation : MonoBehaviour
         container.RemoveAllChildren();
         string path = "Characters/" + role.model;
         GameObject go = Resources.Load(path) as GameObject;
-        var character = Instantiate(go).GetComponent<BaseCharacterEntity>();
+        var character = Instantiate(go).GetComponent<CharacterEntity>();
         character.SetFormation(this, position, container);
         character.Role = role;
         Characters[position] = character;

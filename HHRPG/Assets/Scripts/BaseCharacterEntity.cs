@@ -68,7 +68,7 @@ public abstract class BaseCharacterEntity : MonoBehaviour
             //        Skills.Add(NewSkill(1, skill));
             //    }
             //}
-            //Revive();
+            Revive();
         }
     }
    // public List<BaseAttackAnimationData> AttackAnimations { get { return Item.CharacterData.attackAnimations; } }
@@ -79,7 +79,7 @@ public abstract class BaseCharacterEntity : MonoBehaviour
 
     public int MaxHp
     {
-        get { return (int)GetTotalAttributes().hp; }
+        get { return role.maxhp; }
     }
 
     private float hp;
@@ -195,16 +195,6 @@ public abstract class BaseCharacterEntity : MonoBehaviour
         //result.accRate = 0;
         //return result;
         return null;
-    }
-
-    public virtual void SetFormation(GamePlayFormation formation, int position, Transform container)
-    {
-        if (container == null)
-            return;
-
-        Formation = formation;
-        Position = position;
-        Container = container;
     }
     
     public virtual void ApplyBuff(BaseCharacterEntity caster, int level, BaseSkill skill, int buffIndex)

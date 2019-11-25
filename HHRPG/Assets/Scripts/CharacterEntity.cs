@@ -730,20 +730,22 @@ public class CharacterEntity : BaseCharacterEntity
         return target != null && Formation == target.Formation;
     }
 
-    public override void SetFormation(GamePlayFormation formation, int position, Transform container)
+    public void SetFormation(GamePlayFormation formation, int position, Transform container)
     {
         if (container == null)
             return;
 
-        base.SetFormation(formation, position, container);
+        Formation = formation;
+        Position = position;
+        Container = container;
         
         Quaternion headingRotation;
-        if (CastedFormation.TryGetHeadingToFoeRotation(out headingRotation))
-        {
-            TempTransform.rotation = headingRotation;
-            if (Manager != null)
-                TempTransform.position -= Manager.spawnOffset * TempTransform.forward;
-        }
+        //if (CastedFormation.TryGetHeadingToFoeRotation(out headingRotation))
+        //{
+        //    TempTransform.rotation = headingRotation;
+        //    if (Manager != null)
+        //        TempTransform.position -= Manager.spawnOffset * TempTransform.forward;
+        //}
     }
 
     public override BaseCharacterSkill NewSkill(int level, BaseSkill skill)

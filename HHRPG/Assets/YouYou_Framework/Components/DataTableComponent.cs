@@ -43,6 +43,8 @@ namespace YouYou
             RoleEntity roleEntity = GameEntry.DataTable.DataTableManager.RoleDBModel.Get(indx);
             role.Name = roleEntity.Name;
             role.model = roleEntity.model;
+            role.maxhp = roleEntity.maxhp;
+            role.maxmp = roleEntity.maxhp;
             return role;
         }
 
