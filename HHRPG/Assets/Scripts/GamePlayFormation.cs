@@ -21,7 +21,7 @@ public class GamePlayFormation : MonoBehaviour
     /// <summary>
     /// 角色
     /// </summary>
-    public readonly Dictionary<int, BaseCharacterEntity> Characters = new Dictionary<int, BaseCharacterEntity>();
+    public readonly Dictionary<int, CharacterEntity> Characters = new Dictionary<int, CharacterEntity>();
 
     private void Start()
     {

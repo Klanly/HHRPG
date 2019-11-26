@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using JyGame;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,6 +9,119 @@ using UnityEngine;
 [RequireComponent(typeof(TargetingRigidbody))]
 public class CharacterEntity : BaseCharacterEntity
 {
+    public const string ANIM_ACTION_STATE = "_Action";
+    [Header("Animator")]
+    [SerializeField]
+    private RuntimeAnimatorController animatorController;
+
+    [Header("UIs/Effects/Entities Containers")]
+    [Tooltip("The transform where we're going to spawn uis")]
+    public Transform uiContainer;
+    [Tooltip("The transform where we're going to spawn body effects")]
+    public Transform bodyEffectContainer;
+    [Tooltip("The transform where we're going to spawn floor effects")]
+    public Transform floorEffectContainer;
+    [Tooltip("The transform where we're going to spawn damage")]
+    public Transform damageContainer;
+
+    private Animator cacheAnimator;
+    public Animator CacheAnimator
+    {
+        get
+        {
+            if (cacheAnimator == null)
+            {
+                cacheAnimator = GetComponent<Animator>();
+                cacheAnimator.runtimeAnimatorController = animatorController;
+            }
+            return cacheAnimator;
+        }
+    }
+
+    private AnimatorOverrideController cacheAnimatorController;
+    public AnimatorOverrideController CacheAnimatorController
+    {
+        get
+        {
+            if (cacheAnimatorController == null)
+                cacheAnimatorController = new AnimatorOverrideController(animatorController);
+            return cacheAnimatorController;
+        }
+    }
+
+    private Role role;
+    public Role Role
+    {
+        get { return role; }
+        set
+        {
+            if (value == null || role == value)
+                return;
+            role = value;
+            //Skills.Clear();
+            //var skills = item.CharacterData.skills;
+            //foreach (var skill in skills)
+            //{
+            //    if (skill != null)
+            //    {
+            //        // TODO: Implement skill level
+            //        Skills.Add(NewSkill(1, skill));
+            //    }
+            //}
+            Revive();
+        }
+    }
+    // public List<BaseAttackAnimationData> AttackAnimations { get { return Item.CharacterData.attackAnimations; } }
+    public readonly Dictionary<string, BaseCharacterBuff> Buffs = new Dictionary<string, BaseCharacterBuff>();
+    public readonly List<BaseCharacterSkill> Skills = new List<BaseCharacterSkill>();
+    public GamePlayFormation Formation { get; protected set; }
+    public int Position { get; protected set; }
+
+    public int MaxHp
+    {
+        get { return role.maxhp; }
+    }
+
+    private float hp;
+    public float Hp
+    {
+        get { return hp; }
+        set
+        {
+            hp = value;
+            if (hp <= 0)
+                Dead();
+            if (hp >= MaxHp)
+                hp = MaxHp;
+        }
+    }
+
+    private Transform container;
+    public Transform Container
+    {
+        get { return container; }
+        set
+        {
+            container = value;
+            TempTransform.SetParent(container);
+            TempTransform.localPosition = Vector3.zero;
+            TempTransform.localEulerAngles = Vector3.zero;
+            TempTransform.localScale = Vector3.one;
+            gameObject.SetActive(true);
+        }
+    }
+
+    private Transform tempTransform;
+    public Transform TempTransform
+    {
+        get
+        {
+            if (tempTransform == null)
+                tempTransform = GetComponent<Transform>();
+            return tempTransform;
+        }
+    }
+
     public const string ANIM_KEY_IS_DEAD = "IsDead";
     public const string ANIM_KEY_SPEED = "Speed";
     public const string ANIM_KEY_ACTION_STATE = "ActionState";
@@ -26,10 +140,9 @@ public class CharacterEntity : BaseCharacterEntity
     [HideInInspector]
     public UICharacterStats uiCharacterStats;
 
-    public GamePlayFormation CastedFormation { get { return Formation as GamePlayFormation; } }
     public GamePlayManager Manager { get { return GamePlayManager.Singleton; } }
     public bool IsActiveCharacter { get { return Manager.ActiveCharacter == this; } }
-    public bool IsPlayerCharacter { get { return Formation != null && CastedFormation.isPlayerFormation; } }
+    public bool IsPlayerCharacter { get { return Formation != null && Formation.isPlayerFormation; } }
     public int Action { get; private set; }
     public bool IsDoingAction { get; private set; }
     public bool IsMovingToTarget { get; private set; }
@@ -75,9 +188,17 @@ public class CharacterEntity : BaseCharacterEntity
     #endregion
 
     #region Unity Functions
-    protected override void Awake()
+    protected virtual void Awake()
     {
-        base.Awake();
+        //if (uiContainer == null)
+        //    uiContainer = TempTransform;
+        //if (bodyEffectContainer == null)
+        //    bodyEffectContainer = TempTransform;
+        //if (floorEffectContainer == null)
+        //    floorEffectContainer = TempTransform;
+        //if (damageContainer == null)
+        //    damageContainer = TempTransform;
+
         //CacheCapsuleCollider.isTrigger = true;
     }
 
@@ -131,15 +252,15 @@ public class CharacterEntity : BaseCharacterEntity
     {
         if (target == null)
             return;
-        var attributes = GetTotalAttributes();
-        target.ReceiveDamage(
-            Mathf.CeilToInt(attributes.pAtk * pAtkRate),
-            Mathf.CeilToInt(attributes.mAtk * mAtkRate),
-            (int)attributes.acc,
-            attributes.critChance,
-            attributes.critDamageRate,
-            hitCount,
-            fixDamage);
+       // var attributes = GetTotalAttributes();
+       // target.ReceiveDamage(
+            //Mathf.CeilToInt(attributes.pAtk * pAtkRate),
+            //Mathf.CeilToInt(attributes.mAtk * mAtkRate),
+            //(int)attributes.acc,
+            //attributes.critChance,
+            //attributes.critDamageRate,
+            //hitCount,
+            //fixDamage);
     }
 
     public void Attack(CharacterEntity target, Damage damagePrefab, float pAtkRate = 1f, float mAtkRate = 1f, int hitCount = 1, int fixDamage = 0)
@@ -158,47 +279,47 @@ public class CharacterEntity : BaseCharacterEntity
         if (hitCount <= 0)
             hitCount = 1;
         //var gameDb = GameInstance.GameDatabase;
-        var attributes = GetTotalAttributes();
-        var pDmg = pAtk - attributes.pDef;
-        var mDmg = mAtk - attributes.mDef;
-        if (pDmg < 0)
-            pDmg = 0;
-        if (mDmg < 0)
-            mDmg = 0;
-        var totalDmg = pDmg + mDmg;
+        //var attributes = GetTotalAttributes();
+        //var pDmg = pAtk - attributes.pDef;
+        //var mDmg = mAtk - attributes.mDef;
+        //if (pDmg < 0)
+        //    pDmg = 0;
+        //if (mDmg < 0)
+        //    mDmg = 0;
+        //var totalDmg = pDmg + mDmg;
         var isCritical = false;
         var isBlock = false;
         //totalDmg += Mathf.CeilToInt(totalDmg * Random.Range(gameDb.minAtkVaryRate, gameDb.maxAtkVaryRate)) + fixDamage;
         // Critical occurs
         if (Random.value <= critChance)
         {
-            totalDmg = Mathf.CeilToInt(totalDmg * critDamageRate);
+            //totalDmg = Mathf.CeilToInt(totalDmg * critDamageRate);
             isCritical = true;
         }
         // Block occurs
-        if (Random.value <= attributes.blockChance)
-        {
-            totalDmg = Mathf.CeilToInt(totalDmg / attributes.blockDamageRate);
-            isBlock = true;
-        }
+        //if (Random.value <= attributes.blockChance)
+        //{
+        //    totalDmg = Mathf.CeilToInt(totalDmg / attributes.blockDamageRate);
+        //    isBlock = true;
+        //}
 
         var hitChance = 0f;
         if (acc > 0)
-            hitChance = acc / attributes.eva;
+           // hitChance = acc / attributes.eva;
         
         // Cannot evade, receive damage
         if (hitChance < 0 || Random.value > hitChance)
             Manager.SpawnMissText(this);
         else
         {
-            if (isBlock)
-                Manager.SpawnBlockText((int)totalDmg, this);
-            else if (isCritical)
-                Manager.SpawnCriticalText((int)totalDmg, this);
-            else
-                Manager.SpawnDamageText((int)totalDmg, this);
+            //if (isBlock)
+            //   // Manager.SpawnBlockText((int)totalDmg, this);
+            //else if (isCritical)
+            //  //  Manager.SpawnCriticalText((int)totalDmg, this);
+            //else
+               // Manager.SpawnDamageText((int)totalDmg, this);
 
-            Hp -= (int)totalDmg;
+           // Hp -= (int)totalDmg;
         }
         // Play hurt animation
         CacheAnimator.ResetTrigger(ANIM_KEY_HURT);
@@ -288,7 +409,7 @@ public class CharacterEntity : BaseCharacterEntity
     public void TurnToEnemyFormation()
     {
         Quaternion headingRotation;
-        if (CastedFormation.TryGetHeadingToFoeRotation(out headingRotation))
+        if (Formation.TryGetHeadingToFoeRotation(out headingRotation))
             TempTransform.rotation = headingRotation;
     }
 
@@ -740,22 +861,25 @@ public class CharacterEntity : BaseCharacterEntity
         Container = container;
         
         Quaternion headingRotation;
-        //if (CastedFormation.TryGetHeadingToFoeRotation(out headingRotation))
-        //{
-        //    TempTransform.rotation = headingRotation;
-        //    if (Manager != null)
-        //        TempTransform.position -= Manager.spawnOffset * TempTransform.forward;
-        //}
+        if (Formation.TryGetHeadingToFoeRotation(out headingRotation))
+        {
+            TempTransform.rotation = headingRotation;            
+        }
     }
 
-    public override BaseCharacterSkill NewSkill(int level, BaseSkill skill)
-    {
-        return new CharacterSkill(level, skill);
-    }
+    //public override CharacterSkill NewSkill(int level, BaseSkill skill)
+    //{
+    //    return new CharacterSkill(level, skill);
+    //}
 
-    public override BaseCharacterBuff NewBuff(int level, BaseSkill skill, int buffIndex, BaseCharacterEntity giver, BaseCharacterEntity receiver)
-    {
-        return new CharacterBuff(level, skill, buffIndex, giver, receiver);
-    }
+    //public override CharacterBuff NewBuff(int level, BaseSkill skill, int buffIndex, CharacterEntity giver, CharacterEntity receiver)
+    //{
+    //    return new CharacterBuff(level, skill, buffIndex, giver, receiver);
+    //}
     #endregion
+
+    public void Revive()
+    {
+        Hp = MaxHp;
+    }
 }

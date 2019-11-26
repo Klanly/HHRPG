@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class BaseCharacterBuff
 {
-    public BaseCharacterEntity Giver { get; protected set; }
-    public BaseCharacterEntity Receiver { get; protected set; }
+    public CharacterEntity Giver { get; protected set; }
+    public CharacterEntity Receiver { get; protected set; }
     public int Level { get; protected set; }
     public BaseSkill Skill { get; protected set; }
     public int BuffIndex { get; protected set; }
@@ -26,7 +26,7 @@ public abstract class BaseCharacterBuff
     public float MAtkHealRate { get { return Buff.GetMAtkHealRate(Level); } }
     protected readonly List<GameEffect> effects = new List<GameEffect>();
 
-    public BaseCharacterBuff(int level, BaseSkill skill, int buffIndex, BaseCharacterEntity giver, BaseCharacterEntity receiver)
+    public BaseCharacterBuff(int level, BaseSkill skill, int buffIndex, CharacterEntity giver, CharacterEntity receiver)
     {
         Level = level;
         Skill = skill;

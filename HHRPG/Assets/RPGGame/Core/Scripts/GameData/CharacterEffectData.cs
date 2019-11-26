@@ -15,7 +15,7 @@ public class CharacterEffectData
         return result;
     }
 
-    public List<GameEffect> InstantiatesTo(BaseCharacterEntity character)
+    public List<GameEffect> InstantiatesTo(CharacterEntity character)
     {
         var result = new List<GameEffect>();
         if (bodyEffect != null)

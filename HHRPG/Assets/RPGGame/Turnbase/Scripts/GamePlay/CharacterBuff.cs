@@ -12,7 +12,7 @@ public class CharacterBuff : BaseCharacterBuff
     public int TurnsCount { get { return turnsCount; } }
     public int RemainsTurns { get { return ApplyTurns - TurnsCount; } }
 
-    public CharacterBuff(int level, BaseSkill skill, int buffIndex, BaseCharacterEntity giver, BaseCharacterEntity receiver) : base(level, skill, buffIndex, giver, receiver)
+    public CharacterBuff(int level, BaseSkill skill, int buffIndex, CharacterEntity giver, CharacterEntity receiver) : base(level, skill, buffIndex, giver, receiver)
     {
         healAmount = 0;
         var pAtkHealRate = PAtkHealRate;

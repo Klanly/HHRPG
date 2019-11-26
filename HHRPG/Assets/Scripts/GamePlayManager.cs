@@ -15,7 +15,6 @@ public class GamePlayManager : BaseGamePlayManager
     public GamePlayFormation playerFormation;
     public GamePlayFormation foeFormation;
     public Transform mapCenter;
-    public float spawnOffset = 5f;
     [Header("Speed/Delay")]
     public float formationMoveSpeed = 5f;
     public float doActionMoveSpeed = 8f;
@@ -72,7 +71,7 @@ public class GamePlayManager : BaseGamePlayManager
 
     private void Start()
     {
-        //NewTurn();
+        NewTurn();
     }
 
     private void Update()
@@ -118,11 +117,13 @@ public class GamePlayManager : BaseGamePlayManager
     public void NewTurn()
     {
         if (ActiveCharacter != null)
+        {
             ActiveCharacter.currentTimeCount = 0;
+        }
 
         CharacterEntity activatingCharacter = null;
         var maxTime = int.MinValue;
-        List<BaseCharacterEntity> characters = new List<BaseCharacterEntity>();
+        List<CharacterEntity> characters = new List<CharacterEntity>();
         characters.AddRange(playerFormation.Characters.Values);//把玩家角色加入列表
         characters.AddRange(foeFormation.Characters.Values);//把敌人角色加入列表
         for (int i = 0; i < characters.Count; ++i)//进行排序
@@ -130,9 +131,9 @@ public class GamePlayManager : BaseGamePlayManager
             CharacterEntity character = characters[i] as CharacterEntity;
             if (character != null)
             {
-                if (character.Hp > 0)//如果角色没死
+                if (character.Hp > 0)//如果角色血量大于零 没死
                 {
-                    int spd = (int)character.GetTotalAttributes().spd;//获得角色速度
+                    int spd = character.Role.shenfa;//获得角色速度
                     if (spd <= 0)
                         spd = 1;
                     character.currentTimeCount += spd;
@@ -210,7 +211,7 @@ public class GamePlayManager : BaseGamePlayManager
         }
     }
 
-    public List<BaseCharacterEntity> GetAllies(CharacterEntity character)
+    public List<CharacterEntity> GetAllies(CharacterEntity character)
     {
         if (character.IsPlayerCharacter)
             return playerFormation.Characters.Values.Where(a => a.Hp > 0).ToList();
@@ -218,7 +219,7 @@ public class GamePlayManager : BaseGamePlayManager
             return foeFormation.Characters.Values.Where(a => a.Hp > 0).ToList();
     }
 
-    public List<BaseCharacterEntity> GetFoes(CharacterEntity character)
+    public List<CharacterEntity> GetFoes(CharacterEntity character)
     {
         if (character.IsPlayerCharacter)
             return foeFormation.Characters.Values.Where(a => a.Hp > 0).ToList();

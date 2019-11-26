@@ -13,7 +13,7 @@ public class UICharacterStatsGeneric : UIBase
     public Image imageHpGage;
     public UILevel uiLevel;
     public UICharacterBuff[] uiBuffs;
-    public BaseCharacterEntity character;
+    public CharacterEntity character;
     public bool notFollowCharacter;
 
     private UIFollowWorldObject tempObjectFollower;

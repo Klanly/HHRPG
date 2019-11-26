@@ -55,32 +55,32 @@ public abstract class BaseGamePlayManager : MonoBehaviour
     protected bool isAutoPlayDirty;
     protected bool isEnding;
 
-    public void SpawnDamageText(int amount, BaseCharacterEntity character)
+    public void SpawnDamageText(int amount, CharacterEntity character)
     {
         SpawnCombatText(combatDamagePrefab, amount, character);
     }
 
-    public void SpawnCriticalText(int amount, BaseCharacterEntity character)
+    public void SpawnCriticalText(int amount, CharacterEntity character)
     {
         SpawnCombatText(combatCriticalPrefab, amount, character);
     }
 
-    public void SpawnBlockText(int amount, BaseCharacterEntity character)
+    public void SpawnBlockText(int amount, CharacterEntity character)
     {
         SpawnCombatText(combatBlockPrefab, amount, character);
     }
 
-    public void SpawnHealText(int amount, BaseCharacterEntity character)
+    public void SpawnHealText(int amount, CharacterEntity character)
     {
         SpawnCombatText(combatHealPrefab, amount, character);
     }
 
-    public void SpawnPoisonText(int amount, BaseCharacterEntity character)
+    public void SpawnPoisonText(int amount, CharacterEntity character)
     {
         SpawnCombatText(combatPoisonPrefab, amount, character);
     }
 
-    public void SpawnMissText(BaseCharacterEntity character)
+    public void SpawnMissText(CharacterEntity character)
     {
         var combatText = Instantiate(combatMissPrefab, combatTextContainer);
         combatText.transform.localScale = Vector3.one;
@@ -89,7 +89,7 @@ public abstract class BaseGamePlayManager : MonoBehaviour
         combatText.TempText.text = LanguageManager.Texts[GameText.COMBAT_MISS];
     }
 
-    public void SpawnCombatText(UICombatText prefab, int amount, BaseCharacterEntity character)
+    public void SpawnCombatText(UICombatText prefab, int amount, CharacterEntity character)
     {
         var combatText = Instantiate(prefab, combatTextContainer);
         combatText.transform.localScale = Vector3.one;

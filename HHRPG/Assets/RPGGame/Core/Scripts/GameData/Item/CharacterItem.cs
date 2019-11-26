@@ -10,7 +10,7 @@ public class CharacterItem : BaseActorItem
     [Header("Character Data")]
     public List<BaseAttackAnimationData> attackAnimations;
     public List<BaseSkill> skills;
-    public BaseCharacterEntity model;
+    public CharacterEntity model;
     public CharacterItemEvolve evolveInfo;
 
     public override SpecificItemEvolve GetSpecificItemEvolve()
