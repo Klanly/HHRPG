@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIWin //: UIDataItem<FinishStageResult>
+public class UIWin : MonoBehaviour //: UIDataItem<FinishStageResult>
 {
     public const string ANIM_KEY_BATTLE_RATING = "Rating";
     public Animator ratingAnimator;

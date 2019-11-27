@@ -8,18 +8,7 @@ using UnityEditor;
 
 [RequireComponent(typeof(Animator))]
 public abstract class BaseCharacterEntity : MonoBehaviour
-{
-   
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        var cacheAnimator = GetComponent<Animator>();
-        //if (animatorController == null && cacheAnimator != null)
-        //    animatorController = cacheAnimator.runtimeAnimatorController;
-        EditorUtility.SetDirty(gameObject);
-    }
-#endif
-
+{  
     public virtual void Dead()
     {
         //var keys = new List<string>(Buffs.Keys);

@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/RPGGame/Demo/Scenes/BattleScene.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0

@@ -45,8 +45,8 @@ public class GamePlayManager : BaseGamePlayManager
         Singleton = this;
         if (inputCamera == null)
             inputCamera = Camera.main;
-        // Setup uis
-        //uiCharacterActionManager.Hide();
+        // 设置UI
+        uiCharacterActionManager.Hide();
         // 设置玩家阵型
         playerFormation.isPlayerFormation = true;
         playerFormation.foeFormation = foeFormation;

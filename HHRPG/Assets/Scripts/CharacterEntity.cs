@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -58,7 +59,7 @@ public class CharacterEntity : BaseCharacterEntity
             if (value == null || role == value)
                 return;
             role = value;
-            //Skills.Clear();
+            Skills.Clear();//清空技能列表
             //var skills = item.CharacterData.skills;
             //foreach (var skill in skills)
             //{
@@ -188,8 +189,20 @@ public class CharacterEntity : BaseCharacterEntity
     #endregion
 
     #region Unity Functions
-    protected virtual void Awake()
+#if UNITY_EDITOR
+    private void OnValidate()
     {
+        //var cacheAnimator = GetComponent<Animator>();
+        ////if (animatorController == null && cacheAnimator != null)
+        ////    animatorController = cacheAnimator.runtimeAnimatorController;
+        //EditorUtility.SetDirty(gameObject);
+    }
+#endif
+
+    private void Awake()
+    {
+        CacheCapsuleCollider.isTrigger = true;
+
         //if (uiContainer == null)
         //    uiContainer = TempTransform;
         //if (bodyEffectContainer == null)
@@ -198,8 +211,6 @@ public class CharacterEntity : BaseCharacterEntity
         //    floorEffectContainer = TempTransform;
         //if (damageContainer == null)
         //    damageContainer = TempTransform;
-
-        //CacheCapsuleCollider.isTrigger = true;
     }
 
     private void Update()
@@ -211,27 +222,29 @@ public class CharacterEntity : BaseCharacterEntity
         //    CacheAnimator.SetFloat(ANIM_KEY_SPEED, 0);
         //    return;
         //}
-        //CacheAnimator.SetBool(ANIM_KEY_IS_DEAD, Hp <= 0);
-        //if (Hp > 0)
-        //{
-        //    var moveSpeed = CacheRigidbody.velocity.magnitude;
-        //    // Assume that character is moving by set moveSpeed = 1
-        //    if (forcePlayMoving)
-        //        moveSpeed = 1;
-        //    CacheAnimator.SetFloat(ANIM_KEY_SPEED, moveSpeed);
-        //    if (uiCharacterStats != null)
-        //    {
-        //        if (forceHideCharacterStats)
-        //            uiCharacterStats.Hide();
-        //        else
-        //            uiCharacterStats.Show();
-        //    }
-        //}
-        //else
-        //{
-        //    if (uiCharacterStats != null)
-        //        uiCharacterStats.Hide();
-        //}
+        CacheAnimator.SetBool(ANIM_KEY_IS_DEAD, Hp <= 0);
+        if (Hp > 0)
+        {
+            var moveSpeed = CacheRigidbody.velocity.magnitude;
+            // Assume that character is moving by set moveSpeed = 1
+            if (forcePlayMoving)
+            {
+                moveSpeed = 1;
+            }          
+            CacheAnimator.SetFloat(ANIM_KEY_SPEED, moveSpeed);
+            if (uiCharacterStats != null)
+            {
+                if (forceHideCharacterStats)
+                    uiCharacterStats.Hide();
+                else
+                    uiCharacterStats.Show();
+            }
+        }
+        else
+        {
+            //if (uiCharacterStats != null)
+            //    uiCharacterStats.Hide();
+        }
     }
 
     private void OnTriggerStay(Collider other)
