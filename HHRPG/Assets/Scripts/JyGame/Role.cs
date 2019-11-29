@@ -59,11 +59,7 @@ namespace JyGame
 
         public string GrowTemplateValue = "default";
 
-        //public List<SkillInstance> Skills = new List<SkillInstance>();
-
-        //public List<InternalSkillInstance> InternalSkills = new List<InternalSkillInstance>();
-
-        //public List<SpecialSkillInstance> SpecialSkills = new List<SpecialSkillInstance>();
+        public List<Skill> Skills = new List<Skill>();
 
         public int balls;
 

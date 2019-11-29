@@ -10,7 +10,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{15D159A0-80CA-EE23-314A-8585E1575183}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -243,7 +244,6 @@
     <Compile Include="Assets\Scripts\JyGame\RollRoleUI.cs" />
     <Compile Include="Assets\Scripts\JyGame\SaveManager.cs" />
     <Compile Include="Assets\Scripts\JyGame\Shop.cs" />
-    <Compile Include="Assets\Scripts\JyGame\Skill.cs" />
     <Compile Include="Assets\Scripts\JyGame\SpecialSkill.cs" />
     <Compile Include="Assets\Scripts\JyGame\Story.cs" />
     <Compile Include="Assets\Scripts\JyGame\StoryAction.cs" />
