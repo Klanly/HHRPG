@@ -45,6 +45,15 @@ namespace YouYou
             role.model = roleEntity.model;
             role.maxhp = roleEntity.maxhp;
             role.maxmp = roleEntity.maxhp;
+            role.Skills = new List<Skill>();
+            string[] array=roleEntity.skill.Split(',');
+            for (int i = 0; i < array.Length; i++)
+            {
+                string[] array2 = array[i].Split('_');
+                Skill sk = new Skill();
+                sk.Id = array2[0].ToInt();
+                role.Skills.Add(sk);
+            }
             return role;
         }
 

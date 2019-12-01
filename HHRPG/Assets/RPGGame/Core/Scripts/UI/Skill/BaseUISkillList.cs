@@ -11,18 +11,18 @@ public abstract class BaseUISkillList<TUI, TSkill> : UIDataItemList<TUI, TSkill>
         ClearListItems();
         foreach (var entry in list)
         {
-            var ui = SetListItem(entry as TSkill);
-            if (ui != null && onSetListItem != null)
-                onSetListItem(ui);
+            //var ui = SetListItem(entry as TSkill);
+            //if (ui != null && onSetListItem != null)
+            //    onSetListItem(ui);
         }
     }
 
-    public TUI SetListItem(TSkill data)
-    {
-        if (data == null || string.IsNullOrEmpty(data.Id))
-            return null;
-        var item = SetListItem(data.Id);
-        item.SetData(data);
-        return item;
-    }
+    //public TUI SetListItem(TSkill data)
+    //{
+    //    if (data == null || string.IsNullOrEmpty(data.Id))
+    //        return null;
+    //    var item = SetListItem(data.Id);
+    //    item.SetData(data);
+    //    return item;
+    //}
 }

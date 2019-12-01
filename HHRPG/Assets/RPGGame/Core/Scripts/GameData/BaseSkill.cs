@@ -64,7 +64,7 @@ public abstract class BaseSkillBuff
     }
 }
 
-public abstract class BaseSkill : BaseGameData
+public abstract class BaseSkill 
 {
     public Sprite icon;
     public BaseSkillCastAnimationData castAnimation;

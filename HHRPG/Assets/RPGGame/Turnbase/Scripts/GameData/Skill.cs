@@ -99,6 +99,17 @@ public class SkillBuff : BaseSkillBuff
 
 public class Skill : BaseSkill
 {
+    /// <summary>
+    /// 标题
+    /// </summary>
+    public string title;
+    /// <summary>
+    /// 描述
+    /// </summary>
+    public string SkillDesc;
+
+    public int Id;
+
     public SkillUsageScope usageScope;
     public int coolDownTurns;
     [Range(-10, 10)]

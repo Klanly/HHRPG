@@ -38,11 +38,11 @@ namespace JyGame
 		// Token: 0x0600018E RID: 398 RVA: 0x00014E38 File Offset: 0x00013038
 		public float GetStartSkillHard()
 		{
-			Skill skill = ResourceManager.Get<Skill>(this.start);
-			if (skill != null)
-			{
-				return skill.Hard;
-			}
+			//Skill skill = ResourceManager.Get<Skill>(this.start);
+			//if (skill != null)
+			//{
+			//	return skill.Hard;
+			//}
 			//UniqueSkill uniqueSkill = ResourceManager.Get<UniqueSkill>(this.start);
 			//if (uniqueSkill != null)
 			//{

@@ -1,7 +1,7 @@
 
 //===================================================
 //作    者：边涯  http://www.u3dol.com
-//创建时间：2019-11-19 20:14:36
+//创建时间：2019-12-01 16:53:16
 //备    注：此代码为工具生成 请勿手工修改
 //===================================================
 using System.Collections;
@@ -105,16 +105,6 @@ public partial class RoleEntity : DataTableEntityBase
     /// 等级
     /// </summary>
     public int level;
-
-    /// <summary>
-    /// 特殊技
-    /// </summary>
-    public string special_skills;
-
-    /// <summary>
-    /// 内功
-    /// </summary>
-    public string internal_skills;
 
     /// <summary>
     /// 外攻

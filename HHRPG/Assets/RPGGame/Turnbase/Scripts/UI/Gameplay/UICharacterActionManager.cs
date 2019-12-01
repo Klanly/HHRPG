@@ -43,6 +43,7 @@ public class UICharacterActionManager : UIBase
             var uiSkill = uiAction as UICharacterActionSkill;
             if (uiSkill != null)
             {
+                Debug.Log("执行");
                 uiSkill.skillIndex = skillIndex;
                 UICharacterSkills.Add(uiSkill);
                 ++skillIndex;
@@ -57,15 +58,14 @@ public class UICharacterActionManager : UIBase
             Hide();
             return;
         }
-
         var i = 0;
-        foreach (var skill in Manager.ActiveCharacter.Skills)
+        foreach (var skill in Manager.ActiveCharacter.Role.Skills)
         {
             if (i >= UICharacterSkills.Count)
                 break;
-            var ui = UICharacterSkills[i];
-            ui.skill = skill as CharacterSkill;
-            ui.Show();
+             var ui = UICharacterSkills[i];
+             ui.skill = skill;
+             ui.Show();
             ++i;
         }
         for (; i < UICharacterSkills.Count; ++i)

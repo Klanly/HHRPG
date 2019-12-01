@@ -192,22 +192,22 @@ public class GamePlayManager : BaseGamePlayManager
             foeTeamFormation.SetCharactersSelectable(true);
         else
         {
-            switch (character.SelectedSkill.CastedSkill.usageScope)
-            {
-                case SkillUsageScope.Self:
-                    character.selectable = true;
-                    break;
-                case SkillUsageScope.Ally:
-                    allyTeamFormation.SetCharactersSelectable(true);
-                    break;
-                case SkillUsageScope.Enemy:
-                    foeTeamFormation.SetCharactersSelectable(true);
-                    break;
-                case SkillUsageScope.All:
-                    allyTeamFormation.SetCharactersSelectable(true);
-                    foeTeamFormation.SetCharactersSelectable(true);
-                    break;
-            }
+            //switch (character.SelectedSkill.CastedSkill.usageScope)
+            //{
+            //    case SkillUsageScope.Self:
+            //        character.selectable = true;
+            //        break;
+            //    case SkillUsageScope.Ally:
+            //        allyTeamFormation.SetCharactersSelectable(true);
+            //        break;
+            //    case SkillUsageScope.Enemy:
+            //        foeTeamFormation.SetCharactersSelectable(true);
+            //        break;
+            //    case SkillUsageScope.All:
+            //        allyTeamFormation.SetCharactersSelectable(true);
+            //        foeTeamFormation.SetCharactersSelectable(true);
+            //        break;
+            //}
         }
     }
 

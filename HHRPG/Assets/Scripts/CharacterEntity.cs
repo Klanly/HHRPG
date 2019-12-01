@@ -59,22 +59,11 @@ public class CharacterEntity : BaseCharacterEntity
             if (value == null || role == value)
                 return;
             role = value;
-            Skills.Clear();//清空技能列表
-            //var skills = item.CharacterData.skills;
-            //foreach (var skill in skills)
-            //{
-            //    if (skill != null)
-            //    {
-            //        // TODO: Implement skill level
-            //        Skills.Add(NewSkill(1, skill));
-            //    }
-            //}
             Revive();
         }
     }
     // public List<BaseAttackAnimationData> AttackAnimations { get { return Item.CharacterData.attackAnimations; } }
     public readonly Dictionary<string, BaseCharacterBuff> Buffs = new Dictionary<string, BaseCharacterBuff>();
-    public readonly List<BaseCharacterSkill> Skills = new List<BaseCharacterSkill>();
     public GamePlayFormation Formation { get; protected set; }
     public int Position { get; protected set; }
 
@@ -147,7 +136,7 @@ public class CharacterEntity : BaseCharacterEntity
     public int Action { get; private set; }
     public bool IsDoingAction { get; private set; }
     public bool IsMovingToTarget { get; private set; }
-    public CharacterSkill SelectedSkill { get { return Skills[Action] as CharacterSkill; } }
+    public Skill SelectedSkill { get { return Role.Skills[Action]; } }
     public CharacterEntity ActionTarget { get; private set; }
     public readonly List<Damage> Damages = new List<Damage>();
     private Vector3 targetPosition;
@@ -366,11 +355,11 @@ public class CharacterEntity : BaseCharacterEntity
 
     public void DecreaseSkillsTurn()
     {
-        for (var i = Skills.Count - 1; i >= 0; --i)
-        {
-            var skill = Skills[i] as CharacterSkill;
-            skill.IncreaseTurnsCount();
-        }
+        //for (var i = Skills.Count - 1; i >= 0; --i)
+        //{
+        //    var skill = Skills[i] as CharacterSkill;
+        //    skill.IncreaseTurnsCount();
+        //}
     }
     #endregion
 
@@ -434,12 +423,12 @@ public class CharacterEntity : BaseCharacterEntity
 
     public bool SetAction(int action)
     {
-        if (action == ACTION_ATTACK || (action >= 0 && action < Skills.Count))
-        {
-            Action = action;
-            Manager.ShowTargetScopesOrDoAction(this);
-            return true;
-        }
+        //if (action == ACTION_ATTACK || (action >= 0 && action < Skills.Count))
+        //{
+        //    Action = action;
+        //    Manager.ShowTargetScopesOrDoAction(this);
+        //    return true;
+        //}
         return false;
     }
 
@@ -456,24 +445,24 @@ public class CharacterEntity : BaseCharacterEntity
         }
         else
         {
-            if (SelectedSkill == null || !SelectedSkill.IsReady())
-                return false;
+            //if (SelectedSkill == null || !SelectedSkill.IsReady())
+            //    return false;
 
-            switch (SelectedSkill.CastedSkill.usageScope)
-            {
-                case SkillUsageScope.Self:
-                    if (target != this)
-                        return false;
-                    break;
-                case SkillUsageScope.Enemy:
-                    if (target == this || IsSameTeamWith(target))
-                        return false;
-                    break;
-                case SkillUsageScope.Ally:
-                    if (!IsSameTeamWith(target))
-                        return false;
-                    break;
-            }
+            //switch (SelectedSkill.CastedSkill.usageScope)
+            //{
+            //    case SkillUsageScope.Self:
+            //        if (target != this)
+            //            return false;
+            //        break;
+            //    case SkillUsageScope.Enemy:
+            //        if (target == this || IsSameTeamWith(target))
+            //            return false;
+            //        break;
+            //    case SkillUsageScope.Ally:
+            //        if (!IsSameTeamWith(target))
+            //            return false;
+            //        break;
+            //}
         }
         ActionTarget = target;
         DoAction();
@@ -486,13 +475,13 @@ public class CharacterEntity : BaseCharacterEntity
         // Dictionary of actionId, weight
         Dictionary<int, int> actions = new Dictionary<int, int>();
         actions.Add(ACTION_ATTACK, 5);
-        for (var i = 0; i < Skills.Count; ++i)
-        {
-            var skill = Skills[i] as CharacterSkill;
-            if (skill == null || !skill.IsReady())
-                continue;
-            actions.Add(i, 5);
-        }
+        //for (var i = 0; i < Skills.Count; ++i)
+        //{
+        //    var skill = Skills[i] as CharacterSkill;
+        //    if (skill == null || !skill.IsReady())
+        //        continue;
+        //    actions.Add(i, 5);
+        //}
         Action = WeightedRandomizer.From(actions).TakeOne();
         // Random Target
         if (Action == ACTION_ATTACK)
@@ -503,22 +492,22 @@ public class CharacterEntity : BaseCharacterEntity
         }
         else
         {
-            switch (SelectedSkill.CastedSkill.usageScope)
-            {
-                case SkillUsageScope.Enemy:
-                    var foes = Manager.GetFoes(this);
-                    Random.InitState(System.DateTime.Now.Millisecond);
-                    ActionTarget = foes[Random.Range(0, foes.Count)] as CharacterEntity;
-                    break;
-                case SkillUsageScope.Ally:
-                    var allies = Manager.GetAllies(this);
-                    Random.InitState(System.DateTime.Now.Millisecond);
-                    ActionTarget = allies[Random.Range(0, allies.Count)] as CharacterEntity;
-                    break;
-                default:
-                    ActionTarget = null;
-                    break;
-            }
+            //switch (SelectedSkill.CastedSkill.usageScope)
+            //{
+            //    case SkillUsageScope.Enemy:
+            //        var foes = Manager.GetFoes(this);
+            //        Random.InitState(System.DateTime.Now.Millisecond);
+            //        ActionTarget = foes[Random.Range(0, foes.Count)] as CharacterEntity;
+            //        break;
+            //    case SkillUsageScope.Ally:
+            //        var allies = Manager.GetAllies(this);
+            //        Random.InitState(System.DateTime.Now.Millisecond);
+            //        ActionTarget = allies[Random.Range(0, allies.Count)] as CharacterEntity;
+            //        break;
+            //    default:
+            //        ActionTarget = null;
+            //        break;
+            //}
         }
         DoAction();
     }
@@ -532,7 +521,7 @@ public class CharacterEntity : BaseCharacterEntity
             StartCoroutine(DoAttackActionRoutine());
         else
         {
-            SelectedSkill.OnUseSkill();
+            //SelectedSkill.OnUseSkill();
             StartCoroutine(DoSkillActionRoutine());
         }
     }
@@ -589,37 +578,37 @@ public class CharacterEntity : BaseCharacterEntity
     IEnumerator DoSkillActionRoutine()
     {
         IsDoingAction = true;
-        var skill = SelectedSkill.CastedSkill;
-        var skillCastAnimation = skill.castAnimation as SkillCastAnimationData;
+        //var skill = SelectedSkill.CastedSkill;
+        //var skillCastAnimation = skill.castAnimation as SkillCastAnimationData;
         var manager = Manager;
         // Cast
-        if (skillCastAnimation.GetCastAtMapCenter())
-            yield return MoveTo(Manager.MapCenterPosition, Manager.doActionMoveSpeed);
-        var castEffects = skillCastAnimation.GetCastEffects();
-        var effects = new List<GameEffect>();
-        if (castEffects != null)
-            effects.AddRange(castEffects.InstantiatesTo(this));
-        // Play cast animation
-        if (skillCastAnimation != null)
-        {
-            switch (skillCastAnimation.type)
-            {
-                case AnimationDataType.ChangeAnimationByState:
-                    CacheAnimator.SetInteger(ANIM_KEY_ACTION_STATE, skillCastAnimation.GetAnimationActionState());
-                    break;
-                case AnimationDataType.ChangeAnimationByClip:
-                    ChangeActionClip(skillCastAnimation.GetAnimationClip());
-                    CacheAnimator.SetBool(ANIM_KEY_DO_ACTION, true);
-                    break;
-            }
-        }
-        yield return new WaitForSeconds(skillCastAnimation.GetAnimationDuration());
+        //if (skillCastAnimation.GetCastAtMapCenter())
+        //    yield return MoveTo(Manager.MapCenterPosition, Manager.doActionMoveSpeed);
+        //var castEffects = skillCastAnimation.GetCastEffects();
+        //var effects = new List<GameEffect>();
+        //if (castEffects != null)
+        //    effects.AddRange(castEffects.InstantiatesTo(this));
+        //// Play cast animation
+        //if (skillCastAnimation != null)
+        //{
+        //    switch (skillCastAnimation.type)
+        //    {
+        //        case AnimationDataType.ChangeAnimationByState:
+        //            CacheAnimator.SetInteger(ANIM_KEY_ACTION_STATE, skillCastAnimation.GetAnimationActionState());
+        //            break;
+        //        case AnimationDataType.ChangeAnimationByClip:
+        //            ChangeActionClip(skillCastAnimation.GetAnimationClip());
+        //            CacheAnimator.SetBool(ANIM_KEY_DO_ACTION, true);
+        //            break;
+        //    }
+        //}
+        //yield return new WaitForSeconds(skillCastAnimation.GetAnimationDuration());
         ClearActionState();
-        foreach (var effect in effects)
-        {
-            effect.DestroyEffect();
-        }
-        effects.Clear();
+        //foreach (var effect in effects)
+        //{
+        //    effect.DestroyEffect();
+        //}
+        //effects.Clear();
         // Buffs
         yield return StartCoroutine(ApplyBuffsRoutine());
         // Attacks
@@ -632,217 +621,218 @@ public class CharacterEntity : BaseCharacterEntity
 
     IEnumerator ApplyBuffsRoutine()
     {
-        var level = SelectedSkill.Level;
-        var skill = SelectedSkill.CastedSkill;
-        for (var i = 0; i < skill.buffs.Length; ++i)
-        {
-            var buff = skill.buffs[i];
-            if (buff == null)
-                continue;
+        //var level = SelectedSkill.Level;
+        //var skill = SelectedSkill.CastedSkill;
+        //for (var i = 0; i < skill.buffs.Length; ++i)
+        //{
+        //    var buff = skill.buffs[i];
+        //    if (buff == null)
+        //        continue;
 
-            var allies = Manager.GetAllies(this);
-            var foes = Manager.GetFoes(this);
-            if (buff.RandomToApply(level))
-            {
-                // Apply buffs to selected targets
-                switch (buff.buffScope)
-                {
-                    case BuffScope.SelectedTarget:
-                    case BuffScope.SelectedAndOneRandomTargets:
-                    case BuffScope.SelectedAndTwoRandomTargets:
-                    case BuffScope.SelectedAndThreeRandomTargets:
-                        ActionTarget.ApplyBuff(this, level, skill, i);
-                        break;
-                }
+        //    var allies = Manager.GetAllies(this);
+        //    var foes = Manager.GetFoes(this);
+        //    if (buff.RandomToApply(level))
+        //    {
+        //        // Apply buffs to selected targets
+        //        switch (buff.buffScope)
+        //        {
+        //            case BuffScope.SelectedTarget:
+        //            case BuffScope.SelectedAndOneRandomTargets:
+        //            case BuffScope.SelectedAndTwoRandomTargets:
+        //            case BuffScope.SelectedAndThreeRandomTargets:
+        //                ActionTarget.ApplyBuff(this, level, skill, i);
+        //                break;
+        //        }
 
-                int randomAllyCount = 0;
-                int randomFoeCount = 0;
-                // Buff scope
-                switch (buff.buffScope)
-                {
-                    case BuffScope.Self:
-                        ApplyBuff(this, level, skill, i);
-                        continue;
-                    case BuffScope.SelectedAndOneRandomTargets:
-                        if (ActionTarget.IsSameTeamWith(this))
-                            randomAllyCount = 1;
-                        else if (!ActionTarget.IsSameTeamWith(this))
-                            randomFoeCount = 1;
-                        break;
-                    case BuffScope.SelectedAndTwoRandomTargets:
-                        if (ActionTarget.IsSameTeamWith(this))
-                            randomAllyCount = 2;
-                        else if (!ActionTarget.IsSameTeamWith(this))
-                            randomFoeCount = 2;
-                        break;
-                    case BuffScope.SelectedAndThreeRandomTargets:
-                        if (ActionTarget.IsSameTeamWith(this))
-                            randomAllyCount = 3;
-                        else if (!ActionTarget.IsSameTeamWith(this))
-                            randomFoeCount = 3;
-                        break;
-                    case BuffScope.OneRandomAlly:
-                        randomAllyCount = 1;
-                        break;
-                    case BuffScope.TwoRandomAllies:
-                        randomAllyCount = 2;
-                        break;
-                    case BuffScope.ThreeRandomAllies:
-                        randomAllyCount = 3;
-                        break;
-                    case BuffScope.FourRandomAllies:
-                        randomAllyCount = 4;
-                        break;
-                    case BuffScope.AllAllies:
-                        randomAllyCount = allies.Count;
-                        break;
-                    case BuffScope.OneRandomEnemy:
-                        randomFoeCount = 1;
-                        break;
-                    case BuffScope.TwoRandomEnemies:
-                        randomFoeCount = 2;
-                        break;
-                    case BuffScope.ThreeRandomEnemies:
-                        randomFoeCount = 3;
-                        break;
-                    case BuffScope.FourRandomEnemies:
-                        randomFoeCount = 4;
-                        break;
-                    case BuffScope.AllEnemies:
-                        randomFoeCount = foes.Count;
-                        break;
-                    case BuffScope.All:
-                        randomAllyCount = allies.Count;
-                        randomFoeCount = foes.Count;
-                        break;
-                }
-                // End buff scope
-                // Don't apply buffs to character that already applied
-                if (randomAllyCount > 0)
-                {
-                    allies.Remove(ActionTarget);
-                    while (allies.Count > 0 && randomAllyCount > 0)
-                    {
-                        Random.InitState(System.DateTime.Now.Millisecond);
-                        var randomIndex = Random.Range(0, allies.Count - 1);
-                        var applyBuffTarget = allies[randomIndex];
-                        applyBuffTarget.ApplyBuff(this, level, skill, i);
-                        allies.RemoveAt(randomIndex);
-                        --randomAllyCount;
-                    }
-                }
-                // Don't apply buffs to character that already applied
-                if (randomFoeCount > 0)
-                {
-                    foes.Remove(ActionTarget);
-                    while (foes.Count > 0 && randomFoeCount > 0)
-                    {
-                        Random.InitState(System.DateTime.Now.Millisecond);
-                        var randomIndex = Random.Range(0, foes.Count - 1);
-                        var applyBuffTarget = foes[randomIndex];
-                        applyBuffTarget.ApplyBuff(this, level, skill, i);
-                        foes.RemoveAt(randomIndex);
-                        --randomFoeCount;
-                    }
-                }
-            }
-        }
+        //        int randomAllyCount = 0;
+        //        int randomFoeCount = 0;
+        //        // Buff scope
+        //        switch (buff.buffScope)
+        //        {
+        //            case BuffScope.Self:
+        //                ApplyBuff(this, level, skill, i);
+        //                continue;
+        //            case BuffScope.SelectedAndOneRandomTargets:
+        //                if (ActionTarget.IsSameTeamWith(this))
+        //                    randomAllyCount = 1;
+        //                else if (!ActionTarget.IsSameTeamWith(this))
+        //                    randomFoeCount = 1;
+        //                break;
+        //            case BuffScope.SelectedAndTwoRandomTargets:
+        //                if (ActionTarget.IsSameTeamWith(this))
+        //                    randomAllyCount = 2;
+        //                else if (!ActionTarget.IsSameTeamWith(this))
+        //                    randomFoeCount = 2;
+        //                break;
+        //            case BuffScope.SelectedAndThreeRandomTargets:
+        //                if (ActionTarget.IsSameTeamWith(this))
+        //                    randomAllyCount = 3;
+        //                else if (!ActionTarget.IsSameTeamWith(this))
+        //                    randomFoeCount = 3;
+        //                break;
+        //            case BuffScope.OneRandomAlly:
+        //                randomAllyCount = 1;
+        //                break;
+        //            case BuffScope.TwoRandomAllies:
+        //                randomAllyCount = 2;
+        //                break;
+        //            case BuffScope.ThreeRandomAllies:
+        //                randomAllyCount = 3;
+        //                break;
+        //            case BuffScope.FourRandomAllies:
+        //                randomAllyCount = 4;
+        //                break;
+        //            case BuffScope.AllAllies:
+        //                randomAllyCount = allies.Count;
+        //                break;
+        //            case BuffScope.OneRandomEnemy:
+        //                randomFoeCount = 1;
+        //                break;
+        //            case BuffScope.TwoRandomEnemies:
+        //                randomFoeCount = 2;
+        //                break;
+        //            case BuffScope.ThreeRandomEnemies:
+        //                randomFoeCount = 3;
+        //                break;
+        //            case BuffScope.FourRandomEnemies:
+        //                randomFoeCount = 4;
+        //                break;
+        //            case BuffScope.AllEnemies:
+        //                randomFoeCount = foes.Count;
+        //                break;
+        //            case BuffScope.All:
+        //                randomAllyCount = allies.Count;
+        //                randomFoeCount = foes.Count;
+        //                break;
+        //        }
+        //        // End buff scope
+        //        // Don't apply buffs to character that already applied
+        //        if (randomAllyCount > 0)
+        //        {
+        //            allies.Remove(ActionTarget);
+        //            while (allies.Count > 0 && randomAllyCount > 0)
+        //            {
+        //                Random.InitState(System.DateTime.Now.Millisecond);
+        //                var randomIndex = Random.Range(0, allies.Count - 1);
+        //                var applyBuffTarget = allies[randomIndex];
+        //                applyBuffTarget.ApplyBuff(this, level, skill, i);
+        //                allies.RemoveAt(randomIndex);
+        //                --randomAllyCount;
+        //            }
+        //        }
+        //        // Don't apply buffs to character that already applied
+        //        if (randomFoeCount > 0)
+        //        {
+        //            foes.Remove(ActionTarget);
+        //            while (foes.Count > 0 && randomFoeCount > 0)
+        //            {
+        //                Random.InitState(System.DateTime.Now.Millisecond);
+        //                var randomIndex = Random.Range(0, foes.Count - 1);
+        //                var applyBuffTarget = foes[randomIndex];
+        //                applyBuffTarget.ApplyBuff(this, level, skill, i);
+        //                foes.RemoveAt(randomIndex);
+        //                --randomFoeCount;
+        //            }
+        //        }
+        //    }
+        //}
         yield return 0;
     }
 
     IEnumerator SkillAttackRoutine()
     {
-        var level = SelectedSkill.Level;
-        var skill = SelectedSkill.CastedSkill;
-        if (skill.attacks.Length > 0)
-        {
-            var isAlreadyReachedTarget = false;
-            foreach (var attack in skill.attacks)
-            {
-                var foes = Manager.GetFoes(this);
-                var attackDamage = attack.attackDamage;
-                var attackAnimation = attack.attackAnimation as AttackAnimationData;
-                if (!attackAnimation.GetIsRangeAttack() && !isAlreadyReachedTarget)
-                {
-                    // Move to target character
-                    yield return MoveTo(ActionTarget, Manager.doActionMoveSpeed);
-                    isAlreadyReachedTarget = true;
-                }
-                // Play attack animation
-                if (attackAnimation != null)
-                {
-                    switch (attackAnimation.type)
-                    {
-                        case AnimationDataType.ChangeAnimationByState:
-                            CacheAnimator.SetInteger(ANIM_KEY_ACTION_STATE, attackAnimation.GetAnimationActionState());
-                            break;
-                        case AnimationDataType.ChangeAnimationByClip:
-                            ChangeActionClip(attackAnimation.GetAnimationClip());
-                            CacheAnimator.SetBool(ANIM_KEY_DO_ACTION, true);
-                            break;
-                    }
-                }
-                yield return new WaitForSeconds(attackAnimation.GetHitDuration());
-                // Apply damage
-                // Attack to selected target
-                switch (attack.attackScope)
-                {
-                    case AttackScope.SelectedTarget:
-                    case AttackScope.SelectedAndOneRandomTargets:
-                    case AttackScope.SelectedAndTwoRandomTargets:
-                    case AttackScope.SelectedAndThreeRandomTargets:
-                        Attack(ActionTarget, attackAnimation.GetDamage() as Damage, attackDamage.GetPAtkDamageRate(level), attackDamage.GetMAtkDamageRate(level), attackDamage.hitCount, (int)attackDamage.GetFixDamage(level));
-                        break;
-                }
-                // Attack to random targets
-                int randomFoeCount = 0;
-                // Attack scope
-                switch (attack.attackScope)
-                {
-                    case AttackScope.SelectedAndOneRandomTargets:
-                    case AttackScope.OneRandomEnemy:
-                        randomFoeCount = 1;
-                        break;
-                    case AttackScope.SelectedAndTwoRandomTargets:
-                    case AttackScope.TwoRandomEnemies:
-                        randomFoeCount = 2;
-                        break;
-                    case AttackScope.SelectedAndThreeRandomTargets:
-                    case AttackScope.ThreeRandomEnemies:
-                        randomFoeCount = 3;
-                        break;
-                    case AttackScope.FourRandomEnemies:
-                        randomFoeCount = 4;
-                        break;
-                    case AttackScope.AllEnemies:
-                        randomFoeCount = foes.Count;
-                        break;
-                }
-                // End attack scope
-                while (foes.Count > 0 && randomFoeCount > 0)
-                {
-                    Random.InitState(System.DateTime.Now.Millisecond);
-                    var randomIndex = Random.Range(0, foes.Count - 1);
-                    var attackingTarget = foes[randomIndex] as CharacterEntity;
-                    Attack(attackingTarget, attackAnimation.GetDamage() as Damage, attackDamage.GetPAtkDamageRate(level), attackDamage.GetMAtkDamageRate(level), attackDamage.hitCount, (int)attackDamage.GetFixDamage(level));
-                    foes.RemoveAt(randomIndex);
-                    --randomFoeCount;
-                }
-                // End attack
-                var endAttackDuration = attackAnimation.GetAnimationDuration() - attackAnimation.GetHitDuration();
-                if (endAttackDuration < 0)
-                    endAttackDuration = 0;
-                yield return new WaitForSeconds(endAttackDuration);
-                ClearActionState();
-                yield return 0;
-            }
-            // End attack loop
-            // Wait damages done
-            while (Damages.Count > 0)
-            {
-                yield return 0;
-            }
-        }
+        //var level = SelectedSkill.Level;
+        //var skill = SelectedSkill.CastedSkill;
+        //if (skill.attacks.Length > 0)
+        //{
+        //    var isAlreadyReachedTarget = false;
+        //    foreach (var attack in skill.attacks)
+        //    {
+        //        var foes = Manager.GetFoes(this);
+        //        var attackDamage = attack.attackDamage;
+        //        var attackAnimation = attack.attackAnimation as AttackAnimationData;
+        //        if (!attackAnimation.GetIsRangeAttack() && !isAlreadyReachedTarget)
+        //        {
+        //            // Move to target character
+        //            yield return MoveTo(ActionTarget, Manager.doActionMoveSpeed);
+        //            isAlreadyReachedTarget = true;
+        //        }
+        //        // Play attack animation
+        //        if (attackAnimation != null)
+        //        {
+        //            switch (attackAnimation.type)
+        //            {
+        //                case AnimationDataType.ChangeAnimationByState:
+        //                    CacheAnimator.SetInteger(ANIM_KEY_ACTION_STATE, attackAnimation.GetAnimationActionState());
+        //                    break;
+        //                case AnimationDataType.ChangeAnimationByClip:
+        //                    ChangeActionClip(attackAnimation.GetAnimationClip());
+        //                    CacheAnimator.SetBool(ANIM_KEY_DO_ACTION, true);
+        //                    break;
+        //            }
+        //        }
+        //        yield return new WaitForSeconds(attackAnimation.GetHitDuration());
+        //        // Apply damage
+        //        // Attack to selected target
+        //        switch (attack.attackScope)
+        //        {
+        //            case AttackScope.SelectedTarget:
+        //            case AttackScope.SelectedAndOneRandomTargets:
+        //            case AttackScope.SelectedAndTwoRandomTargets:
+        //            case AttackScope.SelectedAndThreeRandomTargets:
+        //                Attack(ActionTarget, attackAnimation.GetDamage() as Damage, attackDamage.GetPAtkDamageRate(level), attackDamage.GetMAtkDamageRate(level), attackDamage.hitCount, (int)attackDamage.GetFixDamage(level));
+        //                break;
+        //        }
+        //        // Attack to random targets
+        //        int randomFoeCount = 0;
+        //        // Attack scope
+        //        switch (attack.attackScope)
+        //        {
+        //            case AttackScope.SelectedAndOneRandomTargets:
+        //            case AttackScope.OneRandomEnemy:
+        //                randomFoeCount = 1;
+        //                break;
+        //            case AttackScope.SelectedAndTwoRandomTargets:
+        //            case AttackScope.TwoRandomEnemies:
+        //                randomFoeCount = 2;
+        //                break;
+        //            case AttackScope.SelectedAndThreeRandomTargets:
+        //            case AttackScope.ThreeRandomEnemies:
+        //                randomFoeCount = 3;
+        //                break;
+        //            case AttackScope.FourRandomEnemies:
+        //                randomFoeCount = 4;
+        //                break;
+        //            case AttackScope.AllEnemies:
+        //                randomFoeCount = foes.Count;
+        //                break;
+        //        }
+        //        // End attack scope
+        //        while (foes.Count > 0 && randomFoeCount > 0)
+        //        {
+        //            Random.InitState(System.DateTime.Now.Millisecond);
+        //            var randomIndex = Random.Range(0, foes.Count - 1);
+        //            var attackingTarget = foes[randomIndex] as CharacterEntity;
+        //            Attack(attackingTarget, attackAnimation.GetDamage() as Damage, attackDamage.GetPAtkDamageRate(level), attackDamage.GetMAtkDamageRate(level), attackDamage.hitCount, (int)attackDamage.GetFixDamage(level));
+        //            foes.RemoveAt(randomIndex);
+        //            --randomFoeCount;
+        //        }
+        //        // End attack
+        //        var endAttackDuration = attackAnimation.GetAnimationDuration() - attackAnimation.GetHitDuration();
+        //        if (endAttackDuration < 0)
+        //            endAttackDuration = 0;
+        //        yield return new WaitForSeconds(endAttackDuration);
+        //        ClearActionState();
+        //        yield return 0;
+        //    }
+        //    // End attack loop
+        //    // Wait damages done
+        //    while (Damages.Count > 0)
+        //    {
+        //        yield return 0;
+        //    }
+        //}
+        yield return 0;
     }
 
     public void ResetStates()

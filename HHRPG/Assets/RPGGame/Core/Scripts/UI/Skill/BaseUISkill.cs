@@ -21,20 +21,20 @@ public abstract class BaseUISkill<TSkill> : UIDataItem<TSkill>
 
     private void SetupInfo(TSkill data)
     {
-        if (textTitle != null)
-            textTitle.text = data == null ? "" : data.title;
+        //if (textTitle != null)
+        //    textTitle.text = data == null ? "" : data.title;
 
-        if (textDescription != null)
-            textDescription.text = data == null ? "" : data.description;
+        //if (textDescription != null)
+        //    textDescription.text = data == null ? "" : data.description;
 
-        if (imageIcon != null)
-            imageIcon.sprite = data == null ? null : data.icon;
+        //if (imageIcon != null)
+        //    imageIcon.sprite = data == null ? null : data.icon;
     }
 
-    public override bool IsEmpty()
-    {
-        return data == null || string.IsNullOrEmpty(data.Id);
-    }
+    //public override bool IsEmpty()
+    //{
+    //    return data == null || string.IsNullOrEmpty(data.Id);
+    //}
 
     public void ShowDataOnMessageDialog()
     {
