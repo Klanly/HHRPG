@@ -8,7 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(TargetingRigidbody))]
-public class CharacterEntity : BaseCharacterEntity
+public class CharacterEntity : MonoBehaviour
 {
     public const string ANIM_ACTION_STATE = "_Action";
     [Header("Animator")]
@@ -178,16 +178,6 @@ public class CharacterEntity : BaseCharacterEntity
     #endregion
 
     #region Unity Functions
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        //var cacheAnimator = GetComponent<Animator>();
-        ////if (animatorController == null && cacheAnimator != null)
-        ////    animatorController = cacheAnimator.runtimeAnimatorController;
-        //EditorUtility.SetDirty(gameObject);
-    }
-#endif
-
     private void Awake()
     {
         CacheCapsuleCollider.isTrigger = true;
@@ -328,12 +318,6 @@ public class CharacterEntity : BaseCharacterEntity
         CacheAnimator.SetTrigger(ANIM_KEY_HURT);
     }
 
-    public override void Dead()
-    {
-        base.Dead();
-        ClearActionState();
-    }
-
     public void DecreaseBuffsTurn()
     {
         var keys = new List<string>(Buffs.Keys);
@@ -423,12 +407,12 @@ public class CharacterEntity : BaseCharacterEntity
 
     public bool SetAction(int action)
     {
-        //if (action == ACTION_ATTACK || (action >= 0 && action < Skills.Count))
-        //{
-        //    Action = action;
-        //    Manager.ShowTargetScopesOrDoAction(this);
-        //    return true;
-        //}
+        if (action == ACTION_ATTACK || (action >= 0 && action < Role.Skills.Count))
+        {        
+            Action = action;
+            Manager.ShowTargetScopesOrDoAction(this);
+            return true;
+        }
         return false;
     }
 
@@ -885,4 +869,49 @@ public class CharacterEntity : BaseCharacterEntity
     {
         Hp = MaxHp;
     }
+
+    public void Dead()
+    {
+        //var keys = new List<string>(Buffs.Keys);
+        //for (var i = keys.Count - 1; i >= 0; --i)
+        //{
+        //    var key = keys[i];
+        //    if (!Buffs.ContainsKey(key))
+        //        continue;
+
+        //    var buff = Buffs[key];
+        //    buff.BuffRemove();
+        //    Buffs.Remove(key);
+        //}
+
+        ClearActionState();
+    }
+
+    public virtual void ApplyBuff(CharacterEntity caster, int level, BaseSkill skill, int buffIndex)
+    {
+        //if (skill == null || buffIndex < 0 || buffIndex >= skill.GetBuffs().Count || skill.GetBuffs()[buffIndex] == null || Hp <= 0)
+        //    return;
+
+        //var buff = NewBuff(level, skill, buffIndex, caster, this);
+        //if (buff.GetRemainsDuration() > 0f)
+        //{
+        //    // Buff cannot stack so remove old buff
+        //    //if (Buffs.ContainsKey(buff.Id))
+        //    //{
+        //    //    buff.BuffRemove();
+        //    //    Buffs.Remove(buff.Id);
+        //    //}
+        //    //Buffs[buff.Id] = buff;
+        //}
+        //else
+        //    buff.BuffRemove();
+    }
+
+    public void ChangeActionClip(AnimationClip clip)
+    {
+        //CacheAnimatorController[ANIM_ACTION_STATE] = clip;
+    }
+
+    //public abstract BaseCharacterSkill NewSkill(int level, BaseSkill skill);
+    //public abstract BaseCharacterBuff NewBuff(int level, BaseSkill skill, int buffIndex, BaseCharacterEntity giver, BaseCharacterEntity receiver);
 }

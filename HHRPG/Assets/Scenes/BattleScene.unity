@@ -3563,7 +3563,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Attack enemy
+  m_Text: "\u653B\u51FB\u654C\u4EBA"
 --- !u!222 &493606773
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4388,6 +4388,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534483d296a15de4da22c033471434c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ratingAnimator: {fileID: 0}
+  uiPlayer: {fileID: 0}
+  textRewardPlayerExp: {fileID: 0}
+  textRewardCharacterExp: {fileID: 0}
+  uiRewardItems: {fileID: 0}
+  uiRewardCurrency: {fileID: 0}
+  buttonRestart: {fileID: 0}
+  buttonGoToManageScene: {fileID: 0}
+  buttonGoToNextStage: {fileID: 0}
 --- !u!1 &745060262
 GameObject:
   m_ObjectHideFlags: 0
@@ -4610,7 +4619,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   list: {fileID: 0}
-  data: {fileID: 0}
   textTitle: {fileID: 1078243511}
   textDescription: {fileID: 1767489652}
   imageIcon: {fileID: 1407695932}
@@ -6031,7 +6039,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   list: {fileID: 0}
-  data: {fileID: 0}
   textTitle: {fileID: 1029577973}
   textDescription: {fileID: 1026889868}
   imageIcon: {fileID: 1030096380}
@@ -6283,6 +6290,7 @@ MonoBehaviour:
     type: 3}
   combatMissPrefab: {fileID: 114105345846649688, guid: af7151f261df87c46805fdd9f38d2a7f,
     type: 3}
+  uiWin: {fileID: 0}
   uiLose: {fileID: 0}
   uiFriendRequest: {fileID: 0}
   uiPauseGame: {fileID: 0}
@@ -6297,8 +6305,8 @@ MonoBehaviour:
   actionDoneMoveSpeed: 10
   beforeMoveToNextWaveDelay: 2
   moveToNextWaveDelay: 1
-  uiCharacterStatsContainer: {fileID: 0}
-  uiCharacterStatsPrefab: {fileID: 114825013801312584, guid: 5a0e6475b35fbe84bb59e3a1129f3da0,
+  uiCharacterStatsContainer: {fileID: 2043604544}
+  uiCharacterStatsPrefab: {fileID: 114825013801312584, guid: 3bce247ba18da1b4db52dbded5b1a39e,
     type: 3}
   uiCharacterActionManager: {fileID: 1611463121}
 --- !u!4 &1019725147
@@ -7853,7 +7861,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   list: {fileID: 0}
-  data: {fileID: 0}
   textTitle: {fileID: 1080972964}
   textDescription: {fileID: 1203886846}
   imageIcon: {fileID: 2103280175}
@@ -11201,7 +11208,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   list: {fileID: 0}
-  data: {fileID: 0}
   textTitle: {fileID: 2146889042}
   textDescription: {fileID: 1383324421}
   imageIcon: {fileID: 453010290}
@@ -12670,7 +12676,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   list: {fileID: 0}
-  data: {fileID: 0}
   textTitle: {fileID: 1527326274}
   textDescription: {fileID: 877890171}
   imageIcon: {fileID: 1061880851}

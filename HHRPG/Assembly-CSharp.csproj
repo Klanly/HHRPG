@@ -205,7 +205,6 @@
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityLayer.cs" />
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityScene.cs" />
     <Compile Include="Assets\RPGGame\UnityEditorUtils\Scripts\UnityTag.cs" />
-    <Compile Include="Assets\Scripts\BaseCharacterEntity.cs" />
     <Compile Include="Assets\Scripts\BaseGamePlayManager.cs" />
     <Compile Include="Assets\Scripts\CharacterEntity.cs" />
     <Compile Include="Assets\Scripts\GamePlayFormation.cs" />

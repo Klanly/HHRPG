@@ -16,10 +16,13 @@ public class GamePlayFormation : MonoBehaviour
     /// </summary>
     public bool isPlayerFormation;
     public GamePlayManager Manager { get { return GamePlayManager.Singleton; } }
+    /// <summary>
+    /// 角色状态UI字典
+    /// </summary>
     public readonly Dictionary<int, UICharacterStats> UIStats = new Dictionary<int, UICharacterStats>();
     public Transform[] containers;
     /// <summary>
-    /// 角色
+    /// 角色字典
     /// </summary>
     public readonly Dictionary<int, CharacterEntity> Characters = new Dictionary<int, CharacterEntity>();
 
@@ -67,20 +70,20 @@ public class GamePlayFormation : MonoBehaviour
         if (character == null)
             return;
 
-        //UICharacterStats uiStats;
-        //if (UIStats.TryGetValue(position, out uiStats))
-        //{
-        //    Destroy(uiStats.gameObject);
-        //    UIStats.Remove(position);
-        //}
+        UICharacterStats uiStats;
+        if (UIStats.TryGetValue(position, out uiStats))
+        {
+            Destroy(uiStats.gameObject);
+            UIStats.Remove(position);
+        }
 
-        //if (Manager != null)
-        //{
-        //    uiStats = Instantiate(Manager.uiCharacterStatsPrefab, Manager.uiCharacterStatsContainer);
-        //    uiStats.transform.localScale = Vector3.one;
-        //    uiStats.character = character;
-        //    character.uiCharacterStats = uiStats;
-        //}
+        if (Manager != null)
+        {
+            uiStats = Instantiate(Manager.uiCharacterStatsPrefab, Manager.uiCharacterStatsContainer);
+            uiStats.transform.localScale = Vector3.one;
+            uiStats.character = character;
+            character.uiCharacterStats = uiStats;
+        }
     }
 
     /// <summary>

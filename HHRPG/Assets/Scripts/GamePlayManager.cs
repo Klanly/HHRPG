@@ -179,7 +179,7 @@ public class GamePlayManager : BaseGamePlayManager
 
     /// <summary>
     /// This will be called by Character class to show target scopes or do action
-    /// 这将由字符类调用来显示目标范围或do操作
+    /// 这将由角色类调用来显示目标范围或do操作
     /// </summary>
     /// <param name="character"></param>
     public void ShowTargetScopesOrDoAction(CharacterEntity character)
@@ -189,7 +189,9 @@ public class GamePlayManager : BaseGamePlayManager
         allyTeamFormation.SetCharactersSelectable(false);
         foeTeamFormation.SetCharactersSelectable(false);
         if (character.Action == CharacterEntity.ACTION_ATTACK)
+        {
             foeTeamFormation.SetCharactersSelectable(true);
+        }           
         else
         {
             //switch (character.SelectedSkill.CastedSkill.usageScope)
