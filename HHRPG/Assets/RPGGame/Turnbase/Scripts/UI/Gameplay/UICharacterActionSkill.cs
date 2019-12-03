@@ -31,6 +31,5 @@ public class UICharacterActionSkill : UICharacterAction
     protected override void OnActionSelected()
     {
         ActionManager.ActiveCharacter.SetAction(skillIndex);
-        Debug.Log("点击");
     }
 }

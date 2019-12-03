@@ -95,23 +95,23 @@ public class GamePlayManager : BaseGamePlayManager
 
         //Time.timeScale = !isEnding && IsSpeedMultiply ? 2 : 1;
 
-        //if (Input.GetMouseButtonDown(0) && ActiveCharacter != null && ActiveCharacter.IsPlayerCharacter)
-        //{
-        //    Ray ray = inputCamera.ScreenPointToRay(InputManager.MousePosition());
-        //    RaycastHit hitInfo;
-        //    if (!Physics.Raycast(ray, out hitInfo))
-        //        return;
+        if (Input.GetMouseButtonDown(0) && ActiveCharacter != null && ActiveCharacter.IsPlayerCharacter)
+        {
+            Ray ray = inputCamera.ScreenPointToRay(InputManager.MousePosition());
+            RaycastHit hitInfo;
+            if (!Physics.Raycast(ray, out hitInfo))
+                return;
 
-        //    var targetCharacter = hitInfo.collider.GetComponent<CharacterEntity>();
-        //    if (targetCharacter != null)
-        //    {
-        //        if (ActiveCharacter.DoAction(targetCharacter))
-        //        {
-        //            playerFormation.SetCharactersSelectable(false);
-        //            foeFormation.SetCharactersSelectable(false);
-        //        }
-        //    }
-        //}
+            var targetCharacter = hitInfo.collider.GetComponent<CharacterEntity>();
+            if (targetCharacter != null)
+            {
+                if (ActiveCharacter.DoAction(targetCharacter))
+                {
+                    playerFormation.SetCharactersSelectable(false);
+                    foeFormation.SetCharactersSelectable(false);
+                }
+            }
+        }
     }
 
     public void NewTurn()

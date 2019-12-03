@@ -301,7 +301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6200235870475448910}
   m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.6321561, y: 0.870041, z: -0.20802106}
+  m_LocalPosition: {x: 1.19, y: 0.870041, z: -0.20802106}
   m_LocalScale: {x: 0.76686025, y: 0.6409589, z: 0.44721678}
   m_Children: []
   m_Father: {fileID: 6200235870475611718}
@@ -945,9 +945,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 1.7503328
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.8751664, z: 0}
 --- !u!114 &1399683633879524869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,10 +975,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animatorController: {fileID: 22100000, guid: 91f6cbc7d031b744bb749149bb932cdc, type: 2}
-  uiContainer: {fileID: 0}
-  bodyEffectContainer: {fileID: 0}
-  floorEffectContainer: {fileID: 0}
-  damageContainer: {fileID: 0}
+  uiContainer: {fileID: 5253784715994106138}
+  bodyEffectContainer: {fileID: 8510719286146178457}
+  floorEffectContainer: {fileID: 6781685493443567241}
+  damageContainer: {fileID: 4467761302443956132}
   forcePlayMoving: 0
   forceHideCharacterStats: 0
   currentTimeCount: 0
@@ -2818,7 +2818,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6885087671596532824}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.703, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6200235870475611718}
