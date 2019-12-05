@@ -27,6 +27,9 @@ public class GamePlayManager : BaseGamePlayManager
     public UICharacterActionManager uiCharacterActionManager;
     public CharacterEntity ActiveCharacter { get; private set; }
 
+    public GameObject partical_show;            //展示当前行动单位的特效
+    private GameObject thisPartical;            //存储生成的特效
+
     /// <summary>
     /// 地图中心位置
     /// </summary>
@@ -107,6 +110,7 @@ public class GamePlayManager : BaseGamePlayManager
             {
                 if (ActiveCharacter.DoAction(targetCharacter))
                 {
+                    Destroy(thisPartical);          //选择完目标后删除标识当前行动单位的特效
                     playerFormation.SetCharactersSelectable(false);
                     foeFormation.SetCharactersSelectable(false);
                 }
@@ -155,6 +159,11 @@ public class GamePlayManager : BaseGamePlayManager
         ActiveCharacter.ResetStates();//重置状态
         if (ActiveCharacter.Hp > 0)//如果角色没死
         {
+            //在该单位脚底下显示特效
+            thisPartical = Instantiate(partical_show) as GameObject;
+
+            thisPartical.SetParent(ActiveCharacter.bodyEffectContainer);
+
             if (ActiveCharacter.IsPlayerCharacter)//行动角色如果是玩家
             {
                 if (IsAutoPlay)//是否自动模式
